@@ -395,4 +395,158 @@ async function media(req, S, url, ref) {
   }
   if (req.method === "PUT") {
     const dev = idOf(req.headers.get("x-device") || "");
-    if (dev.length < 6) return 
+    if (dev.length < 6) return J({ error: "bad_id" }, 400);
+    { const bx = await isBanned(S, dev); if (bx) return BAN(bx); }
+    const type = (req.headers.get("content-type") || "").split(";")[0].trim().toLowerCase();
+    const isImg = IMG.includes(type), isVid = VID.includes(type);
+    if (!isImg && !isVid) return J({ error: "bad_type" }, 415);
+    const buf = await req.arrayBuffer();
+    const max = isImg ? 1_800_000 : 4_700_000;
+    if (buf.byteLength > max || buf.byteLength < 100) return J({ error: "too_large", max }, 413);
+    const id = "m" + rid(16);
+    await st.set(id, buf, { metadata: { type, by: dev, t: Date.now() } });
+    return J({ ref: id, size: buf.byteLength });
+  }
+  return J({ error: "method" }, 405);
+}
+
+/* ---------------- config công khai (thông báo) ---------------- */
+async function pubConfig(req, S) {
+  if (req.method !== "GET") return J({ error: "method" }, 405);
+  const a = await S("admin").get("cfg:announce", { type: "json" }).catch(() => null);
+  const on = a && a.text && (!a.until || a.until > Date.now());
+  return J({ announce: on ? { id: a.id, text: a.text, level: a.level, t: a.t } : null, now: Date.now() });
+}
+
+/* ---------------- quản trị ---------------- */
+async function adminLog(st, act, info) {
+  const now = Date.now();
+  await st.setJSON(`log:${String(9999999999999 - now).padStart(13, "0")}:${rid(4)}`, { t: now, act, info: str(info, 200) }).catch(() => {});
+}
+async function admin(req, S, url) {
+  if (!isAdmin(req)) return J({ error: "forbidden" }, 403);
+  const st = S("admin"), now = Date.now();
+  if (req.method === "GET") {
+    const what = str(url.searchParams.get("what"), 12);
+    if (what === "stats") {
+      const t0 = Date.now();
+      const ps = S("presence"), fs = S("feed"), ms = S("match"), bs = S("board"), md = S("media");
+      const [pl, fl, ml, bl, mdl] = await Promise.all([ps.list(), fs.list({ prefix: "p:" }), ms.list({ prefix: "r:" }), bs.list(), md.list()]);
+      let active = 0, ended = 0, open = 0;
+      await Promise.all(ml.blobs.slice(0, 150).map(async (x) => {
+        const r = await ms.get(x.key, { type: "json" }).catch(() => null);
+        if (!r) return;
+        if (r.status === "active" && now - (r.t || 0) < 6 * 3600 * 1000) active++; else if (r.status === "ended") ended++; else if (r.status === "open") open++;
+      }));
+      let hidden = 0, reported = 0;
+      await Promise.all(fl.blobs.slice(0, 200).map(async (x) => {
+        const p = await fs.get(x.key, { type: "json" }).catch(() => null);
+        if (!p) return;
+        if (p.hidden) hidden++;
+        if ((p.reports || []).length) reported++;
+      }));
+      const games = {};
+      for (const x of bl.blobs) { const g = (x.key.split(":")[1] || ""); if (g) games[g] = (games[g] || 0) + 1; }
+      const bans = (await st.list({ prefix: "ban:" })).blobs.length;
+      return J({ now, ms: Date.now() - t0, presence: pl.blobs.length, posts: fl.blobs.length, hidden, reported, rooms: ml.blobs.length, active, ended, open, media: mdl.blobs.length, games, bans });
+    }
+    if (what === "matches") {
+      const ms = S("match");
+      const { blobs } = await ms.list({ prefix: "r:" });
+      const out = [];
+      await Promise.all(blobs.slice(0, 150).map(async (x) => {
+        const r = await ms.get(x.key, { type: "json" }).catch(() => null);
+        if (!r) return;
+        const last = Math.max(r.t || 0, ...Object.values(r.seen || {}));
+        out.push({ id: r.id, game: r.game, variant: r.variant, status: r.status, players: (r.players || []).map((p) => ({ id: p.id, name: p.name, av: p.av })), n: (r.moves || []).length, t: r.t, last, end: r.end || null });
+      }));
+      out.sort((a, b) => b.last - a.last);
+      return J({ now, rooms: out });
+    }
+    if (what === "bans") {
+      const { blobs } = await st.list({ prefix: "ban:" });
+      const rows = (await Promise.all(blobs.map((x) => st.get(x.key, { type: "json" }).catch(() => null)))).filter(Boolean);
+      rows.sort((a, b) => b.t - a.t);
+      return J({ now, rows });
+    }
+    if (what === "log") {
+      const { blobs } = await st.list({ prefix: "log:" });
+      const keys = blobs.map((x) => x.key).sort();
+      const rows = (await Promise.all(keys.slice(0, 80).map((k) => st.get(k, { type: "json" }).catch(() => null)))).filter(Boolean);
+      for (const k of keys.slice(300)) await st.delete(k).catch(() => {});
+      return J({ now, rows });
+    }
+    if (what === "cfg") {
+      const a = await st.get("cfg:announce", { type: "json" }).catch(() => null);
+      return J({ now, announce: a || null });
+    }
+    return J({ error: "bad_what" }, 400);
+  }
+  if (req.method !== "POST") return J({ error: "method" }, 405);
+  const b = await body(req, 3000);
+  const act = str(b.act, 12);
+  if (act === "endm") {
+    const ms = S("match"), r = await ms.get("r:" + idOf(b.room), { type: "json" }).catch(() => null);
+    if (!r) return J({ error: "not_found" }, 404);
+    r.status = "ended"; r.end = { winner: -1, reason: "admin", by: "admin", t: now }; r.rev = (r.rev || 0) + 1;
+    await ms.setJSON("r:" + r.id, r);
+    await adminLog(st, "Kết thúc ván", `${r.game} ${r.id}`);
+    return J({ ok: true });
+  }
+  if (act === "delm") {
+    await S("match").delete("r:" + idOf(b.room)).catch(() => {});
+    await adminLog(st, "Xóa ván", idOf(b.room));
+    return J({ ok: true });
+  }
+  if (act === "resetb") {
+    const game = str(b.game, 16), id = idOf(b.id), bs = S("board");
+    if (!GAMES.test(game)) return J({ error: "bad" }, 400);
+    if (id) { await bs.delete(`lb:${game}:${id}`).catch(() => {}); await adminLog(st, "Xóa điểm xếp hạng", `${game} ${id}`); return J({ ok: true, n: 1 }); }
+    const { blobs } = await bs.list({ prefix: `lb:${game}:` });
+    for (const x of blobs) await bs.delete(x.key).catch(() => {});
+    await adminLog(st, "Đặt lại bảng xếp hạng", `${game} (${blobs.length} dòng)`);
+    return J({ ok: true, n: blobs.length });
+  }
+  if (act === "ban") {
+    const id = idOf(b.id);
+    if (id.length < 6) return J({ error: "bad_id" }, 400);
+    const hours = Math.max(0, Math.min(24 * 365, num(b.hours)));
+    const rec = { id, name: str(b.name, 30), reason: str(b.reason, 100), t: now, until: hours ? now + hours * 3600 * 1000 : 0 };
+    await st.setJSON("ban:" + id, rec);
+    await adminLog(st, "Hạn chế người dùng", `${rec.name || id}${hours ? " " + hours + " giờ" : " vĩnh viễn"}${rec.reason ? ": " + rec.reason : ""}`);
+    return J({ ok: true });
+  }
+  if (act === "unban") {
+    await st.delete("ban:" + idOf(b.id)).catch(() => {});
+    await adminLog(st, "Bỏ hạn chế", idOf(b.id));
+    return J({ ok: true });
+  }
+  if (act === "announce") {
+    const text = str(b.text, 300).trim();
+    if (!text) { await st.delete("cfg:announce").catch(() => {}); await adminLog(st, "Gỡ thông báo", ""); return J({ ok: true, cleared: true }); }
+    const hours = Math.max(0, Math.min(24 * 90, num(b.hours)));
+    const rec = { id: rid(5), text, level: ["info", "warn"].includes(b.level) ? b.level : "info", t: now, until: hours ? now + hours * 3600 * 1000 : 0 };
+    await st.setJSON("cfg:announce", rec);
+    await adminLog(st, "Đăng thông báo", text);
+    return J({ ok: true, announce: rec });
+  }
+  if (act === "msg") {
+    const id = idOf(b.id), text = str(b.text, 300).trim();
+    if (id.length < 6 || !text) return J({ error: "bad" }, 400);
+    const cur = (await st.get("dm:" + id, { type: "json" }).catch(() => null)) || [];
+    cur.push({ text, t: now }); while (cur.length > 5) cur.shift();
+    await st.setJSON("dm:" + id, cur);
+    await adminLog(st, "Nhắn người dùng", `${id}: ${text}`);
+    return J({ ok: true });
+  }
+  if (act === "purge") {
+    const days = Math.max(1, Math.min(365, num(b.days) || 30)), lim = now - days * 86400000;
+    const ps = S("presence"), ms = S("match");
+    let pu = 0, ro = 0;
+    for (const x of (await ps.list()).blobs) { const r = await ps.get(x.key, { type: "json" }).catch(() => null); if (!r || (r.seen || 0) < lim) { await ps.delete(x.key).catch(() => {}); pu++; } }
+    for (const x of (await ms.list({ prefix: "r:" })).blobs) { const r = await ms.get(x.key, { type: "json" }).catch(() => null); if (!r || (r.t || 0) < lim) { await ms.delete(x.key).catch(() => {}); ro++; } }
+    await adminLog(st, "Dọn dữ liệu cũ", `${days} ngày: ${pu} người dùng, ${ro} ván`);
+    return J({ ok: true, presence: pu, rooms: ro });
+  }
+  return J({ error: "bad_act" }, 400);
+}
