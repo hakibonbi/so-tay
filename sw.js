@@ -1,4 +1,4 @@
-const V="tl-4df77b2f9f",SHELL=["./","index.html","manifest.webmanifest","icon-192.png","icon-512.png"];
+const V="tl-28f096046b",SHELL=["./","index.html","manifest.webmanifest","icon-192.png","icon-512.png"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(SHELL.map(u=>c.add(u).catch(()=>{})))))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V&&x!=="tl-media").map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 self.addEventListener("message",e=>{if(e.data==="SKIP")self.skipWaiting()});
