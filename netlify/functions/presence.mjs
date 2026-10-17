@@ -13,6 +13,7 @@ const WAIT_MS = 25 * 1000, ROOM_KEEP = 24 * 3600 * 1000;
 const J = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
 const str = (v, n) => (typeof v === "string" ? v.slice(0, n) : "");
 const num = (v) => (Number.isFinite(+v) ? Math.max(0, Math.min(1e9, Math.round(+v))) : 0);
+const tsn = (v) => (Number.isFinite(+v) ? Math.max(0, Math.min(4e12, Math.round(+v))) : 0);
 const idOf = (v) => str(v, 48).replace(/[^\w-]/g, "");
 const rid = (n = 10) => randomBytes(n).toString("base64url").replace(/[^A-Za-z0-9]/g, "").slice(0, n);
 function isAdmin(req) {
@@ -41,6 +42,8 @@ export default async (req, ctx, deps) => {
     if (route === "board") return await board(req, S, url);
     if (route === "feed") return await feed(req, S, url);
     if (route === "media") return await media(req, S, url, path[1]);
+    if (route === "admin") return await admin(req, S, url);
+    if (route === "config") return await pubConfig(req, S);
     return J({ error: "not_found" }, 404);
   } catch (e) {
     if (e && e.code) return J({ error: e.message }, e.code);
@@ -50,6 +53,12 @@ export default async (req, ctx, deps) => {
 };
 export const config = { path: "/api/*" };
 
+async function isBanned(S, id) {
+  if (!id) return null;
+  const x = await S("admin").get("ban:" + id, { type: "json" }).catch(() => null);
+  return x && (!x.until || x.until > Date.now()) ? x : null;
+}
+const BAN = (x) => J({ error: "banned", reason: x.reason || "", until: x.until || 0 }, 403);
 /* ---------------- presence ---------------- */
 async function presence(req, S, url) {
   const store = S("presence");
@@ -58,12 +67,17 @@ async function presence(req, S, url) {
     const id = idOf(b.id);
     if (id.length < 6) return J({ error: "bad_id" }, 400);
     await store.setJSON(id, {
-      id, name: str(b.name, 30) || "Khách", av: str(b.av, 8), guest: !!b.guest, reg: num(b.reg),
+      id, name: str(b.name, 30) || "Khách", av: str(b.av, 8), guest: !!b.guest, reg: tsn(b.reg),
       act: str(b.act, 80), view: str(b.view, 20), tool: str(b.tool, 30), subj: str(b.subj, 60),
       lvl: num(b.lvl), xp: num(b.xp), min: num(b.min), total: num(b.total), streak: num(b.streak),
-      dev: str(b.dev, 20), scr: str(b.scr, 16), lang: str(b.lang, 12), since: num(b.since), seen: Date.now(),
+      dev: str(b.dev, 20), scr: str(b.scr, 16), lang: str(b.lang, 12), since: tsn(b.since), seen: Date.now(),
     });
-    return J({ ok: true, now: Date.now() });
+    const adm = S("admin"), out = { ok: true, now: Date.now() };
+    const bn = await isBanned(S, id);
+    if (bn) out.banned = { reason: bn.reason || "", until: bn.until || 0 };
+    const dm = await adm.get("dm:" + id, { type: "json" }).catch(() => null);
+    if (dm && dm.length) { out.msg = dm; await adm.delete("dm:" + id).catch(() => {}); }
+    return J(out);
   }
   if (!isAdmin(req)) return J({ error: "forbidden" }, 403);
   if (req.method === "DELETE") {
@@ -103,6 +117,7 @@ async function match(req, S) {
   const act = str(b.act, 12);
   const now = Date.now();
   const game = str(b.game, 16), variant = str(b.variant, 16) || "std";
+  if (["find", "create", "join"].includes(act)) { const bx = await isBanned(S, idOf((b.me && b.me.id) || "")); if (bx) return BAN(bx); }
   if ((act === "find" || act === "create" || act === "check" || act === "cancel") && !GAMES.test(game)) return J({ error: "bad_game" }, 400);
   const getRoom = async (id) => st.get("r:" + idOf(id), { type: "json" }).catch(() => null);
   const mk = (g, v, p0, p1, status) => {
@@ -250,6 +265,7 @@ async function board(req, S, url) {
     const b = await body(req, 1500);
     const game = str(b.game, 16), id = idOf(b.id);
     if (!GAMES.test(game) || id.length < 6) return J({ error: "bad" }, 400);
+    { const bx = await isBanned(S, id); if (bx) return BAN(bx); }
     const res = ["w", "l", "d"].includes(b.res) ? b.res : null;
     if (!res) return J({ error: "bad_res" }, 400);
     const k = `lb:${game}:${id}`;
@@ -290,7 +306,7 @@ async function feed(req, S, url) {
   if (req.method === "GET") {
     const admin = isAdmin(req), viewer = idOf(url.searchParams.get("me"));
     const before = str(url.searchParams.get("before"), 60), limit = Math.min(30, Math.max(1, num(url.searchParams.get("limit")) || 15));
-    const only = url.searchParams.get("reported") === "1" && admin;
+    const only = url.searchParams.get("reported") === "1" && admin, onlyHidden = url.searchParams.get("hidden") === "1" && admin;
     const { blobs } = await st.list({ prefix: "p:" });
     let keys = blobs.map((x) => x.key).sort();
     if (before) keys = keys.filter((k) => k > before);
@@ -301,7 +317,7 @@ async function feed(req, S, url) {
       const p = await st.get(k, { type: "json" }).catch(() => null);
       last = k;
       if (!p) continue;
-      if (only ? !(p.reports || []).length : (p.hidden && !admin)) continue;
+      if (only ? !(p.reports || []).length : onlyHidden ? !p.hidden : (p.hidden && !admin)) continue;
       out.push(clean(p, admin, viewer));
     }
     return J({ posts: out, next: out.length >= limit ? last : null, now });
@@ -321,6 +337,7 @@ async function feed(req, S, url) {
   const b = await body(req, 8000);
   const act = str(b.act, 10), id = idOf(b.id);
   if (id.length < 6) return J({ error: "bad_id" }, 400);
+  if (act === "post" || act === "comment") { const bx = await isBanned(S, id); if (bx) return BAN(bx); }
   if (act === "post") {
     const rl = await st.get("rl:" + id, { type: "json" }).catch(() => null);
     if (rl && now - rl.t < 8000) return J({ error: "rate" }, 429);
@@ -357,6 +374,8 @@ async function feed(req, S, url) {
     p.reports = p.reports || [];
     if (!p.reports.some((r) => r.by === id)) p.reports.push({ by: id, why: str(b.why, 60), t: now });
     if (p.reports.length >= 3) p.hidden = true;
+  } else if (act === "hide" && isAdmin(req)) {
+    p.hidden = true;
   } else if (act === "unhide" && isAdmin(req)) {
     p.hidden = false; p.reports = [];
   } else return J({ error: "bad_act" }, 400);
@@ -376,16 +395,4 @@ async function media(req, S, url, ref) {
   }
   if (req.method === "PUT") {
     const dev = idOf(req.headers.get("x-device") || "");
-    if (dev.length < 6) return J({ error: "bad_id" }, 400);
-    const type = (req.headers.get("content-type") || "").split(";")[0].trim().toLowerCase();
-    const isImg = IMG.includes(type), isVid = VID.includes(type);
-    if (!isImg && !isVid) return J({ error: "bad_type" }, 415);
-    const buf = await req.arrayBuffer();
-    const max = isImg ? 1_800_000 : 4_700_000;
-    if (buf.byteLength > max || buf.byteLength < 100) return J({ error: "too_large", max }, 413);
-    const id = "m" + rid(16);
-    await st.set(id, buf, { metadata: { type, by: dev, t: Date.now() } });
-    return J({ ref: id, size: buf.byteLength });
-  }
-  return J({ error: "method" }, 405);
-}
+    if (dev.length < 6) return 
