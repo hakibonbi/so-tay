@@ -8571,7 +8571,10 @@ V3.drawAdmin=function(el){
  function csv(L){var h=['Tên','Mã thiết bị','Khách','Trực tuyến','Hoạt động','Môn','Cấp','XP','Phút hôm nay','Tổng phút','Chuỗi','Thiết bị','Ngôn ngữ','Ngày tạo','Lần cuối'],r=L.map(function(u){return [u.name,u.id,u.guest?'có':'không',u.online?'có':'không',u.act||'',u.subj||'',u.lvl,u.xp,u.min,u.total,u.streak||0,u.dev||'',u.lang||'',okTs(u.reg)?new Date(u.reg).toISOString():'',u.seen?new Date(u.seen).toISOString():''].map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')});V3.download('nguoi-dung-'+dk()+'.csv','﻿'+h.join(',')+'\n'+r.join('\n'),'text/csv;charset=utf-8')}
  function detail(u){if(!u)return;var rows=[['Tên hiển thị',u.name],['Mã thiết bị',u.id],['Loại',u.guest?'Khách (chưa tạo tài khoản)':'Tài khoản cục bộ'],['Ngày tạo tài khoản',okTs(u.reg)?when(u.reg):'Không rõ'],['Trạng thái',u.online?'Đang trực tuyến':'Hoạt động lần cuối '+ago(u.seen)],['Đang làm gì',u.act||'Không có'],['Môn học gần nhất',u.subj||'Chưa có'],['Cấp độ và điểm','Cấp '+u.lvl+' · '+u.xp+' XP'],['Học hôm nay',fmtM(u.min)],['Tổng thời gian học',fmtM(u.total)],['Chuỗi ngày học',(u.streak||0)+' ngày'],['Thiết bị',(u.dev||'Không rõ')+(u.scr?' · '+u.scr:'')],['Ngôn ngữ',u.lang||'Không rõ'],['Bắt đầu phiên',okTs(u.since)?when(u.since):'Không rõ']];
   var _la=aList().filter(function(x){return String(x.name||'').toLowerCase()===String(u.name||'').toLowerCase()})[0];
-  if(_la){rows.push(['Tên đăng nhập',_la.name]);rows.push(['Mật khẩu',_la.pc?pwDec(_la.pc):'(chưa lưu — tài khoản tạo trước bản cập nhật)']);if(_la.lk)rows.push(['Đang khóa đăng nhập','Có'])}
+  var _up=_la?[['Tên đăng nhập',_la.name],['Mật khẩu',_la.pc?pwDec(_la.pc):'(chưa lưu — tạo trước bản cập nhật, hãy Đặt lại mật khẩu)']]
+             :[['Tên đăng nhập',u.name||'(không rõ)'],['Mật khẩu','(tài khoản này không có trên máy quản trị)']];
+  rows.splice.apply(rows,[1,0].concat(_up));
+  if(_la&&_la.lk)rows.push(['Đang khóa đăng nhập','Có']);
   var bn=(S.bans||[]).filter(function(x){return x.id===u.id&&(!x.until||x.until>Date.now())})[0];if(bn)rows.push(['Hạn chế',(bn.until?'đến '+when(bn.until):'vĩnh viễn')+(bn.reason?' · '+bn.reason:'')]);
   V3.sheet({title:'Thông tin người dùng',cls:'v3-small',render:function(b,close){b.innerHTML='<div class="ad-d"><span class="ad-av big">'+esc(u.av||'🧑‍🎓')+'</span><h3>'+esc(u.name)+'</h3></div><dl class="ad-dl">'+rows.map(function(r){return '<dt>'+r[0]+'</dt><dd>'+esc(String(r[1]))+'</dd>'}).join('')+'</dl><div class="v3-row wrap" style="gap:6px;justify-content:flex-end"><button class="v3-btn sm" id="ad-m" type="button">✉ Nhắn tin</button><button class="v3-btn sm" id="ad-cp" type="button">Sao chép mã</button>'+(bn?'<button class="v3-btn sm" id="ad-ub" type="button">Bỏ hạn chế</button>':'<button class="v3-btn sm" id="ad-bn2" type="button">⛔ Hạn chế</button>')+'<button class="v3-btn danger sm" id="ad-del" type="button">Xóa bản ghi</button></div>';
    $('#ad-cp',b).onclick=function(){V3.copy(u.id)};
@@ -8668,7 +8671,7 @@ V3.drawAdmin=function(el){
  function device(b){var L=localUsers().map(function(u){u.online=false;return u});
   b.innerHTML='<div class="v3-card"><p class="v3-mut">Các tài khoản đã tạo trên chính trình duyệt này. Không cần máy chủ.</p><div id="ad-l"></div></div>';
   shown=L;$('#ad-l',b).innerHTML=L.length?'<ul class="ad-list">'+L.map(function(u,i){return '<li><button type="button" class="ad-row" data-i="'+i+'"><span class="ad-av">'+esc(u.av||'🧑‍🎓')+'</span><span class="ad-main"><b>'+esc(u.name)+'</b><small>'+esc(u.subj?'Môn gần nhất: '+u.subj:'Chưa có hoạt động')+'</small></span><span class="ad-meta"><b>Cấp '+u.lvl+'</b><small>'+u.xp+' XP</small></span></button></li>'}).join('')+'</ul>':'<div class="v3-empty"><b>Chưa có tài khoản nào trên máy này</b></div>';
-  $$('.ad-row',b).forEach(function(r){r.onclick=function(){var u=shown[+r.getAttribute('data-i')];V3.sheet({title:'Tài khoản trên máy',cls:'v3-small',html:'<dl class="ad-dl"><dt>Tên</dt><dd>'+esc(u.name)+'</dd><dt>Tên đăng nhập</dt><dd>'+esc(u.name)+'</dd><dt>Mật khẩu</dt><dd>'+esc(accPwFor(u))+'</dd><dt>Cấp</dt><dd>'+u.lvl+' · '+u.xp+' XP</dd><dt>Học hôm nay</dt><dd>'+fmtM(u.min)+'</dd><dt>Tổng thời gian học</dt><dd>'+fmtM(u.total)+'</dd><dt>Ngày tạo</dt><dd>'+(okTs(u.reg)?when(u.reg):'Không rõ')+'</dd></dl>'})}})}
+  $$('.ad-row',b).forEach(function(r){r.onclick=function(){var u=shown[+r.getAttribute('data-i')];V3.sheet({title:'Tài khoản trên máy',cls:'v3-small',html:'<dl class="ad-dl"><dt>Tên đăng nhập</dt><dd>'+esc(u.name)+'</dd><dt>Mật khẩu</dt><dd>'+esc(accPwFor(u))+'</dd><dt>Tên hiển thị</dt><dd>'+esc(u.name)+'</dd><dt>Cấp</dt><dd>'+u.lvl+' · '+u.xp+' XP</dd><dt>Học hôm nay</dt><dd>'+fmtM(u.min)+'</dd><dt>Tổng thời gian học</dt><dd>'+fmtM(u.total)+'</dd><dt>Ngày tạo</dt><dd>'+(okTs(u.reg)?when(u.reg):'Không rõ')+'</dd></dl>'})}})}
 
 /* ===== 40 TÍNH NĂNG QUẢN TRỊ MỚI (20 tab tài khoản + 20 tab thiết bị) ===== */
 /* ================= KHU MỚI · TAB "TÀI KHOẢN & MẬT KHẨU" + "CÔNG CỤ THIẾT BỊ" ================= */
@@ -14180,5 +14183,79 @@ V3.reg({id:'teashop',t:'Tiệm trà nhỏ',d:'Trò chơi mô phỏng quản lý 
 })();
 
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c57b63bd059337',t:'MTc5MjMwNDg5Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+<!-- ===== VÁ GIAO DIỆN: menu cuộn được + khung nghe audio gọn trên điện thoại ===== -->
+<style id="mobile-fix-css">
+/* --- 1. Menu 3 vạch: vùng giữa (điều hướng + môn học + cộng đồng) tự cuộn --- */
+#v3-side{overflow:hidden!important;overscroll-behavior:contain}
+#v3-side .sd-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;padding-bottom:2px}
+#v3-side .sd-scroll .sd-nav,#v3-side .sd-scroll .sd-sub{flex:none;min-height:0;overflow:visible}
+#v3-side .sd-scroll>.sd-sub{margin-top:2px}
+#v3-side .sd-nav{flex:none}
+/* thanh cuộn mảnh cho dễ nhìn */
+#v3-side .sd-scroll{scrollbar-width:thin}
+#v3-side .sd-scroll::-webkit-scrollbar{width:6px}
+#v3-side .sd-scroll::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--ink) 22%,transparent);border-radius:99px}
+/* --- 2. Khung phát audio: nhỏ lại, nằm sát thanh điều hướng dưới, không đè menu --- */
+body[data-v3menu="1"] #st-dock{display:none!important}
+.st-stage{position:relative!important;max-width:calc(100vw - 16px);max-height:46vh;overflow:hidden}
+.st-stage::before{content:"";display:block;padding-top:56.25%}
+.st-stage.k-tt::before{padding-top:158%}
+.st-stage>iframe,.st-stage>video,.st-stage>div{position:absolute!important;left:0;top:0;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;border:0;display:block;background:#000}
+@media(max-width:720px){
+  #st-dock{left:6px;right:6px;bottom:calc(60px + env(safe-area-inset-bottom,0px));z-index:295;gap:6px}
+  #st-dock .st-bar{padding:7px 9px;gap:4px;border-radius:14px}
+  #st-dock .st-pp{width:38px;height:38px;font-size:15px}
+  #st-dock .st-meta b{font-size:.86em}
+  #st-dock .st-note{display:none}
+  #st-dock .st-r3{gap:5px;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:2px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  #st-dock .st-r3::-webkit-scrollbar{display:none}
+  #st-dock .st-b{font-size:.74em;padding:4px 9px;white-space:nowrap}
+  #st-dock .st-time{font-size:.68em}
+  .st-stage{width:min(340px,92vw)}
+  #st-dock.mini .st-stage{width:min(220px,58vw)}
+  #st-dock.mini .st-stage.k-tt{width:min(140px,38vw)}
+  body.st-live .v3-page,body.st-live #v3-tool{padding-bottom:150px}
+}
+</style>
+<script id="mobile-fix-js">
+(function(){
+"use strict";
+/* --- menu: gom .sd-nav + .sd-sub vào một khung cuộn duy nhất --- */
+function wrapSide(){
+ var side=document.getElementById('v3-side');if(!side)return false;
+ if(side.querySelector('.sd-scroll'))return true;
+ var nav=side.querySelector('.sd-nav'),sub=side.querySelector('.sd-sub');
+ if(!nav||!sub)return false;
+ var sc=document.createElement('div');sc.className='sd-scroll';
+ side.insertBefore(sc,nav);
+ sc.appendChild(nav);sc.appendChild(sub);
+ return true;
+}
+var tries=0,tid=setInterval(function(){
+ if(wrapSide())clearInterval(tid);
+ else if(++tries>60)clearInterval(tid);
+},250);
+wrapSide();
+document.addEventListener('DOMContentLoaded',wrapSide);
+
+/* --- khung phát audio: trên điện thoại mở dạng thu gọn, hiện nút mở rộng --- */
+function tuneDock(){
+ var d=document.getElementById('st-dock');if(!d)return false;
+ if(d.getAttribute('data-tuned')==='1')return true;
+ d.setAttribute('data-tuned','1');
+ var mob=false;try{mob=window.matchMedia('(max-width:720px)').matches}catch(e){}
+ if(mob){d.classList.add('mini');var f=d.querySelector('#st-fold');if(f){f.textContent='\u25b4';f.title='Mở rộng khung video';f.setAttribute('aria-label','Mở rộng khung video')}}
+ var fold=d.querySelector('#st-fold');
+ if(fold){fold.onclick=function(){var m=d.classList.toggle('mini');this.textContent=m?'\u25b4':'\u25be';this.title=m?'Mở rộng khung video':'Thu nhỏ khung video'}}
+ function sync(){try{document.body.classList.toggle('st-live',!d.hidden)}catch(e){}}
+ try{new MutationObserver(sync).observe(d,{attributes:true,attributeFilter:['hidden']})}catch(e){}
+ sync();return true;
+}
+var t2=0,tid2=setInterval(function(){if(tuneDock())clearInterval(tid2);else if(++t2>80)clearInterval(tid2)},250);
+tuneDock();
+})();
+</script>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c590b17a499b87',t:'MTc5MjMwNTc2OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
