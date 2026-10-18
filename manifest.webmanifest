@@ -1,34 +1,26 @@
 {
- "name": "Sổ tay học tập",
- "short_name": "Sổ tay",
- "description": "Học tập, giải trí và kết nối — dùng được cả ngoại tuyến.",
- "lang": "vi",
- "start_url": "./",
- "scope": "./",
- "display": "standalone",
- "orientation": "any",
- "background_color": "#4f46e5",
- "theme_color": "#4f46e5",
- "categories": [
-  "education",
-  "productivity"
- ],
- "icons": [
-  {
-   "src": "icon-192.png",
-   "sizes": "192x192",
-   "type": "image/png"
-  },
-  {
-   "src": "icon-512.png",
-   "sizes": "512x512",
-   "type": "image/png"
-  },
-  {
-   "src": "icon-maskable.png",
-   "sizes": "512x512",
-   "type": "image/png",
-   "purpose": "maskable"
-  }
- ]
+  "name": "Sổ tay học tập",
+  "short_name": "Sổ tay",
+  "description": "Ôn tập, theo dõi tiến độ và ghi nhớ trong một nơi.",
+  "lang": "vi-VN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f5f7f4",
+  "theme_color": "#315f4b",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }

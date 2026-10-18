@@ -1034,6 +1034,145 @@ window.__V3T={PRESETS:PRESETS,FONTS:FONTS,DEF:DEF,get:function(){return cur},
 })();
 
 </script>
+<style id="app-enhancements-css">
+/* Sổ tay học tập · bổ sung cộng đồng, âm thanh, trò chơi và tiện ích */
+:root{--upg-radius:16px;--upg-shadow:0 10px 30px rgba(18,31,24,.08)}
+.upg-nav{margin-top:8px!important;padding-top:8px;border-top:1px solid var(--line)}
+.upg-nav .upg-nav-label{padding:8px 12px 4px;color:var(--muted);font-size:.72rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
+.upg-nav [data-vgo]{position:relative}
+.upg-nav .upg-nav-ic{width:22px;display:inline-grid;place-items:center;font-size:1rem;flex:none}
+.upg-chat-shortcut{position:relative;display:inline-grid;place-items:center}
+.upg-chat-shortcut svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.upg-chat-shortcut .upg-unread-dot{position:absolute;right:3px;top:3px;width:8px;height:8px;border-radius:50%;background:#f06464;border:2px solid var(--surface);display:none}
+.upg-chat-shortcut.has-unread .upg-unread-dot{display:block}
+.upg-tool{--upg-gap:14px;max-width:1120px;margin:0 auto;color:var(--ink)}
+.upg-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--upg-radius);padding:18px;box-shadow:0 1px 2px rgba(0,0,0,.025)}
+.upg-card h2,.upg-card h3{margin:0 0 8px;line-height:1.25}
+.upg-muted{color:var(--muted);font-size:.92rem;line-height:1.5}
+.upg-kicker{font-size:.72rem;font-weight:800;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
+.upg-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin:0 0 16px}
+.upg-head h2{font-size:1.35rem;margin:4px 0}
+.upg-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.upg-stack{display:grid;gap:12px}
+.upg-label{display:grid;gap:6px;font-weight:650;font-size:.9rem}
+.upg-input,.upg-select,.upg-area{width:100%;min-width:0;border:1px solid var(--line);border-radius:11px;background:var(--bg);color:var(--ink);font:inherit;padding:10px 12px;outline:none}
+.upg-area{min-height:112px;resize:vertical;line-height:1.5}
+.upg-area:focus,.upg-input:focus,.upg-select:focus{border-color:var(--c1);box-shadow:0 0 0 3px color-mix(in srgb,var(--c1) 16%,transparent)}
+.upg-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);border-radius:11px;padding:9px 13px;background:var(--surface);color:var(--ink);font:inherit;font-weight:700;cursor:pointer;transition:transform .12s ease,border-color .12s ease,background .12s ease}
+.upg-btn:hover{border-color:var(--c1);transform:translateY(-1px)}
+.upg-btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.upg-btn.danger{color:#b63b3b}
+.upg-btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.upg-result{min-height:24px;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--c1) 9%,var(--surface));line-height:1.55;overflow-wrap:anywhere}
+.upg-result strong{font-size:1.05rem}
+.upg-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.upg-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.upg-pills{display:flex;gap:8px;flex-wrap:wrap}
+.upg-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg);font-size:.82rem;color:var(--muted)}
+.upg-hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+.upg-music{display:grid;gap:14px}
+.upg-music-intro{padding:18px 20px;background:color-mix(in srgb,#d9efe3 34%,var(--surface));border:1px solid color-mix(in srgb,#589b73 25%,var(--line));border-radius:var(--upg-radius)}
+.upg-music-intro h2{margin:3px 0 6px;font-size:1.38rem}
+.upg-music-grid{display:grid;grid-template-columns:minmax(270px,.82fr) minmax(0,1.5fr);gap:14px;align-items:start}
+.upg-terms{display:flex;align-items:flex-start;gap:9px;padding:11px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font-size:.85rem;line-height:1.45}
+.upg-terms input{margin-top:3px;flex:none;accent-color:var(--c1)}
+.upg-track-list{display:grid;gap:8px}
+.upg-track{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:11px;padding:10px 12px;border:1px solid var(--line);border-radius:13px;background:var(--surface)}
+.upg-track:hover{border-color:color-mix(in srgb,var(--c1) 60%,var(--line))}
+.upg-track-art{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:color-mix(in srgb,#d9efe3 50%,var(--bg));font-size:1.2rem}
+.upg-track-main{min-width:0}
+.upg-track-main strong,.upg-track-main small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.upg-track-main small{color:var(--muted);margin-top:3px;font-size:.8rem}
+.upg-track-actions{display:flex;align-items:center;gap:5px}
+.upg-icon-btn{display:inline-grid;place-items:center;min-width:36px;min-height:36px;padding:6px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);cursor:pointer;font:inherit}
+.upg-icon-btn:hover{border-color:var(--c1)}
+.upg-track-credit{grid-column:2/-1;margin-top:-3px;color:var(--muted);font-size:.77rem;overflow-wrap:anywhere}
+.upg-empty{padding:22px;border:1px dashed var(--line);border-radius:13px;text-align:center;color:var(--muted);line-height:1.5}
+.upg-audio-dock{position:fixed;z-index:10010;left:50%;bottom:16px;transform:translateX(-50%);display:grid;grid-template-columns:auto minmax(100px,220px) minmax(110px,1fr) auto auto;align-items:center;gap:10px;width:min(740px,calc(100vw - 28px));padding:10px 13px;border:1px solid var(--line);border-radius:16px;background:color-mix(in srgb,var(--surface) 95%,var(--bg));box-shadow:0 12px 35px rgba(0,0,0,.18);backdrop-filter:blur(14px)}
+.upg-audio-dock[hidden]{display:none}
+.upg-audio-dock .upg-aud-title{min-width:0}
+.upg-audio-dock .upg-aud-title strong,.upg-audio-dock .upg-aud-title small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.upg-audio-dock .upg-aud-title small{font-size:.76rem;color:var(--muted);margin-top:2px}
+.upg-audio-dock input[type=range]{accent-color:var(--c1);min-width:0;width:100%}
+.upg-aud-progress{display:grid;grid-template-columns:minmax(40px,1fr) auto;align-items:center;gap:6px}
+.upg-aud-time{font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.upg-chat{display:grid;gap:9px}
+.upg-chat-frame{display:grid;grid-template-columns:minmax(230px,295px) minmax(0,1fr);min-height:min(68vh,690px);height:650px;max-height:calc(100vh - 230px);overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--surface);box-shadow:var(--upg-shadow)}
+.upg-chat-sidebar{display:flex;flex-direction:column;min-width:0;border-right:1px solid var(--line);background:color-mix(in srgb,var(--bg) 65%,var(--surface))}
+.upg-chat-side-head{padding:17px 15px 12px}
+.upg-chat-side-head h2{margin:0 0 10px;font-size:1.25rem}
+.upg-chat-contacts{flex:1;overflow:auto;padding:4px 8px 12px}
+.upg-contact{display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:10px;align-items:center;width:100%;border:0;border-radius:12px;padding:9px 8px;background:transparent;color:var(--ink);text-align:left;cursor:pointer;font:inherit}
+.upg-contact:hover,.upg-contact.on{background:color-mix(in srgb,var(--c1) 11%,var(--surface))}
+.upg-avatar{display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:50%;background:color-mix(in srgb,var(--c1) 16%,var(--surface));font-size:1.2rem;position:relative}
+.upg-avatar.online:after{content:"";position:absolute;right:0;bottom:1px;width:10px;height:10px;border-radius:50%;background:#40bd78;border:2px solid var(--surface)}
+.upg-contact-copy{min-width:0}
+.upg-contact-copy strong,.upg-contact-copy small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.upg-contact-copy strong{font-size:.9rem}
+.upg-contact-copy small{margin-top:3px;color:var(--muted);font-size:.76rem}
+.upg-unread{min-width:20px;height:20px;display:grid;place-items:center;border-radius:999px;background:var(--c1);color:#fff;font-size:.7rem;font-weight:800;padding:0 5px}
+.upg-chat-main{display:flex;flex-direction:column;min-width:0;min-height:0}
+.upg-chat-empty{display:grid;place-items:center;flex:1;padding:24px;text-align:center;color:var(--muted)}
+.upg-chat-empty b{display:block;margin:8px 0;color:var(--ink);font-size:1.05rem}
+.upg-chat-head{display:flex;align-items:center;gap:10px;min-height:64px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.upg-chat-head-copy{min-width:0;flex:1}
+.upg-chat-head-copy strong,.upg-chat-head-copy small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.upg-chat-head-copy small{font-size:.78rem;color:var(--muted);margin-top:2px}
+.upg-chat-back{display:none}
+.upg-chat-messages{flex:1;min-height:0;overflow:auto;padding:18px clamp(12px,3vw,34px);display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth}
+.upg-chat-day{align-self:center;margin:8px 0;padding:4px 9px;border-radius:999px;background:var(--bg);color:var(--muted);font-size:.72rem}
+.upg-msg{max-width:min(78%,520px);display:grid;gap:4px;align-self:flex-start}
+.upg-msg.self{align-self:flex-end}
+.upg-msg-bubble{padding:10px 13px;border:1px solid var(--line);border-radius:16px 16px 16px 5px;background:var(--bg);line-height:1.48;overflow-wrap:anywhere;white-space:pre-wrap}
+.upg-msg.self .upg-msg-bubble{border-color:color-mix(in srgb,var(--c1) 55%,var(--line));border-radius:16px 16px 5px 16px;background:color-mix(in srgb,var(--c1) 16%,var(--surface))}
+.upg-msg-meta{padding:0 4px;color:var(--muted);font-size:.69rem}
+.upg-msg.self .upg-msg-meta{text-align:right}
+.upg-chat-compose{padding:10px 13px 13px;border-top:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:end}
+.upg-chat-compose textarea{min-height:42px;max-height:120px;resize:vertical}
+.upg-chat-note{font-size:.76rem;color:var(--muted);padding:2px 4px 0;line-height:1.4}
+.upg-kit{display:grid;gap:14px}
+.upg-kit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.upg-kit-tile{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start;gap:10px;min-height:83px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);text-align:left;cursor:pointer;font:inherit}
+.upg-kit-tile:hover,.upg-kit-tile.on{border-color:var(--c1);background:color-mix(in srgb,var(--c1) 7%,var(--surface))}
+.upg-kit-ic{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--bg);font-size:1rem}
+.upg-kit-tile b,.upg-kit-tile small{display:block}
+.upg-kit-tile b{font-size:.86rem;line-height:1.25}
+.upg-kit-tile small{margin-top:4px;color:var(--muted);font-size:.74rem;line-height:1.3}
+.upg-kit-panel{scroll-margin-top:20px}
+.upg-grade-row{display:grid;grid-template-columns:minmax(70px,1fr) minmax(70px,1fr) auto;gap:8px;align-items:center}
+.upg-check-list{display:grid;gap:7px}
+.upg-check-item{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.upg-check-item input[type=checkbox]{accent-color:var(--c1)}
+.upg-check-item.done span{text-decoration:line-through;color:var(--muted)}
+.upg-progress{height:8px;border-radius:999px;background:var(--bg);overflow:hidden;border:1px solid var(--line)}
+.upg-progress i{display:block;height:100%;background:var(--c1);transition:width .2s ease}
+.tea-app{display:grid;gap:13px;--tea-cream:#faf5e9;--tea-green:#315f4b;--tea-green2:#e0eddf;--tea-ink:#2d332c;--tea-amber:#dfad56}
+.tea-hero{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border:1px solid color-mix(in srgb,var(--tea-green) 28%,var(--line));border-radius:18px;background:color-mix(in srgb,var(--tea-green2) 54%,var(--surface))}
+.tea-hero h2{margin:0 0 4px;color:var(--tea-ink);font-size:1.4rem}
+.tea-logo{display:grid;place-items:center;width:56px;height:56px;border-radius:18px;background:var(--tea-green);color:#fff;font-size:1.7rem}
+.tea-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.tea-stat{padding:12px;border:1px solid var(--line);border-radius:13px;background:var(--surface)}
+.tea-stat small,.tea-stat b{display:block}
+.tea-stat small{color:var(--muted);font-size:.76rem}
+.tea-stat b{margin-top:4px;font-size:1.08rem;font-variant-numeric:tabular-nums}
+.tea-tabs{display:flex;gap:7px;overflow:auto;padding:2px 0}
+.tea-tabs button{white-space:nowrap}
+.tea-order{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(220px,.9fr);gap:14px;align-items:start}
+.tea-ticket{padding:17px;border:1px solid color-mix(in srgb,var(--tea-amber) 48%,var(--line));border-radius:16px;background:color-mix(in srgb,#fff6df 45%,var(--surface))}
+.tea-ticket h3{font-size:1.12rem;margin:5px 0}
+.tea-inventory{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.tea-inventory span{border:1px solid var(--line);border-radius:999px;padding:5px 9px;background:var(--bg);font-size:.79rem}
+.tea-recipe-list{display:grid;gap:8px}
+.tea-recipe{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.tea-recipe small{display:block;color:var(--muted);margin-top:3px}
+.tea-rank-row{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center;padding:9px 10px;border-bottom:1px solid var(--line)}
+.tea-rank-row:last-child{border-bottom:0}
+.tea-tab-panel{display:grid;gap:12px}
+@media(max-width:850px){.upg-kit-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.upg-music-grid{grid-template-columns:1fr}.upg-chat-frame{grid-template-columns:250px minmax(0,1fr)}.upg-audio-dock{grid-template-columns:auto minmax(90px,1fr) minmax(120px,1.4fr) auto}.upg-aud-volume{display:none}}
+@media(max-width:600px){.upg-card{padding:14px;border-radius:14px}.upg-head{margin-bottom:11px}.upg-grid2,.upg-grid3{grid-template-columns:1fr}.upg-kit-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.upg-kit-tile{min-height:76px;padding:9px}.upg-chat-frame{position:relative;height:calc(100dvh - 230px);min-height:450px;max-height:none;grid-template-columns:minmax(0,1fr)}.upg-chat-sidebar,.upg-chat-main{grid-column:1;grid-row:1;min-height:0}.upg-chat-main{display:none}.upg-chat.has-peer .upg-chat-sidebar{display:none}.upg-chat.has-peer .upg-chat-main{display:flex}.upg-chat-back{display:inline-grid}.upg-chat-messages{padding:14px 12px}.upg-msg{max-width:88%}.upg-chat-side-head{padding:13px 12px 9px}.upg-audio-dock{left:8px;right:8px;bottom:calc(76px + env(safe-area-inset-bottom));transform:none;width:auto;grid-template-columns:auto minmax(70px,1fr) auto;gap:7px;padding:8px}.upg-audio-dock .upg-aud-progress{grid-column:1/-1;grid-row:2}.upg-audio-dock .upg-aud-volume{display:none}.upg-audio-dock [data-aud-prev]{display:none}.upg-audio-dock [data-aud-next]{display:none}.tea-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.tea-order{grid-template-columns:1fr}.tea-hero{padding:14px}.upg-track{grid-template-columns:38px minmax(0,1fr) auto;padding:9px}.upg-track-art{width:38px;height:38px}.upg-track-credit{grid-column:1/-1;margin-top:0}.upg-grade-row{grid-template-columns:1fr 1fr auto}}
+@media(prefers-reduced-motion:reduce){.upg-btn,.upg-progress i,.upg-chat-messages{transition:none;scroll-behavior:auto}}
+
+</style>
 </head>
 <body>
 <header class="top" id="top">
@@ -1324,6 +1463,7 @@ $('#sound').addEventListener('click', function () {
 });
 function beep(kind) {
   if (!soundOn) return;
+  if (window.__TL_AUDIO) { window.__TL_AUDIO.syncEnabled(); window.__TL_AUDIO.effect(kind); return; }
   try {
     ac = ac || new (window.AudioContext || window.webkitAudioContext)();
     if (ac.state === 'suspended') ac.resume();
@@ -6398,7 +6538,7 @@ var ALG=[
   X('Dấu của tam thức','ax^2+bx+c>0\\;\\forall x\\Leftrightarrow a>0,\\Delta<0','Khi Δ &lt; 0 tam thức luôn cùng dấu với a. Khi Δ &gt; 0, tam thức trái dấu với a trong khoảng giữa hai nghiệm.')]),
  Gp('#f472b6','ĐẠI SỐ · LỚP 11','Lượng giác trên đường tròn đơn vị','Lượng giác',figTrig,[
   X('Hệ thức cơ bản','\\sin^2\\alpha+\\cos^2\\alpha=1','Điểm P(cos α; sin α) nằm trên đường tròn bán kính 1 nên x² + y² = 1. Kéo thanh trượt để P chạy quanh đường tròn.'),
-  X('Tang và côtang','\\tan\\alpha=\\frac{\\sin\\alpha}{\\cos\\alpha}','tan α là tung độ giao điểm của tia OP với tiếp tuyến x = 1. Không xác định khi cos α = 0 (α = 90°, 270°). cot α = cos α / sin α.'),
+  X('Tang và côtang','\\tan\\alpha=\\frac{\\sin\\alpha}{\\cos\\alpha}','tan α là tung độ giao điểm của đường thẳng OP với tiếp tuyến x = 1; không xác định khi cos α = 0. cot α = cos α / sin α; không xác định khi sin α = 0.'),
   X('Giá trị đặc biệt','\\sin30^\\circ=\\frac{1}{2},\\;\\sin45^\\circ=\\frac{\\sqrt2}{2},\\;\\sin60^\\circ=\\frac{\\sqrt3}{2}','cos lấy ba giá trị này theo thứ tự ngược lại. Nhớ nhanh sin: √1/2, √2/2, √3/2 ứng với 30°, 45°, 60°.'),
   X('Tuần hoàn','\\sin(\\alpha+2\\pi)=\\sin\\alpha','Hàm sin và cos tuần hoàn chu kì 2π; tan và cot tuần hoàn chu kì π. Đồ thị sin là đường sóng khi P chạy hết một vòng.'),
   X('Công thức cộng','\\sin(a\\pm b)=\\sin a\\cos b\\pm\\cos a\\sin b','cos(a ± b) = cos a cos b ∓ sin a sin b. tan(a ± b) = (tan a ± tan b)/(1 ∓ tan a tan b).'),
@@ -6410,7 +6550,7 @@ var ALG=[
   X('Căn và số mũ hữu tỉ','a^{\\frac{m}{n}}=\\sqrt[n]{a^m}','Với a &gt; 0. Ví dụ: 8^(2/3) = ∛(8²) = 4.','ⁿ√a')]),
  Gp('#a78bfa','ĐẠI SỐ · LỚP 11 · 12','Hàm số mũ và logarit','Mũ · Logarit',figExp,[
   X('Hàm số mũ','y=a^x\\;(a>0,a\\neq1)','a &gt; 1: đồng biến; 0 &lt; a &lt; 1: nghịch biến. Đồ thị luôn đi qua (0; 1) và nằm phía trên trục Ox.'),
-  X('Hàm số logarit','y=\\log_a x\\;(x>0)','log_a b = c khi a^c = b. Đồ thị đi qua (1; 0) và nhận trục Oy làm tiệm cận.'),
+  X('Hàm số logarit','y=\\log_a x\\;(a>0,\\;a\\neq1,\\;x>0)','log_a b = c khi a^c = b. Đồ thị đi qua (1; 0) và nhận trục Oy làm tiệm cận.'),
   X('Quan hệ nghịch đảo','a^{\\log_a b}=b,\\;\\log_a a^b=b','Hai hàm là ngược nhau nên đồ thị đối xứng qua đường y = x: điểm (1; a) ứng với (a; 1).'),
   X('Logarit của tích và thương','\\log_a(bc)=\\log_a b+\\log_a c','log_a(b/c) = log_a b − log_a c. Điều kiện: b, c &gt; 0.'),
   X('Logarit của luỹ thừa','\\log_a b^{\\alpha}=\\alpha\\log_a b','Đưa số mũ xuống làm hệ số. log_(a^k) b = (1/k) log_a b.'),
@@ -6486,22 +6626,22 @@ SUBJ('ly',{crumb:'Phổ thông › <b>Vật lí</b>',ac:'#60a5fa',chip:'VẬT L�
  p:'Kéo thanh trượt để thấy đồ thị, quỹ đạo, dòng điện và sóng thay đổi theo từng đại lượng.',hero:'wave',sum:'Tổng hợp công thức Vật lí',unit:'CÔNG THỨC',groups:[
  Gp('#60a5fa','CƠ HỌC · LỚP 10','Chuyển động thẳng và chuyển động tròn','Động học',figVT,[
   X('Vận tốc','v=v_0+at','Đồ thị v–t là đường thẳng, hệ số góc là gia tốc a. Kéo v₀ và a để xem.'),
-  X('Quãng đường','s=v_0t+\\frac{1}{2}at^2','Bằng diện tích hình thang dưới đồ thị v–t (phần tô vàng).'),
+  X('Độ dời và quãng đường','s=v_0t+\\frac{1}{2}at^2','Công thức cho độ dời trong chuyển động thẳng biến đổi đều; nếu vật không đổi chiều thì độ dời bằng quãng đường. Trên đồ thị v–t, độ dời là diện tích đại số; quãng đường là diện tích dưới đồ thị |v|.'),
   X('Công thức độc lập thời gian','v^2-v_0^2=2as','Dùng khi đề không cho thời gian.'),
   X('Rơi tự do','h=\\frac{1}{2}gt^2,\\;v=gt','Là chuyển động thẳng nhanh dần đều không vận tốc đầu, g ≈ 9,8 m/s² (thường lấy 10).'),
   X('Chuyển động tròn đều','a_{ht}=\\frac{v^2}{r}=\\omega^2r','v = ωr, T = 2π/ω, f = 1/T. Gia tốc hướng tâm luôn hướng vào tâm quỹ đạo.')]),
  Gp('#22d3ee','CƠ HỌC · LỚP 10','Ném xiên','Ném xiên',figProj,[
   X('Phương trình quỹ đạo','x=v_0\\cos\\theta\\,t,\\;y=v_0\\sin\\theta\\,t-\\frac{1}{2}gt^2','Theo Ox chuyển động đều, theo Oy chuyển động có gia tốc −g. Quỹ đạo là parabol.'),
   X('Độ cao cực đại','H=\\frac{v_0^2\\sin^2\\theta}{2g}','Đạt được tại đỉnh quỹ đạo, ở thời điểm t = v₀ sin θ / g.'),
-  X('Tầm xa','L=\\frac{v_0^2\\sin2\\theta}{g}','Lớn nhất khi θ = 45°. Hai góc phụ nhau cho cùng tầm xa.'),
-  X('Thời gian bay','t=\\frac{2v_0\\sin\\theta}{g}','Gấp đôi thời gian lên tới đỉnh.')]),
+  X('Tầm xa','L=\\frac{v_0^2\\sin2\\theta}{g}','Bỏ qua sức cản không khí và giả sử vật rơi về đúng độ cao phóng: tầm xa lớn nhất khi θ = 45°; hai góc phụ nhau cho cùng tầm xa.'),
+  X('Thời gian bay','t=\\frac{2v_0\\sin\\theta}{g}','Bỏ qua sức cản không khí và giả sử điểm rơi cùng độ cao với điểm phóng: thời gian bay gấp đôi thời gian lên tới đỉnh.')]),
  Gp('#fbbf24','CƠ HỌC · LỚP 10','Động lực học và năng lượng','Lực · năng lượng',LG,[
   X('Định luật II Newton','\\vec F=m\\vec a','Gia tốc cùng hướng với hợp lực, tỉ lệ thuận với lực, tỉ lệ nghịch với khối lượng.','F = ma'),
   X('Trọng lực · lực ma sát','P=mg,\\;F_{ms}=\\mu N','Lực ma sát trượt tỉ lệ với áp lực N, hệ số μ phụ thuộc bề mặt.','P · Fms'),
   X('Lực hấp dẫn','F=G\\frac{m_1m_2}{r^2}','G = 6,67·10⁻¹¹ N·m²/kg². Lực tỉ lệ nghịch với bình phương khoảng cách.','G m₁m₂/r²'),
   X('Công và công suất','A=Fs\\cos\\alpha,\\;P=\\frac{A}{t}','α là góc giữa lực và độ dời. Đơn vị công là jun (J), công suất là oát (W).','A = Fs cosα'),
   X('Động năng · thế năng','W_d=\\frac{1}{2}mv^2,\\;W_t=mgh','Định lí động năng: A = ΔW_đ. Thế năng đàn hồi: ½kx².','½mv² · mgh'),
-  X('Bảo toàn cơ năng','W=W_d+W_t=const','Chỉ khi vật chịu tác dụng của trọng lực hoặc lực đàn hồi. Có ma sát thì cơ năng giảm, phần mất đi thành nhiệt.','W = const')]),
+  X('Bảo toàn cơ năng','W=W_d+W_t=const','Cơ năng bảo toàn khi chỉ có lực thế (như trọng lực, lực đàn hồi) sinh công và bỏ qua lực không bảo toàn. Có ma sát, cơ năng chuyển một phần thành nội năng/nhiệt.','W = const')]),
  Gp('#4ade80','ĐIỆN · LỚP 11','Dòng điện không đổi','Dòng điện',figCirc,[
   X('Định luật Ohm','I=\\frac{U}{R}','Kéo U và R: electron chạy nhanh hay chậm theo cường độ I. Toàn mạch: I = E/(R + r).'),
   X('Ghép điện trở','R_{nt}=R_1+R_2,\\;\\frac{1}{R_{//}}=\\frac{1}{R_1}+\\frac{1}{R_2}','Nối tiếp: cùng I, U cộng lại. Song song: cùng U, I cộng lại.'),
@@ -6519,7 +6659,7 @@ SUBJ('ly',{crumb:'Phổ thông › <b>Vật lí</b>',ac:'#60a5fa',chip:'VẬT L�
   X('Thấu kính','\\frac{1}{f}=\\frac{1}{d}+\\frac{1}{d\'}','Độ phóng đại k = −d′/d. Thấu kính hội tụ f &gt; 0, phân kì f &lt; 0.','1/f = 1/d + 1/d′'),
   X('Khí lí tưởng','pV=nRT','Quá trình đẳng nhiệt: pV = hằng số; đẳng tích: p/T = hằng số; đẳng áp: V/T = hằng số.','pV = nRT'),
   X('Nhiệt lượng','Q=mc\\Delta t','c là nhiệt dung riêng. Chất nhận nhiệt Q &gt; 0, tỏa nhiệt Q &lt; 0.','Q = mcΔt'),
-  X('Nguyên lí I nhiệt động lực học','\\Delta U=A+Q','Độ biến thiên nội năng bằng công nhận được cộng nhiệt lượng nhận được.','ΔU = A + Q'),
+  X('Nguyên lí I nhiệt động lực học','\\Delta U=A+Q','Theo quy ước A và Q dương khi hệ nhận công và nhận nhiệt: độ biến thiên nội năng bằng tổng hai đại lượng đó.','ΔU = A + Q'),
   X('Năng lượng photon','\\varepsilon=hf=\\frac{hc}{\\lambda}','h = 6,625·10⁻³⁴ J·s. Hiện tượng quang điện: hf = A + W_đ,max.','ε = hf')])]});
 
 /* ===================== HOÁ HỌC ===================== */
@@ -6555,7 +6695,7 @@ SUBJ('hoa',{crumb:'Phổ thông › <b>Hoá học</b>',ac:'#a78bfa',chip:'HOÁ H
  Gp('#a78bfa','LỚP 10','Cấu tạo nguyên tử và bảng tuần hoàn','Nguyên tử',figAtom,[
   K('Hạt nhân và electron','Z = số proton = số electron','Nguyên tử trung hòa về điện. Kéo thanh trượt Z để xem các lớp electron quay quanh hạt nhân.'),
   K('Số khối','A = Z + N','N là số nơtron. Đồng vị là các nguyên tử cùng Z, khác N.'),
-  K('Cấu hình electron','Lớp n chứa tối đa 2n² electron','Lớp 1: 2; lớp 2: 8; lớp 3: 8 (đến Ca) rồi 18. Lớp ngoài cùng tối đa 8 electron (He: 2).'),
+  K('Cấu hình electron','Lớp n có sức chứa tối đa 2n² electron','Lớp 1: 2; lớp 2: 8; lớp 3 có 8 electron đến Ca trước khi phân lớp 3d được điền tiếp. Với nguyên tố nhóm chính, lớp ngoài cùng thường có tối đa 8 electron (He: 2).'),
   K('Chu kì và nhóm','Số lớp = chu kì · e ngoài cùng = nhóm A','Ví dụ Na: 2/8/1 → chu kì 3, nhóm IA. Cl: 2/8/7 → chu kì 3, nhóm VIIA.'),
   K('Xu hướng biến đổi','Trong chu kì: Z tăng → bán kính giảm, độ âm điện tăng','Từ trái sang phải tính kim loại giảm, tính phi kim tăng. Trong một nhóm từ trên xuống: bán kính tăng, độ âm điện giảm.')]),
  Gp('#22d3ee','LỚP 10','Liên kết hóa học','Liên kết',LG,[
@@ -6572,11 +6712,11 @@ SUBJ('hoa',{crumb:'Phổ thông › <b>Hoá học</b>',ac:'#a78bfa',chip:'HOÁ H
   X('Khối lượng riêng · tỉ khối','D=\\frac{m}{V},\\;d_{A/B}=\\frac{M_A}{M_B}','Tỉ khối so với không khí: d = M/29.','D = m/V'),
   X('Hiệu suất phản ứng','H=\\frac{m_{tt}}{m_{lt}}\\cdot100\\%','m_tt là lượng thực tế thu được, m_lt là lượng tính theo lí thuyết.','H%')]),
  Gp('#fbbf24','LỚP 11','Axit, bazơ và thang pH','pH',figPH,[
-  X('Định nghĩa pH','pH=-\\lg[H^+]','Kéo thanh trượt để xem pH, [H⁺] và pOH thay đổi. pH càng nhỏ axit càng mạnh.'),
+  X('Định nghĩa pH','pH=-\\lg[H^+]','Kéo thanh trượt để xem pH, [H⁺] và pOH. pH càng thấp thì [H⁺] càng lớn; không thể kết luận axit mạnh/yếu chỉ từ pH nếu chưa biết nồng độ. So sánh độ mạnh cần cùng điều kiện, thường là cùng nồng độ.'),
   X('Tích số ion của nước','[H^+][OH^-]=10^{-14},\\;pH+pOH=14','Đúng ở 25 °C.'),
   K('Phân loại','pH &lt; 7 axit · pH = 7 trung tính · pH &gt; 7 bazơ','Nước nguyên chất pH = 7. Nước chanh khoảng 2, nước xà phòng khoảng 10.'),
   K('Chất chỉ thị','Quỳ tím đỏ/tím/xanh · phenolphtalein hồng khi pH &gt; 8,2','Quỳ tím hóa đỏ trong axit, hóa xanh trong bazơ. Phenolphtalein không màu trong axit và trung tính.'),
-  K('Axit mạnh · bazơ mạnh','HCl, H₂SO₄, HNO₃ · NaOH, KOH, Ba(OH)₂','Phân li hoàn toàn trong nước. Axit yếu thường gặp: CH₃COOH, H₂CO₃, H₂S.')]),
+  K('Axit mạnh · bazơ mạnh','HCl, HNO₃; H₂SO₄ mạnh ở nấc phân li thứ nhất · NaOH, KOH, Ba(OH)₂','HCl, HNO₃ và các bazơ mạnh phân li gần như hoàn toàn trong nước; H₂SO₄ phân li hoàn toàn ở nấc thứ nhất, nấc thứ hai là cân bằng. Axit yếu thường gặp: CH₃COOH, H₂CO₃, H₂S.')]),
  Gp('#f472b6','LỚP 10 · 12','Cân bằng phản ứng oxi hóa – khử','Oxi hóa – khử',LF,[
   K('Xác định số oxi hóa','Tìm chất khử và chất oxi hóa','Chất khử cho electron (số oxi hóa tăng); chất oxi hóa nhận electron (số oxi hóa giảm).',null,'Chất khử cho e · chất oxi hóa nhận e'),
   K('Viết quá trình cho – nhận','Fe⁰ → Fe³⁺ + 3e · N⁺⁵ + 1e → N⁺⁴','Viết riêng hai quá trình để thấy mỗi nguyên tử cho hoặc nhận bao nhiêu electron.',null,'tách quá trình khử và oxi hóa'),
@@ -6593,14 +6733,14 @@ SUBJ('hoa',{crumb:'Phổ thông › <b>Hoá học</b>',ac:'#a78bfa',chip:'HOÁ H
   K('Với dung dịch muối','Kim loại mạnh đẩy kim loại yếu ra khỏi muối','Fe + CuSO₄ → FeSO₄ + Cu. Trừ K, Na, Ca, Ba vì phản ứng với nước trước.',null,null,[['Fe|2','+|0','CuSO₄|1','→|0','FeSO₄|3','+|0','Cu|4']]),
   K('Điều chế kim loại','Điện phân · nhiệt luyện · thủy luyện','K đến Al: điện phân nóng chảy. Zn đến Cu: nhiệt luyện (CO, H₂, C). Cu, Ag: thủy luyện hoặc điện phân dung dịch.',null,null,[['K→Al|1','điện phân nóng chảy|0'],['Zn→Cu|2','khử bằng CO, H₂, C|0'],['Cu, Ag|3','thủy luyện|0']])]),
  Gp('#fb7185','LỚP 11 · 12','Hợp chất hữu cơ','Hữu cơ',LG,[
-  K('Ankan','CₙH₂ₙ₊₂ (n ≥ 1)','Chỉ có liên kết đơn. Ví dụ CH₄, C₂H₆. Phản ứng đặc trưng: thế và cháy.','CₙH₂ₙ₊₂'),
-  K('Anken','CₙH₂ₙ (n ≥ 2) · một liên kết đôi C=C','Phản ứng cộng (H₂, Br₂, HX), trùng hợp. Ví dụ C₂H₄.','CₙH₂ₙ'),
-  K('Ankin','CₙH₂ₙ₋₂ (n ≥ 2) · một liên kết ba C≡C','Phản ứng cộng, ankin có nối ba đầu mạch có phản ứng với AgNO₃/NH₃. Ví dụ C₂H₂.','CₙH₂ₙ₋₂'),
+  K('Ankan','Mạch hở: CₙH₂ₙ₊₂ (n ≥ 1)','Chỉ có liên kết đơn. Ví dụ CH₄, C₂H₆. Phản ứng đặc trưng: thế và cháy.','CₙH₂ₙ₊₂'),
+  K('Anken','Mạch hở, một liên kết đôi: CₙH₂ₙ (n ≥ 2)','Phản ứng cộng (H₂, Br₂, HX), trùng hợp. Ví dụ C₂H₄.','CₙH₂ₙ'),
+  K('Ankin','Mạch hở, một liên kết ba: CₙH₂ₙ₋₂ (n ≥ 2)','Phản ứng cộng; ank-1-in có H ở đầu nối ba phản ứng với AgNO₃/NH₃. Ví dụ C₂H₂.','CₙH₂ₙ₋₂'),
   K('Ancol','–OH gắn vào cacbon no','Ví dụ CH₃OH, C₂H₅OH. Phản ứng với Na giải phóng H₂.','R–OH'),
   K('Anđehit','–CHO','Có phản ứng tráng bạc với AgNO₃/NH₃. Ví dụ HCHO, CH₃CHO.','R–CHO'),
   K('Axit cacboxylic','–COOH','Có tính axit yếu, làm quỳ tím hóa đỏ. Ví dụ CH₃COOH.','R–COOH'),
   K('Este','–COO–','Điều chế từ axit và ancol (phản ứng este hóa). Thủy phân trong kiềm gọi là xà phòng hóa.','R–COO–R′'),
-  K('Amin','–NH₂','Có tính bazơ, làm quỳ tím hóa xanh (amin béo). Ví dụ CH₃NH₂, anilin C₆H₅NH₂.','R–NH₂')])]});
+  K('Amin','–NH₂','Có tính bazơ. Amin béo tan tốt trong nước có thể làm quỳ tím hóa xanh; anilin là amin thơm, bazơ rất yếu và ít tan trong nước nên không dùng làm ví dụ đổi màu quỳ tím.','R–NH₂')])]});
 
 /* ===================== SINH HỌC ===================== */
 function figCell(F){var h='',ring=function(k,d,c){return '<g data-on="'+k+'" class="hi k'+c+'" style="fill:none;stroke-width:2.6">'+d+'</g>'};
@@ -6631,26 +6771,26 @@ SUBJ('sinh',{crumb:'Phổ thông › <b>Sinh học</b>',ac:'#4ade80',chip:'SINH 
   K('Ti thể','Nhà máy năng lượng, tạo ATP','Có màng kép, màng trong gấp nếp tạo mào. Diễn ra giai đoạn Krebs và chuỗi chuyền electron của hô hấp tế bào.'),
   K('Ribosome','Tổng hợp prôtêin','Không có màng bao bọc, có thể bám trên lưới nội chất hoặc nằm tự do trong tế bào chất.'),
   K('Lưới nội chất và Golgi','Vận chuyển, hoàn thiện và đóng gói sản phẩm','Lưới nội chất hạt có ribosome, lưới nội chất trơn tổng hợp lipid. Golgi gói prôtêin vào bóng vận chuyển.'),
-  K('Lục lạp','Quang hợp, chỉ có ở tế bào thực vật','Có màng kép; bên trong là các hạt grana chứa diệp lục.')]),
+  K('Lục lạp','Quang hợp ở thực vật và nhiều loài tảo','Bào quan có màng kép; hệ thống màng tilacôit chứa diệp lục. Lục lạp không chỉ có ở tế bào thực vật.')]),
  Gp('#fbbf24','LỚP 10 · 11','Chuyển hóa năng lượng','Năng lượng',LC('NĂNG LƯỢNG'),[
   K('Nguyên liệu','CO₂ và H₂O','Cây hấp thụ CO₂ qua khí khổng, hút nước từ rễ.',null,'6CO₂ + 12H₂O'),
   K('Quang hợp','Pha sáng + pha tối','Pha sáng (màng thylakoid): ánh sáng tạo ATP, NADPH và O₂ từ nước. Pha tối (chu trình Calvin, chất nền): dùng ATP, NADPH để khử CO₂ thành đường.',null,'diệp lục · ánh sáng'),
-  K('Sản phẩm','Glucose và O₂','6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. Glucose là nguồn dự trữ năng lượng, O₂ thải ra môi trường.',null,'C₆H₁₂O₆ + 6O₂'),
+  K('Sản phẩm','Đường và O₂','Phương trình tổng quát giản lược: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. Cây dùng đường cho hô hấp và tổng hợp chất hữu cơ (thường dự trữ dưới dạng tinh bột); O₂ được giải phóng.',null,'C₆H₁₂O₆ + 6O₂'),
   K('Hô hấp tế bào','Đường phân → Krebs → chuỗi chuyền e','Đường phân ở bào tương, Krebs ở chất nền ti thể, chuỗi chuyền electron ở màng trong ti thể. Tạo khoảng 30–32 ATP từ một glucose.',null,'ATP + CO₂ + H₂O')]),
  Gp('#f472b6','LỚP 12','Dòng thông tin di truyền','Di truyền phân tử',LF,[
   K('Nhân đôi ADN','A–T, G–X · nửa bảo toàn','Mỗi phân tử ADN con có một mạch cũ và một mạch mới. Enzim ADN polimeraza tổng hợp mạch mới theo chiều 5′ → 3′.',null,'ADN → ADN'),
   K('Phiên mã','ADN → mARN','Tổng hợp mARN từ mạch gốc, nguyên tắc bổ sung A–U, T–A, G–X. Xảy ra trong nhân (sinh vật nhân thực).',null,'enzim ARN polimeraza'),
   K('Dịch mã','mARN → prôtêin','Ribosome đọc mARN theo từng bộ ba (codon), tARN mang axit amin tương ứng đến. Mở đầu AUG, kết thúc UAA, UAG, UGA.',null,'bộ ba mã hóa'),
-  K('Đột biến gen','Thay thế · thêm · mất cặp nuclêôtit','Thay thế thường ít nguy hiểm nhất; thêm hoặc mất làm dịch khung đọc nên hậu quả lớn hơn.',null,'thay đổi cấu trúc gen')]),
+  K('Đột biến gen','Thay thế · thêm · mất cặp nuclêôtit','Thay thế có thể không đổi axit amin; thêm hoặc mất số cặp nu không chia hết cho 3 thường làm dịch khung đọc. Hậu quả còn tùy vị trí và dạng đột biến.',null,'thay đổi cấu trúc gen')]),
  Gp('#22d3ee','LỚP 9 · 12','Quy luật Menđen','Menđen',figPun,[
   K('Phân li','Aa × Aa → 1AA : 2Aa : 1aa','Kiểu hình 3 trội : 1 lặn. Bấm các nút để đổi phép lai và xem bảng Punnett.'),
   K('Phân li độc lập','AaBb × AaBb → 9 : 3 : 3 : 1','Hai cặp gen nằm trên hai cặp nhiễm sắc thể khác nhau. Tỉ lệ 9 A_B_ : 3 A_bb : 3 aaB_ : 1 aabb.'),
   K('Lai phân tích','Cơ thể trội × cơ thể lặn (aa)','Nếu đời con đồng tính thì cơ thể trội là đồng hợp (AA); nếu phân tính 1 : 1 thì là dị hợp (Aa).'),
   K('Tương tác gen và liên kết gen','9 : 7 · 9 : 6 : 1 · 12 : 3 : 1 · hoán vị gen','Các gen không phân li độc lập sẽ cho tỉ lệ khác 9 : 3 : 3 : 1. Liên kết gen làm các tính trạng di truyền cùng nhau.'),
-  X('Quần thể cân bằng Hardy–Weinberg','p^2+2pq+q^2=1','p, q là tần số alen A, a (p + q = 1). Thành phần kiểu gen không đổi qua các thế hệ khi không có nhân tố tiến hóa.')]),
+  X('Quần thể cân bằng Hardy–Weinberg','p^2+2pq+q^2=1','p, q là tần số alen A, a (p + q = 1). Cân bằng khi quần thể lớn, giao phối ngẫu nhiên, không đột biến, không di–nhập gen, không chọn lọc tự nhiên và không có biến động di truyền.')]),
  Gp('#fb923c','LỚP 12','Sinh thái học','Sinh thái',LS('pyr'),[
-  K('Sinh vật sản xuất','Quang hợp, nền tháp 100% năng lượng','Thực vật, tảo. Là mắt xích đầu tiên của chuỗi thức ăn.',null,'100% năng lượng'),
-  K('Tiêu thụ bậc 1','Ăn thực vật · khoảng 10%','Hiệu suất chuyển hóa năng lượng giữa các bậc khoảng 10%.',null,'khoảng 10%'),
+  K('Sinh vật sản xuất','Bậc dinh dưỡng đầu trong chuỗi thức ăn','Thực vật, tảo và một số sinh vật tự dưỡng. Trong tháp năng lượng, năng lượng ở bậc sản xuất được lấy làm mốc 100% để so sánh.',null,'mốc 100%'),
+  K('Tiêu thụ bậc 1','Ăn sinh vật sản xuất · thường khoảng 10%','Quy tắc 10% chỉ là giá trị trung bình gần đúng; hiệu suất truyền năng lượng thay đổi theo hệ sinh thái và chuỗi thức ăn.',null,'≈10%'),
   K('Tiêu thụ bậc 2','Ăn động vật ăn cỏ · khoảng 1%','Phần lớn năng lượng mất đi qua hô hấp, chất thải và nhiệt.',null,'khoảng 1%'),
   K('Tiêu thụ bậc 3','Sinh vật ăn thịt đầu bảng · khoảng 0,1%','Vì năng lượng hao hụt nên chuỗi thức ăn hiếm khi quá 5–6 mắt xích.',null,'khoảng 0,1%')]),
  Gp('#a78bfa','LỚP 12','Nhân tố tiến hóa','Tiến hóa',LG,[
@@ -6701,7 +6841,7 @@ SUBJ('tin',{crumb:'Phổ thông › <b>Tin học</b>',ac:'#2dd4bf',chip:'TIN H�
  Gp('#60a5fa','LỚP 11 · 12','Mạng máy tính và Internet','Mạng',LS('box'),[
   K('Tầng ứng dụng','HTTP, HTTPS, FTP, SMTP, DNS','Giao tiếp với người dùng. DNS đổi tên miền thành địa chỉ IP.'),
   K('Tầng giao vận','TCP, UDP','TCP tin cậy, đúng thứ tự (web, email). UDP nhanh, không bảo đảm (video, game).'),
-  K('Tầng Internet','IP, ICMP','Gán địa chỉ IP và chọn đường đi cho gói tin (định tuyến).'),
+  K('Tầng Internet','IP, ICMP','IP đảm nhiệm địa chỉ logic và định tuyến gói tin; ICMP hỗ trợ báo lỗi/chẩn đoán. Địa chỉ IP thường được cấu hình thủ công hoặc cấp qua DHCP.'),
   K('Tầng truy cập mạng','Ethernet, Wi-Fi','Truyền bit qua cáp hoặc sóng vô tuyến giữa các thiết bị kề nhau.')]),
  Gp('#fb7185','LỚP 10 · 12','An toàn thông tin','An toàn',LG,[
   K('Mã hóa đối xứng · bất đối xứng','Một khóa chung · cặp khóa công khai và riêng','HTTPS dùng mã bất đối xứng để trao đổi khóa, rồi dùng mã đối xứng để truyền dữ liệu nhanh.','🔐'),
@@ -6824,9 +6964,9 @@ SUBJ('gd',{crumb:'Phổ thông › <b>GDKT & Pháp luật</b>',ac:'#f472b6',chip
   K('Quy luật cung – cầu','Cầu tăng → giá tăng · cung tăng → giá giảm','Giá thị trường lên xuống xoay quanh giá trị hàng hóa dưới tác động của quan hệ cung – cầu.'),
   K('Quy luật giá trị','Dựa trên thời gian lao động xã hội cần thiết','Sản xuất và lưu thông hàng hóa phải dựa trên hao phí lao động xã hội cần thiết; giá cả xoay quanh giá trị.')]),
  Gp('#fbbf24','KINH TẾ','Kinh tế vĩ mô và tài chính','Kinh tế vĩ mô',LG,[
-  K('Tăng trưởng kinh tế','GDP: giá trị hàng hóa, dịch vụ cuối cùng sản xuất trong lãnh thổ trong một năm','Tăng trưởng là sự gia tăng quy mô sản lượng qua các năm; phát triển kinh tế còn gồm cải thiện cơ cấu và đời sống.','GDP'),
-  K('Lạm phát','Mức giá chung tăng liên tục','Đo bằng chỉ số giá tiêu dùng (CPI). Lạm phát vừa phải thúc đẩy sản xuất; quá cao làm giảm sức mua.','CPI'),
-  K('Thất nghiệp','Người trong tuổi lao động, có khả năng và muốn làm việc nhưng chưa có việc','Gồm thất nghiệp tạm thời, cơ cấu, chu kì.','TN'),
+  K('Tăng trưởng kinh tế','GDP: giá trị hàng hóa, dịch vụ cuối cùng được sản xuất trong lãnh thổ trong một thời kỳ (thường tính theo quý hoặc năm)','Tăng trưởng là sự gia tăng quy mô sản lượng qua các thời kỳ; phát triển kinh tế còn gồm cải thiện cơ cấu và đời sống.','GDP'),
+  K('Lạm phát','Mức giá chung tăng liên tục','Đo bằng chỉ số giá tiêu dùng (CPI). Lạm phát thấp, ổn định có thể đồng hành với tăng trưởng; lạm phát cao hoặc khó dự đoán làm giảm sức mua và gây bất ổn.','CPI'),
+  K('Thất nghiệp','Người trong độ tuổi lao động, có khả năng và sẵn sàng làm việc, đang tìm việc nhưng chưa có việc làm phù hợp','Gồm thất nghiệp tạm thời, cơ cấu, chu kì.','TN'),
   K('Thuế','Trực thu (thuế thu nhập) · gián thu (VAT)','Thuế là nguồn thu chính của ngân sách nhà nước, đồng thời điều tiết thu nhập.','VAT'),
   K('Tín dụng và ngân hàng','Vay và cho vay có thời hạn, có lãi suất','Ngân hàng thương mại huy động vốn nhàn rỗi và cho vay; ngân hàng trung ương điều hành chính sách tiền tệ.','NH'),
   K('Bảo hiểm','Bảo hiểm xã hội, y tế, thất nghiệp, thương mại','Chia sẻ rủi ro, bảo đảm an sinh xã hội.','BH')]),
@@ -7012,11 +7152,11 @@ ADDG('daiso',[
   X('Cực trị','f\'(x_0)=0,\\;f\'\'(x_0)\\gtrless0','f′ đổi dấu từ + sang − là cực đại; từ − sang + là cực tiểu. Hàm bậc ba y = ax³ + bx² + cx + d có hai cực trị khi Δ′ = b² − 3ac &gt; 0.','⋀'),
   X('Giá trị lớn nhất, nhỏ nhất trên [a; b]','\\max,\\min\\in\\{f(a),f(b),f(x_i)\\}','Tính f tại hai đầu mút và các điểm tới hạn x_i thuộc (a; b), so sánh.','max'),
   X('Tiệm cận ngang','\\lim_{x\\to\\pm\\infty}f(x)=y_0','Đường thẳng y = y₀ là tiệm cận ngang. Tiệm cận đứng x = x₀ khi lim f = ±∞ khi x → x₀.','⇢'),
-  X('Hàm phân thức bậc nhất','y=\\frac{ax+b}{cx+d}','Tiệm cận đứng x = −d/c; tiệm cận ngang y = a/c; luôn đơn điệu trên từng khoảng xác định (dấu của ad − bc).','a/c')]),
+  X('Hàm phân thức bậc nhất','y=\\frac{ax+b}{cx+d}','Điều kiện c ≠ 0, ad − bc ≠ 0. Tiệm cận đứng x = −d/c; tiệm cận ngang y = a/c. Vì y′=(ad − bc)/(cx+d)² nên hàm đơn điệu trên mỗi khoảng xác định.','a/c')]),
  Gp('#fb7185','ĐẠI SỐ · LỚP 12','Tích phân và ứng dụng','Tích phân',LG,[
   X('Newton – Leibniz','\\int_a^bf(x)\\,dx=F(b)-F(a)','F là một nguyên hàm của f.','∫'),
   X('Tính chất','\\int_a^b(f\\pm g)=\\int_a^bf\\pm\\int_a^bg','∫ₐᵇ kf = k∫ₐᵇ f; ∫ₐᵇ f = ∫ₐᶜ f + ∫꜀ᵇ f; đổi cận đổi dấu.','±'),
-  X('Đổi biến số','\\int f(u(x))u\'(x)\\,dx=\\int f(u)\\,du','Nhớ đổi cận khi dùng tích phân xác định.','u'),
+  X('Đổi biến số','\\int f(u(x))u\'(x)\\,dx=\\int f(u)\\,du+C','Nhớ đổi cận khi dùng tích phân xác định.','u'),
   X('Từng phần','\\int u\\,dv=uv-\\int v\\,du','Ưu tiên chọn u theo thứ tự: log, đa thức, lượng giác, mũ.','uv'),
   X('Diện tích hình phẳng','S=\\int_a^b|f(x)-g(x)|\\,dx','Giữa hai đồ thị y = f(x), y = g(x) và hai đường x = a, x = b.','S'),
   X('Thể tích khối tròn xoay','V=\\pi\\int_a^bf^2(x)\\,dx','Quay quanh trục Ox hình phẳng giới hạn bởi y = f(x), trục Ox, x = a, x = b.','V')])],['LỚP 8 ĐẾN 12','53 CÔNG THỨC']);
@@ -7032,7 +7172,7 @@ ADDG('ly',[
   X('Định luật Cu-lông','F=k\\frac{|q_1q_2|}{\\varepsilon r^2}','k ≈ 9·10⁹ N·m²/C²; ε = 1 trong chân không.','F'),
   X('Cường độ điện trường','E=\\frac{F}{q}=k\\frac{|Q|}{\\varepsilon r^2}','Hiệu điện thế U = Ed trong điện trường đều.','E'),
   X('Điện dung tụ điện','C=\\frac{Q}{U}','Năng lượng W = ½CU². Ghép song song: C = C₁ + C₂; ghép nối tiếp: 1/C = 1/C₁ + 1/C₂.','C'),
-  X('Lực Lo-ren-xơ','f=|q|vB\\sin\\alpha','Bán kính quỹ đạo tròn R = mv / (|q|B).','B'),
+  X('Lực Lo-ren-xơ','f=|q|vB\\sin\\alpha','Bán kính R = m v⊥/(|q|B), với v⊥ là thành phần vận tốc vuông góc với B; nếu v ⟂ B thì v⊥=v. Thành phần song song với B tạo chuyển động xoắn ốc khi v có cả hai thành phần.','B'),
   X('Suất điện động cảm ứng','e_c=-\\frac{\\Delta\\Phi}{\\Delta t}','Từ thông Φ = BS cos α. Định luật Len-xơ: dòng cảm ứng chống lại nguyên nhân sinh ra nó.','e'),
   X('Máy biến áp','\\frac{U_1}{U_2}=\\frac{N_1}{N_2}','Máy lí tưởng: U₁I₁ = U₂I₂.','N')]),
  Gp('#fbbf24','NHIỆT · HẠT NHÂN','Chất khí và hạt nhân','Nhiệt · hạt nhân',LG,[
@@ -7043,10 +7183,10 @@ ADDG('ly',[
 /* ---- Hoá học ---- */
 ADDG('hoa',[
  Gp('#2dd4bf','LỚP 11 · 12','Hữu cơ: dãy đồng đẳng và phản ứng','Hữu cơ 2',LG,[
-  K('Ankan','CₙH₂ₙ₊₂','Chỉ có liên kết đơn. Phản ứng đặc trưng: thế với halogen (có ánh sáng), cracking, cháy.','C–C'),
-  K('Anken','CₙH₂ₙ','Có một liên kết đôi C=C. Phản ứng cộng H₂, Br₂, HX (quy tắc Mac-côp-nhi-côp), trùng hợp. Làm mất màu dung dịch brom.','C=C'),
-  K('Ankin','CₙH₂ₙ₋₂','Có liên kết ba C≡C. Ank-1-in có phản ứng thế bằng ion kim loại với AgNO₃/NH₃ tạo kết tủa vàng.','C≡C'),
-  K('Ancol','R–OH','Phản ứng với Na giải phóng H₂; tách nước tạo anken (H₂SO₄ đặc, 170 °C); oxi hóa ancol bậc I tạo anđehit.','OH'),
+  K('Ankan','Mạch hở: CₙH₂ₙ₊₂','Chỉ có liên kết đơn. Phản ứng đặc trưng: thế với halogen (có ánh sáng), cracking, cháy.','C–C'),
+  K('Anken','Mạch hở: CₙH₂ₙ','Có một liên kết đôi C=C. Phản ứng cộng H₂, Br₂, HX (quy tắc Mac-côp-nhi-côp), trùng hợp. Làm mất màu dung dịch brom.','C=C'),
+  K('Ankin','Mạch hở: CₙH₂ₙ₋₂','Có liên kết ba C≡C. Ank-1-in có H ở đầu nối ba phản ứng với AgNO₃/NH₃ tạo kết tủa vàng.','C≡C'),
+  K('Ancol','R–OH','Phản ứng với Na giải phóng H₂; tách nước tạo anken (H₂SO₄ đặc, khoảng 170 °C); oxi hóa nhẹ ancol bậc I có thể tạo anđehit.','OH'),
   K('Anđehit','R–CHO','Phản ứng tráng bạc với AgNO₃/NH₃ tạo bạc kim loại; bị khử thành ancol bậc I.','CHO'),
   K('Axit cacboxylic','R–COOH','Có tính axit yếu; phản ứng este hóa với ancol (xúc tác H₂SO₄ đặc, thuận nghịch).','COOH'),
   K('Este','R–COO–R′','Thủy phân trong axit (thuận nghịch) và trong kiềm (xà phòng hóa, một chiều).','COO')]),
@@ -7063,15 +7203,15 @@ ADDG('hoa',[
 /* ---- Sinh học ---- */
 ADDG('sinh',[
  Gp('#f472b6','LỚP 12','Đột biến và di truyền người','Đột biến',LG,[
-  K('Đột biến gen','Thay thế · thêm · mất cặp nucleotit','Thêm hoặc mất làm dịch khung đọc nên hậu quả nặng hơn thay thế.','gen'),
-  K('Đột biến cấu trúc NST','Mất đoạn · lặp đoạn · đảo đoạn · chuyển đoạn','Mất đoạn nhỏ ở NST số 21 gây ung thư máu ác tính.','NST'),
+  K('Đột biến gen','Thay thế · thêm · mất cặp nucleotit','Thêm hoặc mất số cặp nu không chia hết cho 3 thường làm dịch khung đọc; thay thế có thể không đổi axit amin. Mức độ ảnh hưởng tùy vị trí và dạng đột biến.','gen'),
+  K('Đột biến cấu trúc NST','Mất đoạn · lặp đoạn · đảo đoạn · chuyển đoạn','Mất đoạn làm mất một số gen; hậu quả tùy kích thước và vị trí. Một số biến đổi nhiễm sắc thể liên quan bệnh di truyền hoặc ung thư, không thể quy chung cho một đoạn trên NST 21.','NST'),
   K('Đột biến số lượng NST','Lệch bội (2n ± 1) · đa bội (3n, 4n…)','Hội chứng Đao: 3 NST số 21 (2n + 1). Hội chứng Tớc-nơ: XO. Đa bội phổ biến ở thực vật.','2n'),
   K('Bệnh di truyền','Gen lặn trên NST thường · liên kết giới tính','Bạch tạng (gen lặn thường), máu khó đông và mù màu (gen lặn trên X).','♀♂')]),
  Gp('#fbbf24','LỚP 11','Cơ thể người và thực vật','Sinh lí',LG,[
   K('Hô hấp ở thực vật','Đường phân → chu trình Crep → chuỗi chuyền electron','Giải phóng ATP; có thể hô hấp hiếu khí hoặc lên men.','ATP'),
   K('Vận chuyển nước và muối khoáng','Rễ hút → mạch gỗ → lá thoát hơi nước','Lực hút do thoát hơi nước, lực đẩy của rễ, lực liên kết giữa các phân tử nước.','H₂O'),
   K('Tuần hoàn máu','Tim → động mạch → mao mạch → tĩnh mạch → tim','Hệ tuần hoàn kép ở người: vòng tuần hoàn nhỏ (phổi) và vòng tuần hoàn lớn (cơ thể).','♥'),
-  K('Cân bằng nội môi','Điều hòa đường huyết: insulin giảm, glucagon tăng','Duy trì ổn định môi trường trong cơ thể (nhiệt độ, pH, đường huyết).','⚖')])],['LỚP 10 ĐẾN 12','CÓ HÌNH ĐỘNG','Đột biến · Sinh lí']);
+  K('Cân bằng nội môi','Đường huyết tăng → tăng tiết insulin; đường huyết giảm → tăng tiết glucagon. Hai hormone điều hòa glucose máu theo hướng đối kháng.','Duy trì ổn định môi trường trong cơ thể (nhiệt độ, pH, đường huyết).','⚖')])],['LỚP 10 ĐẾN 12','CÓ HÌNH ĐỘNG','Đột biến · Sinh lí']);
 /* ---- Tin học ---- */
 ADDG('tin',[
  Gp('#2dd4bf','LỚP 10 · 11','Python mở rộng','Python 2',LG,[
@@ -8250,7 +8390,7 @@ V3.isAdmin=function(){return AC.cur==='__admin'};
 function tget(){try{return JSON.parse(aRaw().g('acct:terms')||'null')}catch(e){return null}}
 V3.consent=function(){if(!aRaw())return true;var t=tget();return(t&&t.v===TV)?!!t.ok:null};
 V3.limited=function(){return !V3.isAdmin()&&V3.consent()===false};
-var FREE=['games','pwa','ambient','mood','notes','board','matran','giai','xs','he','tt','grapher','periodic','picker','writing','khbd','go','tl','thekey','short'];
+var FREE=['games','pwa','ambient','mood','notes','board','matran','giai','xs','he','tt','grapher','periodic','picker','writing','khbd','go','tl','thekey','short','studydesk','teashop'];
 V3.FREE_TOOLS=FREE;
 V3.isLocked=function(id){return V3.limited()&&FREE.indexOf(id)<0};
 
@@ -8261,10 +8401,10 @@ var TERMS=[
  ['3. Thông tin hoạt động chia sẻ với quản trị viên','Nếu bạn đồng ý, khi ứng dụng đang mở thiết bị sẽ gửi định kỳ (khoảng 30 giây một lần) các thông tin sau về máy chủ của ứng dụng: tên hiển thị, ảnh đại diện, ngày tạo tài khoản, cấp độ và điểm kinh nghiệm, số phút học hôm nay và tổng cộng, chuỗi ngày học, màn hình hoặc công cụ hoặc môn học bạn đang mở, loại thiết bị, kích thước màn hình và ngôn ngữ. Quản trị viên có thể xem trạng thái trực tuyến và các thông tin này. Ứng dụng KHÔNG gửi nội dung ghi chú, thẻ, bài làm, mật khẩu hay mã khôi phục.'],
  ['4. Thời gian lưu giữ','Bản ghi hoạt động của thiết bị tự động bị xóa sau 30 ngày không có hoạt động mới.'],
  ['5. Quyền của bạn','Bạn có thể thay đổi lựa chọn bất kỳ lúc nào trong Hồ sơ và cài đặt, mục Điều khoản và quyền riêng tư. Khi bạn không còn đồng ý, thiết bị ngừng gửi thông tin hoạt động. Bạn cũng có thể nhờ quản trị viên xóa bản ghi của mình sớm hơn.'],
- ['6. Nội dung công khai và chơi trực tuyến','Bài đăng ở Bảng tin (chữ, ảnh, video, bình luận) và tên hiển thị khi ghép trận hoặc lên bảng xếp hạng có thể được người dùng khác nhìn thấy. Hãy không đăng nội dung vi phạm pháp luật, xúc phạm hoặc riêng tư của người khác. Bài bị báo cáo nhiều lần sẽ tự ẩn và quản trị viên có thể xóa bài.'],
+ ['6. Nội dung cộng đồng và quyền sở hữu','Bài đăng, tên trên bảng xếp hạng và MP3 bạn tải lên có thể được mọi người truy cập; tin nhắn riêng được lưu trên máy chủ chung và chỉ dành cho người tham gia, nhưng có thể được quản trị viên xem khi bị báo cáo. Chỉ tải nhạc bạn sở hữu hoặc có quyền chia sẻ; nếu có bản quyền phải ghi rõ nguồn/chủ sở hữu — ghi nguồn không thay thế việc xin phép. Không chia sẻ dữ liệu nhạy cảm hoặc nội dung vi phạm pháp luật. Bài/tệp bị báo cáo có thể được ẩn hoặc xóa sau khi xem xét.'],
  ['7. Sử dụng hợp lý','Bạn cam kết không dùng ứng dụng vào mục đích vi phạm pháp luật, không giả mạo người khác, không cố truy cập trái phép vào khu vực quản trị và không làm gián đoạn việc dùng của người khác.'],
- ['8. Nếu bạn không đồng ý','Bạn vẫn dùng được ứng dụng ở chế độ giới hạn (khoảng 40% tính năng) và không có thông tin hoạt động nào được gửi đi. Các tính năng bị khóa gồm: Ôn luyện (thẻ ghi nhớ, thi thử, trò chơi ôn tập, bộ đề), Kế hoạch (thời khóa biểu, lịch thi, việc cần làm, điểm số, lịch, bảng công việc, thói quen), phòng tập trung, sơ đồ tư duy, thống kê, thành tích và nhắc học. Bạn vẫn dùng được: nội dung các môn học, ghi chú, máy tính và đồ thị, bảng tuần hoàn, bảng vẽ, chọn ngẫu nhiên, trợ lý viết, âm thanh, nhật ký tâm trạng và toàn bộ tùy chỉnh giao diện.'],
- ['8. Miễn trừ','Ứng dụng được cung cấp nguyên trạng; nội dung chỉ mang tính tham khảo. Hãy sao lưu dữ liệu quan trọng từ mục Hồ sơ.']];
+ ['8. Nếu bạn không đồng ý','Bạn vẫn dùng được ứng dụng ở chế độ giới hạn (khoảng 40% tính năng) và không có thông tin hoạt động nào được gửi đi. Các tính năng bị khóa gồm: Ôn luyện (thẻ ghi nhớ, thi thử, trò chơi ôn tập, bộ đề), Kế hoạch (thời khóa biểu, lịch thi, việc cần làm, điểm số, lịch, bảng công việc, thói quen), phòng tập trung, sơ đồ tư duy, thống kê, thành tích và nhắc học. Bạn vẫn dùng được: nội dung các môn học, ghi chú, máy tính và đồ thị, bảng tuần hoàn, Bàn học với 20 tiện ích, trò chơi Tiệm trà nhỏ ở chế độ cá nhân, bảng vẽ, chọn ngẫu nhiên, trợ lý viết, âm thanh, nhật ký tâm trạng và toàn bộ tùy chỉnh giao diện. Tin nhắn và Kho nhạc chung cần đồng ý vì chia sẻ dữ liệu lên máy chủ.'],
+ ['9. Miễn trừ','Ứng dụng được cung cấp nguyên trạng; nội dung chỉ mang tính tham khảo. Hãy sao lưu dữ liệu quan trọng từ mục Hồ sơ.']];
 function termsHtml(){return TERMS.map(function(t){return '<h3>'+esc(t[0])+'</h3><p>'+esc(t[1])+'</p>'}).join('')}
 
 /* ---------- màn hình điều khoản ---------- */
@@ -8380,8 +8520,8 @@ var LV={w:'Đang chơi',active:'Đang chơi',open:'Chờ đối thủ',ended:'Đ
 
 V3.drawAdmin=function(el){
  if(!V3.isAdmin()){el.innerHTML='';return}
- var S=el.__S||(el.__S={tab:'over',q:'',sort:'seen',only:false,gst:false,bnd:false,users:null,stats:null,bans:null,err:'',loading:false,at:0,fd:{mode:'all',list:[],next:null,loading:false,err:''},gm:{rooms:null,game:'',rows:null,err:''},nt:null,lg:null,ping:null});
- var TABS=[['over','Tổng quan'],['users','Người dùng'],['feed','Bảng tin'],['games','Trò chơi'],['notice','Thông báo'],['mod','Hạn chế'],['server','Máy chủ'],['device','Máy này']];
+ var S=el.__S||(el.__S={tab:'over',q:'',sort:'seen',only:false,gst:false,bnd:false,users:null,stats:null,bans:null,err:'',loading:false,at:0,fd:{mode:'all',list:[],next:null,loading:false,err:''},comm:null,gm:{rooms:null,game:'',rows:null,err:''},nt:null,lg:null,ping:null});
+ var TABS=[['over','Tổng quan'],['users','Người dùng'],['feed','Bảng tin'],['community','Cộng đồng'],['games','Trò chơi'],['notice','Thông báo'],['mod','Hạn chế'],['server','Máy chủ'],['device','Máy này']];
  function frame(){el.innerHTML='<div class="v3-ph"><h1>Quản trị</h1><p>Theo dõi người dùng, kiểm duyệt bảng tin, quản lý trò chơi và gửi thông báo. Chỉ quản trị viên nhìn thấy khu vực này.</p></div><div class="v3-seg ad-tabs" role="tablist">'+TABS.map(function(t){return '<button type="button" role="tab" data-tab="'+t[0]+'" class="'+(S.tab===t[0]?'on':'')+'" aria-selected="'+(S.tab===t[0])+'">'+t[1]+'</button>'}).join('')+'</div><div id="ad-b" style="margin-top:12px"></div>';
   $$('[data-tab]',el).forEach(function(b){b.onclick=function(){S.tab=b.getAttribute('data-tab');frame();body()}});var on=$('.ad-tabs .on',el);if(on&&on.scrollIntoView)try{on.scrollIntoView({block:'nearest',inline:'center'})}catch(e){}}
  function errBox(m){return m?'<div class="v3-card ad-err"><b>Chưa lấy được dữ liệu</b><p class="v3-mut">'+esc(m)+'</p><button class="v3-btn sm" id="ad-sv" type="button">Xem cách kết nối</button></div>':''}
@@ -8454,6 +8594,25 @@ V3.drawAdmin=function(el){
    else if(a==='del')V3.confirm('Xóa vĩnh viễn bài này (kèm ảnh/video)?','Xóa',true).then(function(ok){if(ok)rq('/api/feed',{method:'DELETE',body:{id:'adminpanel',key:p.key}}).then(done).catch(function(er){V3.toast(er.message)})});
    else if(a==='ban')banSheet(p.by,p.name)};
   if(!F.list.length&&!F.loading&&!F.err&&!F.loaded){F.loaded=true;loadFeed(false)}}
+ /* ---- kiểm duyệt tin nhắn và MP3 ---- */
+ function community(b){var C=S.comm;
+  if(!C){b.innerHTML='<div class="v3-card"><p class="v3-mut">Đang tải báo cáo cộng đồng…</p></div>';adm('community').then(function(j){S.comm=j}).catch(function(e){S.comm={err:e.message,tracks:[],messages:[],threads:[]}}).then(function(){if(S.tab==='community')body()});return}
+  var tracks=C.tracks||[],messages=C.messages||[],threads=C.threads||[];
+  function reports(a){return (a||[]).map(function(x){return esc(x.why||'Không nêu lý do')+' · '+ago(x.t)}).join('<br>')}
+  b.innerHTML=(C.err?'<div class="v3-card ad-err"><p class="v3-mut">'+esc(C.err)+'</p></div>':'')+'<div class="v3-row between wrap"><p class="v3-mut">Báo cáo về MP3 và tin nhắn riêng. Chỉ xem nội dung được báo cáo.</p><button class="v3-btn sm" id="cm-refresh" type="button">Làm mới</button></div>'+
+   '<div class="v3-card" style="margin-top:8px"><h3>MP3 bị báo cáo ('+tracks.length+')</h3>'+(tracks.length?tracks.map(function(x,i){return '<article class="v3-card ad-post"><b>'+esc(x.title||'Bài nhạc')+'</b> · '+esc(x.artist||x.name||'Thành viên')+(x.hidden?' <em class="v3-badge ad-bad">Đang ẩn</em>':'')+'<p class="v3-mut">Nguồn: '+esc(x.source||'chưa ghi')+'<br>'+reports(x.reports)+'</p><div class="v3-row wrap"><button class="v3-btn sm" data-ct-clear="'+i+'" type="button">Gỡ báo cáo / hiện lại</button><button class="v3-btn danger sm" data-ct-del="'+i+'" type="button">Xóa MP3</button></div></article>'}).join(''):'<div class="v3-empty"><b>Không có MP3 bị báo cáo</b></div>')+'</div>'+
+   '<div class="v3-card" style="margin-top:12px"><h3>Tin nhắn bị báo cáo ('+messages.length+')</h3>'+(messages.length?messages.map(function(x,i){return '<article class="v3-card ad-post"><b>'+esc(x.name||x.from)+'</b><p style="white-space:pre-wrap;word-break:break-word">'+esc(x.text||'')+'</p><p class="v3-mut">'+reports(x.reports)+'</p><div class="v3-row wrap"><button class="v3-btn sm" data-cm-clear="'+i+'" type="button">Gỡ báo cáo</button><button class="v3-btn danger sm" data-cm-del="'+i+'" type="button">Xóa tin nhắn</button></div></article>'}).join(''):'<div class="v3-empty"><b>Không có tin nhắn bị báo cáo</b></div>')+'</div>'+
+   '<div class="v3-card" style="margin-top:12px"><h3>Cuộc trò chuyện bị báo cáo ('+threads.length+')</h3>'+(threads.length?threads.map(function(x,i){return '<article class="v3-card ad-post"><b>Cuộc trò chuyện</b><p class="v3-mut">'+reports(x.reports)+'<br>Mã phiên: '+esc((x.users||[]).join(' · '))+'</p><div class="v3-row wrap"><button class="v3-btn sm" data-th-clear="'+i+'" type="button">Gỡ báo cáo</button><button class="v3-btn danger sm" data-th-del="'+i+'" type="button">Xóa cuộc trò chuyện</button></div></article>'}).join(''):'<div class="v3-empty"><b>Không có cuộc trò chuyện bị báo cáo</b></div>')+'</div>';
+  $('#cm-refresh',b).onclick=function(){S.comm=null;body()};
+  b.onclick=function(e){var x=e.target.closest('[data-ct-clear],[data-ct-del],[data-cm-clear],[data-cm-del],[data-th-clear],[data-th-del]');if(!x)return;
+   function run(act0,payload){act(Object.assign({act:act0},payload)).then(function(){S.comm=null;body()}).catch(function(er){V3.toast(er.message)})}
+   if(x.hasAttribute('data-ct-clear')){var t=tracks[+x.getAttribute('data-ct-clear')];run('cleartrack',{ref:t.ref})}
+   else if(x.hasAttribute('data-ct-del')){var t=tracks[+x.getAttribute('data-ct-del')];V3.confirm('Xóa vĩnh viễn MP3 “'+esc(t.title)+'”?','Xóa MP3',true).then(function(ok){if(ok)run('deltrack',{ref:t.ref})})}
+   else if(x.hasAttribute('data-cm-clear')){var m=messages[+x.getAttribute('data-cm-clear')];run('clearchat',{pair:m.pair})}
+   else if(x.hasAttribute('data-cm-del')){var m=messages[+x.getAttribute('data-cm-del')];V3.confirm('Xóa tin nhắn bị báo cáo khỏi cuộc trò chuyện?','Xóa tin nhắn',true).then(function(ok){if(ok)run('delchatmsg',{pair:m.pair,message:m.id})})}
+   else if(x.hasAttribute('data-th-clear')){var t=threads[+x.getAttribute('data-th-clear')];run('clearchat',{pair:t.pair})}
+   else if(x.hasAttribute('data-th-del')){var t=threads[+x.getAttribute('data-th-del')];V3.confirm('Xóa toàn bộ cuộc trò chuyện trên máy chủ?','Xóa cuộc trò chuyện',true).then(function(ok){if(ok)run('delchatthread',{pair:t.pair})})}
+  }}
  /* ---- trò chơi ---- */
  function loadGames(){var G=S.gm;G.err='';adm('matches').then(function(j){G.rooms=j.rooms}).catch(function(e){G.err=e.message}).then(function(){if(S.tab==='games')body()})}
  function loadBoard(){var G=S.gm;if(!G.game)return;G.rows=null;rq('/api/board?game='+encodeURIComponent(G.game)).then(function(j){G.rows=j.rows||[]}).catch(function(e){G.rows=[];G.err=e.message}).then(function(){if(S.tab==='games')body()})}
@@ -8491,9 +8650,9 @@ V3.drawAdmin=function(el){
  /* ---- máy chủ ---- */
  function server(b){var st=S.stats;
   b.innerHTML='<div class="v3-card"><h3>Trạng thái máy chủ</h3><p class="v3-p">'+(S.err?'🔴 '+esc(S.err):S.stats||S.users?'🟢 Đã kết nối'+(S.ping!=null?' · độ trễ '+S.ping+' ms':''):'⚪ Chưa kiểm tra')+'</p><div class="v3-row wrap" style="gap:8px"><button class="v3-btn sm" id="sv-t" type="button">Kiểm tra kết nối</button></div>'+
-   (st?'<dl class="ad-dl" style="margin-top:10px"><dt>Thiết bị ghi nhận</dt><dd>'+st.presence+'</dd><dt>Bài đăng</dt><dd>'+st.posts+' ('+st.hidden+' ẩn, '+st.reported+' bị báo cáo)</dd><dt>Ảnh/video</dt><dd>'+st.media+'</dd><dt>Ván đấu</dt><dd>'+st.rooms+' ('+st.active+' đang chơi, '+st.open+' chờ, '+st.ended+' đã xong)</dd><dt>Dòng xếp hạng</dt><dd>'+esc(Object.keys(st.games||{}).map(function(g){return GN(g)+' '+st.games[g]}).join(', ')||'0')+'</dd><dt>Đang bị hạn chế</dt><dd>'+st.bans+'</dd><dt>Thời gian truy vấn</dt><dd>'+st.ms+' ms</dd></dl>':'')+'</div>'+
+   (st?'<dl class="ad-dl" style="margin-top:10px"><dt>Thiết bị ghi nhận</dt><dd>'+st.presence+'</dd><dt>Bài đăng</dt><dd>'+st.posts+' ('+st.hidden+' ẩn, '+st.reported+' bị báo cáo)</dd><dt>Ảnh/video</dt><dd>'+st.media+'</dd><dt>MP3 chung</dt><dd>'+(st.tracks||0)+'</dd><dt>Cuộc trò chuyện</dt><dd>'+(st.chats||0)+'</dd><dt>Người chơi Tiệm trà</dt><dd>'+(st.teaPlayers||0)+'</dd><dt>Ván đấu</dt><dd>'+st.rooms+' ('+st.active+' đang chơi, '+st.open+' chờ, '+st.ended+' đã xong)</dd><dt>Dòng xếp hạng</dt><dd>'+esc(Object.keys(st.games||{}).map(function(g){return GN(g)+' '+st.games[g]}).join(', ')||'0')+'</dd><dt>Đang bị hạn chế</dt><dd>'+st.bans+'</dd><dt>Thời gian truy vấn</dt><dd>'+st.ms+' ms</dd></dl>':'')+'</div>'+
    '<div class="v3-card" style="margin-top:12px"><h3>Dọn dữ liệu cũ</h3><p class="v3-mut">Xóa bản ghi người dùng không hoạt động và các ván cũ để tiết kiệm dung lượng.</p><div class="v3-row wrap" style="gap:8px"><select class="v3-in" id="sv-d" style="width:auto"><option value="7">quá 7 ngày</option><option value="30" selected>quá 30 ngày</option><option value="90">quá 90 ngày</option></select><button class="v3-btn danger" id="sv-p" type="button">Dọn ngay</button></div></div>'+
-   '<div class="v3-card" style="margin-top:12px"><h3>Cách kết nối</h3><ol class="ad-steps"><li>Đưa thư mục dự án (index.html, netlify.toml, package.json, thư mục netlify/functions/presence.mjs) lên Netlify bằng Git.</li><li>Trong Site configuration, Environment variables, thêm <b>ADMIN_KEY</b> đúng bằng mật khẩu quản trị (ít nhất 8 ký tự).</li><li>Triển khai lại, đăng nhập bằng tên <b>admin</b> rồi mở tab này.</li></ol></div>';
+   '<div class="v3-card" style="margin-top:12px"><h3>Cách kết nối</h3><ol class="ad-steps"><li>Đưa thư mục dự án (index.html, netlify.toml, package.json, thư mục netlify/functions/presence.mjs) lên Netlify bằng Git.</li><li>Trong Site configuration → Environment variables, thêm <b>ADMIN_KEY</b> trùng chính xác mật khẩu quản trị bạn dùng để đăng nhập (ít nhất 8 ký tự), và <b>SESSION_SECRET</b> là chuỗi ngẫu nhiên ít nhất 16 ký tự (nên 32+).</li><li>Triển khai lại, đăng nhập bằng tên <b>admin</b> rồi mở tab này.</li></ol></div>';
   $('#sv-t',b).onclick=function(){var t0=Date.now();S.ping=null;rq('/api/ping').then(function(){S.ping=Date.now()-t0}).catch(function(){});loadUsers(true).then(function(){body()})};
   $('#sv-p',b).onclick=function(){var d=+$('#sv-d',b).value;V3.confirm('Xóa người dùng và ván không hoạt động quá '+d+' ngày?','Dọn',true).then(function(ok){if(ok)act({act:'purge',days:d}).then(function(j){V3.toast('Đã xóa '+j.presence+' người dùng và '+j.rooms+' ván.');loadUsers(true)}).catch(function(e){V3.toast(e.message)})})};
   if(!st&&!S.err&&!S.loading)loadUsers(true)}
@@ -8505,7 +8664,7 @@ V3.drawAdmin=function(el){
  function body(){var b=$('#ad-b',el);if(!b)return;
   if(S.tab==='over'){over(b);if(!S.users&&!S.loading&&!S.err)loadUsers()}
   else if(S.tab==='users'){users(b);if(!S.users&&!S.loading&&!S.err)loadUsers()}
-  else if(S.tab==='feed')feed(b);else if(S.tab==='games')games(b);else if(S.tab==='notice')notice(b);else if(S.tab==='mod')mod(b);else if(S.tab==='server')server(b);else device(b)}
+  else if(S.tab==='feed')feed(b);else if(S.tab==='community')community(b);else if(S.tab==='games')games(b);else if(S.tab==='notice')notice(b);else if(S.tab==='mod')mod(b);else if(S.tab==='server')server(b);else device(b)}
  frame();body();
  if(S.users===null&&!S.loading&&(S.tab==='over'||S.tab==='users'))loadUsers();
  if(el.__tm)clearInterval(el.__tm);el.__tm=setInterval(function(){if(document.body.getAttribute('data-v3nav')!=='admin'){clearInterval(el.__tm);return}if((S.tab==='over'||S.tab==='users')&&!document.hidden){S.loading=false;loadUsers()}},15000)};
@@ -8647,7 +8806,7 @@ function fcAddStat(min){var o=fcStats(),k=V3.dk(),t=o[k]||{n:0,m:0};t.n=(+t.n||0
  var keys=Object.keys(o).sort();while(keys.length>120)delete o[keys.shift()];V3.sv('focus_stats',o)}
 function fcState(){return {running:fcRunning(),left:fcLeft(),total:fcS.total,mode:fcS.mode}}
 V3.focusState=fcState;
-function fcBeep(){try{var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;fcAC=fcAC||new AC();if(fcAC.state==='suspended')fcAC.resume();
+function fcBeep(){if(window.__TL_AUDIO){window.__TL_AUDIO.effect('done');return}try{var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;fcAC=fcAC||new AC();if(fcAC.state==='suspended')fcAC.resume();
  [0,.28,.56].forEach(function(t,i){var o=fcAC.createOscillator(),g=fcAC.createGain(),n=fcAC.currentTime+t;o.type='sine';o.frequency.value=i===2?988:784;
   g.gain.setValueAtTime(0,n);g.gain.linearRampToValueAtTime(.25,n+.02);g.gain.exponentialRampToValueAtTime(.001,n+.24);o.connect(g);g.connect(fcAC.destination);o.start(n);o.stop(n+.26)})}catch(e){}}
 function fcNotify(title,body){V3.toast(title+(body?'. '+body:''),5200);fcBeep();
@@ -8796,8 +8955,8 @@ function amSetLayer(id){if(!amCtx||!amOn)return;var v=amLv[id]||0,L=amLive[id];
  if(v>0&&!L){amLive[id]=true;L=amLive[id]=amBuild(id)}
  if(L&&L.out)L.out.gain.setTargetAtTime(v*L.trim,amCtx.currentTime,.05);
  if(v<=0&&L&&L.out){var x=L;delete amLive[id];x.out.gain.setTargetAtTime(0,amCtx.currentTime,.05);setTimeout(x.stop,400)}}
-function amEnsure(){if(amCtx)return true;try{var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return false;amCtx=new AC();
- amFadeG=amCtx.createGain();amFadeG.connect(amCtx.destination);amMasterG=amCtx.createGain();amMasterG.gain.value=amMaster;amMasterG.connect(amFadeG);return true}catch(e){amCtx=null;return false}}
+function amEnsure(){if(amCtx)return true;try{var AC=window.AudioContext||window.webkitAudioContext;if(!AC&&!window.__TL_AUDIO)return false;amCtx=window.__TL_AUDIO?window.__TL_AUDIO.context():new AC();if(!amCtx)return false;
+ amFadeG=amCtx.createGain();amFadeG.connect(window.__TL_AUDIO?window.__TL_AUDIO.bus('amb'):amCtx.destination);amMasterG=amCtx.createGain();amMasterG.gain.value=amMaster;amMasterG.connect(amFadeG);return true}catch(e){amCtx=null;return false}}
 function amEmit(){V3.emit('ambient:change',{on:amOn});amViews=amViews.filter(function(v){return v.el.isConnected});amViews.forEach(function(v){try{v.fn()}catch(e){}})}
 function amPlay(){if(amOn)return;if(!amEnsure()){V3.toast('Trình duyệt này không hỗ trợ âm thanh nền.');return}
  var any=AM_LAYERS.some(function(a){return amLv[a[0]]>0});if(!any){amLv.rain=.5;amSave()}
@@ -10417,7 +10576,7 @@ function bzBest(){var b=V3.ld('blitz_best',null);if(!b||typeof b!=='object')b={}
 function bzXpLeft(){var x=V3.ld('blitz_xp',null);if(!x||x.d!==V3.dk())x={d:V3.dk(),n:0};return {x:x,left:Math.max(0,BZ_XP_CAP-(+x.n||0))}}
 function subjList(){var S=window.__SUBJ||{};return Object.keys(S).map(function(id){var n=0;try{n=window.__API.bank(id).length}catch(e){}return {id:id,n:V3.subjectName(id),c:n}}).filter(function(s){return s.c>0})}
 var AC=null;
-function beep(on,f,d,type){if(!on)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();var o=AC.createOscillator(),g=AC.createGain();o.type=type||'sine';o.frequency.value=f;g.gain.value=.06;o.connect(g);g.connect(AC.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.stop(AC.currentTime+d)}catch(e){}}
+function beep(on,f,d,type){if(!on)return;if(window.__TL_AUDIO){window.__TL_AUDIO.tone(f,d,type,.06);return}try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();var o=AC.createOscillator(),g=AC.createGain();o.type=type||'sine';o.frequency.value=f;g.gain.value=.06;o.connect(g);g.connect(AC.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.stop(AC.currentTime+d)}catch(e){}}
 
 V3.reg({id:'blitz',t:'Thử thách tốc độ',d:'Trả lời trắc nghiệm thật nhanh, combo nhân điểm, lập kỷ lục',ic:'⚡',g:'review',k:'blitz toc do speed quiz tracnghiem challenge',
 r:function(el){
@@ -12921,7 +13080,7 @@ function refresh(){if(!box||!box.isConnected)return;var ios=/iphone|ipad|ipod/i.
  box.innerHTML='<div class="v3-card" style="padding:14px;display:grid;gap:10px"><div><b>Trạng thái</b><div class="v3-p">'+(standalone?'✅ Đang chạy như ứng dụng đã cài.':'🌐 Đang chạy trong trình duyệt.')+'<br>Ngoại tuyến: '+V3.esc(swState)+'<br>Mạng: '+(navigator.onLine===false?'ngoại tuyến':'trực tuyến')+'</div></div>'+
  (standalone?'':(dip?'<button class="v3-btn v3-primary" id="pw-in">📲 Cài ứng dụng</button>':'<div class="v3-p">'+(ios?'Trên iPhone/iPad: mở bằng Safari → nút Chia sẻ → <b>Thêm vào MH chính</b>.':http?'Trên Chrome/Edge: menu ⋮ → <b>Cài đặt ứng dụng</b> (hoặc <b>Thêm vào màn hình chính</b>). Nếu không thấy, hãy dùng thử vài phút để trình duyệt cho phép cài.':'Bạn đang mở file trực tiếp. Hãy đưa lên một địa chỉ https (Netlify…) để cài như ứng dụng.')+'</div>'))+
  (upd?'<button class="v3-btn v3-primary" id="pw-up">🔄 Cập nhật phiên bản mới</button>':'')+
- '<button class="v3-btn" id="pw-ck">Kiểm tra cập nhật</button><div class="v3-p" style="color:var(--muted)">Ngoại tuyến dùng được: toàn bộ công cụ học tập, game chơi với máy, bảng tin (bài lưu trên máy, tự đăng khi có mạng). Cần mạng: ghép trận, bảng xếp hạng, bảng tin cộng đồng.</div></div>';
+ '<button class="v3-btn" id="pw-ck">Kiểm tra cập nhật</button><div class="v3-p" style="color:var(--muted)">Ngoại tuyến dùng được: công cụ học tập, game chơi với máy, Bàn học và Tiệm trà nhỏ. Cần mạng: ghép trận, bảng xếp hạng, Bảng tin, Tin nhắn và Kho nhạc chung.</div></div>';
  var a=V3.q('#pw-in',box);if(a)a.onclick=function(){dip.prompt();dip.userChoice.then(function(){dip=null;refresh()})};
  var u=V3.q('#pw-up',box);if(u)u.onclick=function(){upd.postMessage('SKIP')};
  V3.q('#pw-ck',box).onclick=function(){if(!swReg){V3.toast('Chưa có service worker (cần mở qua https).');return}swReg.update().then(function(){V3.toast(upd||swReg.installing?'Đang tải bản mới…':'Bạn đang dùng bản mới nhất')})}}
@@ -12935,6 +13094,243 @@ if(V3.boot)V3.boot();
 window.__V3READY=true;
 
 })();
+</script>
+<script id="app-enhancements-js">
+/* Sổ tay học tập · nâng cấp cộng đồng, âm thanh, trò chơi và tiện ích.
+   Tệp này phụ thuộc vào window.V3 đã được khởi tạo từ index.html. */
+(function(){
+'use strict';
+var V3=window.V3;
+if(!V3||!V3.reg){console.error('Bản nâng cấp cần V3 từ index.html.');return}
+var esc=V3.esc||function(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+var q=function(s,r){return (r||document).querySelector(s)},qa=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var safeUser=function(){var u=V3.user?V3.user():(V3.auth&&V3.auth.me?V3.auth.me():null);return {id:V3.did?V3.did():'',name:(u&&u.name)||'Khách',av:(u&&u.av)||'🧑‍🎓'}};
+var postJSON=function(url,data){return fetch(url,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data),cache:'no-store',credentials:'same-origin'}).then(function(r){return r.json().catch(function(){return {error:'bad_response'}}).then(function(j){return {ok:r.ok,status:r.status,j:j}})})};
+var getJSON=function(url){return fetch(url,{cache:'no-store',credentials:'same-origin'}).then(function(r){return r.json().catch(function(){return {error:'bad_response'}}).then(function(j){return {ok:r.ok,status:r.status,j:j}})})};
+function formatTime(t){if(!t)return '';return new Date(t).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})}
+function dateLabel(t){return new Date(t).toLocaleDateString('vi-VN',{day:'numeric',month:'long',year:'numeric'})}
+function durationLabel(s){s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+function downloadText(name,text,type){var b=new Blob([text],{type:type||'text/plain;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},1000)}
+function copyText(text){if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(text);var t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(e){}t.remove();return Promise.resolve()}
+
+/* ---------- Điều hướng các mục mới ---------- */
+var custom={chat:true,music:true,studydesk:true,teashop:true};
+if(V3.GROUPS&&!V3.GROUPS.some(function(g){return g[0]==='community'}))V3.GROUPS.push(['community','Cộng đồng']);
+function markNav(id){var bs=qa('#v3-side .sd-nav [data-vgo],#v3-bn [data-vgo]');bs.forEach(function(b){var on=b.getAttribute('data-vgo')===id;b.classList.toggle('on',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});document.body.setAttribute('data-v3nav',id)}
+var oldShow=V3.showTool;
+V3.showTool=function(id){var r=oldShow.apply(this,arguments);if(custom[id])markNav(id);return r};
+var oldGo=V3.go;
+V3.go=function(id,arg,noHash){if(custom[id])return V3.showTool(id);return oldGo.apply(this,arguments)};
+function addNavigation(){
+ var nav=q('#v3-side .sd-nav');
+ if(nav&&!q('.upg-nav',nav)){
+  var wrap=document.createElement('div');wrap.className='upg-nav';wrap.innerHTML='<div class="upg-nav-label">Cộng đồng &amp; học tập</div><button type="button" data-vgo="chat"><span class="upg-nav-ic" aria-hidden="true">💬</span><span>Tin nhắn</span></button><button type="button" data-vgo="music"><span class="upg-nav-ic" aria-hidden="true">♫</span><span>Kho nhạc chung</span></button><button type="button" data-vgo="studydesk"><span class="upg-nav-ic" aria-hidden="true">▤</span><span>Bàn học · 20 tiện ích</span></button><button type="button" data-vgo="teashop"><span class="upg-nav-ic" aria-hidden="true">🧋</span><span>Tiệm trà nhỏ</span></button>';
+  nav.appendChild(wrap)
+ }
+ var top=q('.top-actions');
+ if(top&&!q('#upg-chat-shortcut')){var b=document.createElement('button');b.type='button';b.id='upg-chat-shortcut';b.className='icon-btn upg-chat-shortcut';b.setAttribute('aria-label','Mở tin nhắn');b.setAttribute('data-vgo','chat');b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.3a7.3 7.3 0 0 1-7.6 7.2 8.3 8.3 0 0 1-3.2-.6L4 19l1.2-4A7 7 0 0 1 4 11.3 7.3 7.3 0 0 1 11.6 4H12a7.3 7.3 0 0 1 8 7.3Z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg><i class="upg-unread-dot" aria-hidden="true"></i>';top.insertBefore(b,top.firstChild)}
+}
+addNavigation();
+V3.on('view',function(){addNavigation()});
+window.addEventListener('hashchange',function(){var m=/^#\/tool\/([\w-]+)/.exec(location.hash);if(m&&custom[m[1]])markNav(m[1])});
+
+/* ---------- Bộ âm thanh dùng chung ---------- */
+var AudioEngine=(function(){
+ var ctx=null,master=null,sfx=null,amb=null,enabled=true,volume=0.78,current=null,queue=[],queueIndex=-1;
+ try{var x=+V3.ld('audio_master_v1',.78);if(isFinite(x))volume=Math.max(0,Math.min(1,x))}catch(e){}
+ function context(){if(ctx)return ctx;var A=window.AudioContext||window.webkitAudioContext;if(!A)return null;ctx=new A();master=ctx.createGain();sfx=ctx.createGain();amb=ctx.createGain();sfx.gain.value=1;amb.gain.value=1;sfx.connect(master);amb.connect(master);master.gain.value=volume;master.connect(ctx.destination);return ctx}
+ function bus(which){if(!context())return null;return which==='amb'?amb:sfx}
+ function syncEnabled(){var b=q('#sound');enabled=!b||!b.classList.contains('off');if(sfx&&ctx){sfx.gain.setTargetAtTime(enabled?1:0,ctx.currentTime,.02)}return enabled}
+ function setVolume(v){volume=Math.max(0,Math.min(1,+v||0));if(context())master.gain.setTargetAtTime(volume,ctx.currentTime,.04);try{V3.sv('audio_master_v1',volume)}catch(e){}}
+ function tone(freq,dur,type,level){syncEnabled();if(!enabled)return;var c=context();if(!c)return;if(c.state==='suspended')c.resume().catch(function(){});var o=c.createOscillator(),g=c.createGain(),t=c.currentTime,peak=Math.min(.13,Math.max(.008,+level||.045));o.type=type||'sine';o.frequency.setValueAtTime(Math.max(40,Math.min(4000,+freq||660)),t);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(peak,t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+Math.max(.05,+dur||.12));o.connect(g);g.connect(sfx);o.start(t);o.stop(t+Math.max(.06,+dur||.12)+.02)}
+ function effect(kind){syncEnabled();if(!enabled)return;var seq=kind==='ok'?[[880,.12],[1320,.18]]:kind==='bad'?[[270,.11],[210,.16]]:kind==='done'?[[660,.12],[880,.12],[1175,.22]]:kind==='tick'?[[700,.07]]:[[784,.12],[988,.18]];var delay=0;seq.forEach(function(a){setTimeout(function(){tone(a[0],a[1],kind==='bad'?'triangle':'sine',.055)},delay);delay+=Math.round(a[1]*700)})}
+ var audio=document.createElement('audio');audio.preload='metadata';audio.setAttribute('aria-label','Trình phát nhạc chung');audio.style.display='none';document.body.appendChild(audio);
+ var dock=document.createElement('div');dock.className='upg-audio-dock';dock.id='upg-audio-dock';dock.hidden=true;dock.innerHTML='<button class="upg-icon-btn" type="button" data-aud-prev aria-label="Bài trước">‹</button><button class="upg-icon-btn" type="button" data-aud-toggle aria-label="Phát hoặc tạm dừng">▶</button><div class="upg-aud-title"><strong data-aud-title>Chưa chọn bài</strong><small data-aud-sub></small></div><div class="upg-aud-progress"><input type="range" min="0" max="1000" value="0" data-aud-seek aria-label="Vị trí phát"><span class="upg-aud-time" data-aud-time>0:00 / 0:00</span></div><button class="upg-icon-btn" type="button" data-aud-next aria-label="Bài tiếp">›</button><label class="upg-aud-volume" aria-label="Âm lượng"><input type="range" min="0" max="1" step=".01" data-aud-volume value=".78" title="Âm lượng"></label><button class="upg-icon-btn" type="button" data-aud-close aria-label="Đóng trình phát">×</button>';
+ document.body.appendChild(dock);var vol=q('[data-aud-volume]',dock);vol.value=V3.ld('music_volume_v1',.78);audio.volume=+vol.value;
+ function showTrack(t){current=t||null;dock.hidden=!t;if(!t)return;q('[data-aud-title]',dock).textContent=t.title||'Bài nhạc';q('[data-aud-sub]',dock).textContent=[t.artist||t.name||'Thành viên',t.source?'Nguồn: '+t.source:''].filter(Boolean).join(' · ');dock.setAttribute('aria-label','Đang phát '+(t.title||'bài nhạc'));if(navigator.mediaSession&&window.MediaMetadata){try{navigator.mediaSession.metadata=new MediaMetadata({title:t.title||'Bài nhạc',artist:t.artist||t.name||'',album:'Kho nhạc chung'})}catch(e){}}}
+ function playTrack(t,rows,index){if(!t||!t.ref)return;if(rows){queue=rows;queueIndex=+index||0}if(current&&current.ref===t.ref){audio.play().catch(function(){V3.toast('Hãy chạm nút phát để tiếp tục nghe.')});dock.hidden=false;return}current=t;audio.src='/api/music/file/'+encodeURIComponent(t.ref);audio.load();showTrack(t);audio.play().catch(function(){q('[data-aud-toggle]',dock).textContent='▶';V3.toast('Chạm nút phát để nghe bài này.')})}
+ function toggle(){if(!current)return;if(audio.paused)audio.play().catch(function(){V3.toast('Không phát được tệp nhạc này.')});else audio.pause()}
+ function step(dir){if(!queue.length)return;queueIndex=(queueIndex+dir+queue.length)%queue.length;playTrack(queue[queueIndex],queue,queueIndex)}
+ audio.addEventListener('play',function(){q('[data-aud-toggle]',dock).textContent='Ⅱ';if(navigator.mediaSession)try{navigator.mediaSession.playbackState='playing'}catch(e){}});
+ audio.addEventListener('pause',function(){q('[data-aud-toggle]',dock).textContent='▶';if(navigator.mediaSession)try{navigator.mediaSession.playbackState='paused'}catch(e){}});
+ audio.addEventListener('timeupdate',function(){var p=q('[data-aud-seek]',dock),d=audio.duration||0;p.value=d?Math.round(audio.currentTime/d*1000):0;q('[data-aud-time]',dock).textContent=durationLabel(audio.currentTime)+' / '+durationLabel(d)});
+ audio.addEventListener('ended',function(){if(queue.length>1)step(1)});
+ audio.addEventListener('error',function(){if(current)V3.toast('Không tải được MP3. Kiểm tra kết nối hoặc tệp trên máy chủ.')});
+ dock.addEventListener('click',function(e){var b=e.target.closest('[data-aud-toggle],[data-aud-prev],[data-aud-next],[data-aud-close]');if(!b)return;if(b.hasAttribute('data-aud-toggle'))toggle();else if(b.hasAttribute('data-aud-prev'))step(-1);else if(b.hasAttribute('data-aud-next'))step(1);else{audio.pause();audio.removeAttribute('src');audio.load();showTrack(null)}});
+ q('[data-aud-seek]',dock).addEventListener('input',function(){if(audio.duration)audio.currentTime=(+this.value/1000)*audio.duration});
+ vol.addEventListener('input',function(){audio.volume=+this.value;V3.sv('music_volume_v1',audio.volume)});
+ if(navigator.mediaSession&&navigator.mediaSession.setActionHandler){try{navigator.mediaSession.setActionHandler('play',toggle);navigator.mediaSession.setActionHandler('pause',toggle);navigator.mediaSession.setActionHandler('nexttrack',function(){step(1)});navigator.mediaSession.setActionHandler('previoustrack',function(){step(-1)})}catch(e){}}
+ return {context:context,bus:bus,tone:tone,effect:effect,syncEnabled:syncEnabled,setVolume:setVolume,play:playTrack,step:step,pause:function(){audio.pause()},audio:audio};
+})();
+window.__TL_AUDIO=AudioEngine;
+
+/* ---------- Messenger: tin nhắn riêng, hiện diện, đã xem và đang nhập ---------- */
+function renderChat(el){
+ var profile=safeUser(),me={id:'',name:profile.name,av:profile.av},alive=true,peer=null,contacts=[],messages=[],lastSeq=0,loading=false,typingAt=0,pollThreadTimer=null,pollContactsTimer=null,sessionTimer=null;
+ el.innerHTML='<div class="upg-tool upg-chat"><div class="upg-chat-frame"><aside class="upg-chat-sidebar"><div class="upg-chat-side-head"><div class="upg-row" style="justify-content:space-between"><h2>Tin nhắn</h2><button type="button" class="upg-icon-btn" data-chat-refresh aria-label="Làm mới danh sách">↻</button></div><label class="upg-label"><span class="upg-muted">Tìm thành viên</span><input class="upg-input" type="search" data-chat-search placeholder="Tên thành viên…"></label></div><div class="upg-chat-contacts" data-chat-contacts><div class="upg-empty">Đang tải danh sách…</div></div></aside><section class="upg-chat-main" data-chat-main><div class="upg-chat-empty"><div><div style="font-size:2rem">💬</div><b>Trò chuyện riêng</b><span>Chọn một thành viên bên trái để bắt đầu.</span><p class="upg-muted">Danh sách dựa trên người đã bật trạng thái hoạt động hoặc từng trò chuyện.</p></div></div></section></div><div class="upg-chat-note">Khi mở chat, máy chủ tạo mã ẩn danh riêng cho trình duyệt và tên hiển thị của bạn xuất hiện trong danh sách thành viên. Tin nhắn được lưu trên máy chủ chung; đừng gửi mật khẩu, mã xác minh hoặc thông tin nhạy cảm. Tên tài khoản trong ứng dụng hiện lưu cục bộ.</div></div>';
+ var root=q('.upg-chat',el),list=q('[data-chat-contacts]',el),main=q('[data-chat-main]',el),search=q('[data-chat-search]',el);
+ function requestContacts(){if(!alive||!me.id)return;return getJSON('/api/chat?act=contacts').then(function(r){if(!alive)return;if(!r.ok){drawContactsError(r.j.error==='session_config'?'Máy chủ cần biến môi trường SESSION_SECRET (ít nhất 16 ký tự).':r.j.error||'Không kết nối được máy chủ chat.');return}contacts=r.j.contacts||[];drawContacts();var n=contacts.reduce(function(a,c){return a+(c.unread||0)},0),b=q('#upg-chat-shortcut');if(b){b.classList.toggle('has-unread',n>0);b.setAttribute('aria-label',n?'Tin nhắn, '+n+' chưa đọc':'Mở tin nhắn')}if(peer){var c=contacts.filter(function(x){return x.id===peer.id})[0];if(c)peer=c}}).catch(function(){if(alive)drawContactsError('Không kết nối được máy chủ. Tin nhắn cần có backend trực tuyến.')})}
+ function drawContactsError(msg){list.innerHTML='<div class="upg-empty"><b>Chưa tải được danh sách</b><br>'+esc(msg)+'<br><button class="upg-btn" type="button" data-chat-refresh style="margin-top:10px">Thử lại</button></div>'}
+ function drawContacts(){var term=search.value.trim().toLocaleLowerCase('vi'),rows=contacts.filter(function(c){return !term||(c.name||'').toLocaleLowerCase('vi').indexOf(term)>-1});if(!rows.length){list.innerHTML='<div class="upg-empty"><b>Chưa có thành viên để hiển thị</b><br>Hãy thử lại sau; thành viên xuất hiện khi họ mở mục cộng đồng.</div>';return}list.innerHTML=rows.map(function(c){var last=c.lastText|| (c.online?'Đang hoạt động':c.seen?'Hoạt động '+dateLabel(c.seen):'Chạm để mở cuộc trò chuyện'),un=c.unread||0;return '<button type="button" class="upg-contact'+(peer&&peer.id===c.id?' on':'')+'" data-peer="'+esc(c.id)+'"><span class="upg-avatar'+(c.online?' online':'')+'">'+esc(c.av||'🧑‍🎓')+'</span><span class="upg-contact-copy"><strong>'+esc(c.name||'Thành viên')+'</strong><small>'+esc(last)+'</small></span>'+(un?'<span class="upg-unread">'+Math.min(un,99)+'</span>':'')+'</button>'}).join('')}
+ function showEmpty(){main.innerHTML='<div class="upg-chat-empty"><div><div style="font-size:2rem">💬</div><b>Trò chuyện riêng</b><span>Chọn một thành viên bên trái để bắt đầu.</span></div></div>'}
+ function drawThread(typing){if(!peer)return;var near=true,old=q('.upg-chat-messages',main);if(old)near=old.scrollHeight-old.scrollTop-old.clientHeight<80;var head='<div class="upg-chat-head"><button type="button" class="upg-icon-btn upg-chat-back" data-chat-back aria-label="Quay lại danh sách">‹</button><span class="upg-avatar'+(peer.online?' online':'')+'">'+esc(peer.av||'🧑‍🎓')+'</span><div class="upg-chat-head-copy"><strong>'+esc(peer.name||'Thành viên')+'</strong><small>'+(typing?'Đang nhập…':peer.online?'Đang hoạt động':peer.seen?'Hoạt động gần đây':'Thành viên')+'</small></div><button type="button" class="upg-icon-btn" data-chat-report aria-label="Báo cáo cuộc trò chuyện">⋯</button></div>';
+ var body='';if(!messages.length)body='<div class="upg-chat-empty"><div><b>Bắt đầu cuộc trò chuyện</b><span>Gửi lời chào thân thiện để mở đầu.</span></div></div>';else{var lastDay='';body=messages.map(function(m){var d=new Date(m.at||Date.now()).toLocaleDateString('vi-VN'),day=d!==lastDay?'<div class="upg-chat-day">'+esc(d)+'</div>':'';lastDay=d;var self=m.from===me.id,read=self&&m.readAt?' · Đã xem':'';return day+'<div class="upg-msg'+(self?' self':'')+'" data-mid="'+esc(m.id)+'"><div class="upg-msg-bubble">'+esc(m.text||'')+'</div><div class="upg-msg-meta">'+(self?'Bạn · ':'')+formatTime(m.at)+read+(!self?' · <button type="button" class="upg-inline-report" data-report-msg="'+esc(m.id)+'">Báo cáo</button>':'')+'</div></div>'}).join('')}
+ main.innerHTML=head+'<div class="upg-chat-messages" data-chat-messages>'+body+'</div><form class="upg-chat-compose" data-chat-form><textarea class="upg-area" data-chat-input rows="1" maxlength="1000" placeholder="Nhập tin nhắn… (Enter để gửi, Shift+Enter xuống dòng)" aria-label="Nội dung tin nhắn"></textarea><button type="submit" class="upg-btn primary" data-chat-send>Gửi</button><div class="upg-chat-note" style="grid-column:1/-1">Tin nhắn hiển thị cho bạn và người nhận.</div></form>';
+ var box=q('[data-chat-messages]',main);if(box&&near)box.scrollTop=box.scrollHeight;var inp=q('[data-chat-input]',main);if(inp){inp.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();var f=q('[data-chat-form]',main);if(f)f.requestSubmit()}});inp.addEventListener('input',function(){var now=Date.now();if(now-typingAt>1800){typingAt=now;postJSON('/api/chat',{act:'typing',id:me.id,with:peer.id,name:me.name,av:me.av}).catch(function(){})}})}
+ var form=q('[data-chat-form]',main);if(form)form.addEventListener('submit',sendMessage);
+ var back=q('[data-chat-back]',main);if(back)back.onclick=function(){root.classList.remove('has-peer')};
+ var rep=q('[data-chat-report]',main);if(rep)rep.onclick=function(){V3.confirm('Báo cáo cuộc trò chuyện này cho quản trị viên?','Báo cáo',true).then(function(ok){if(ok)postJSON('/api/chat',{act:'report_thread',id:me.id,with:peer.id,why:'conversation'}).then(function(r){V3.toast(r.ok?'Đã gửi báo cáo.':'Không gửi được báo cáo.')})})};
+ qa('[data-report-msg]',main).forEach(function(b){b.onclick=function(){postJSON('/api/chat',{act:'report',id:me.id,with:peer.id,message:b.getAttribute('data-report-msg'),why:'inappropriate'}).then(function(r){V3.toast(r.ok?'Đã gửi báo cáo.':'Không gửi được báo cáo.')})}})
+ }
+ function openPeer(c){peer=c;messages=[];lastSeq=0;root.classList.add('has-peer');loading=true;drawThread(false);getJSON('/api/chat?act=thread&me='+encodeURIComponent(me.id)+'&with='+encodeURIComponent(c.id)).then(function(r){if(!alive||!peer||peer.id!==c.id)return;loading=false;if(!r.ok){main.innerHTML='<div class="upg-empty">Không mở được cuộc trò chuyện: '+esc(r.j.error||'lỗi máy chủ')+'</div>';return}messages=r.j.messages||[];lastSeq=r.j.n||0;peer=r.j.peer||peer;drawThread(!!r.j.typing);markRead();requestContacts()}).catch(function(){if(alive){loading=false;main.innerHTML='<div class="upg-empty">Không kết nối được máy chủ chat.</div>'}})}
+ function markRead(){if(!peer||!lastSeq)return;postJSON('/api/chat',{act:'read',id:me.id,with:peer.id,upto:lastSeq}).then(function(r){if(!alive||!r.ok)return;var now=Date.now();messages.forEach(function(m){if(m.to===me.id&&!m.readAt)m.readAt=now});drawThread(false) }).catch(function(){})}
+ function pollThread(){if(!alive||!peer||loading||document.hidden)return;var pid=peer.id;getJSON('/api/chat?act=thread&me='+encodeURIComponent(me.id)+'&with='+encodeURIComponent(pid)+'&since='+lastSeq).then(function(r){if(!alive||!peer||peer.id!==pid||!r.ok)return;var incoming=r.j.messages||[];if(incoming.length){var known={};messages.forEach(function(m){known[m.id]=1});incoming.forEach(function(m){if(!known[m.id])messages.push(m)});messages.sort(function(a,b){return a.n-b.n});lastSeq=Math.max(lastSeq,r.j.n||0);markRead()}else if(r.j.n)lastSeq=Math.max(lastSeq,r.j.n);peer=r.j.peer||peer;drawThread(!!r.j.typing)}).catch(function(){})}
+ function sendMessage(e){e.preventDefault();if(!peer)return;var inp=q('[data-chat-input]',main),text=inp.value.trim();if(!text)return;var b=q('[data-chat-send]',main);if(b)b.disabled=true;postJSON('/api/chat',{act:'send',id:me.id,to:peer.id,name:me.name,av:me.av,text:text,nonce:'n'+Date.now().toString(36)}).then(function(r){if(!alive)return;if(!r.ok){V3.toast(r.j.error==='banned'?'Tài khoản này đang bị hạn chế gửi tin.':'Không gửi được tin nhắn.');return}if(r.j.message){messages.push(r.j.message);lastSeq=Math.max(lastSeq,r.j.message.n||0)}inp.value='';drawThread(false);requestContacts()}).catch(function(){V3.toast('Không kết nối được máy chủ chat.')}).finally(function(){var x=q('[data-chat-send]',main);if(x)x.disabled=false})}
+ list.addEventListener('click',function(e){var b=e.target.closest('[data-peer]');if(b){var c=contacts.filter(function(x){return x.id===b.getAttribute('data-peer')})[0];if(c)openPeer(c)}else if(e.target.closest('[data-chat-refresh]')){if(!me.id)startSession();else requestContacts()}});
+ el.addEventListener('click',function(e){if(e.target.closest('[data-chat-refresh]'))requestContacts()});search.addEventListener('input',drawContacts);
+ function startSession(){return postJSON('/api/chat',{act:'hello',name:me.name,av:me.av}).then(function(r){if(!alive)return;if(!r.ok||!r.j.me){drawContactsError(r.j.error==='session_config'?'Hãy cấu hình SESSION_SECRET trên máy chủ để bật chat an toàn.':'Không tạo được phiên chat. Hãy thử lại.');return}me.id=r.j.me.id;me.name=r.j.me.name||me.name;me.av=r.j.me.av||me.av;requestContacts();if(!pollContactsTimer)pollContactsTimer=setInterval(requestContacts,12000);if(!pollThreadTimer)pollThreadTimer=setInterval(pollThread,4500);if(!sessionTimer)sessionTimer=setInterval(function(){if(!document.hidden)postJSON('/api/chat',{act:'hello',name:me.name,av:me.av}).catch(function(){})},30000)}).catch(function(){if(alive)drawContactsError('Không kết nối được máy chủ. Chat cần backend trực tuyến.')})}
+ startSession();
+ return function(){alive=false;clearInterval(pollContactsTimer);clearInterval(pollThreadTimer);clearInterval(sessionTimer)}
+}
+V3.reg({id:'chat',t:'Tin nhắn',d:'Trò chuyện riêng với thành viên, có trạng thái online, đã xem và đang nhập.',ic:'💬',g:'community',k:'chat messenger tin nhan nhắn tin thành viên',r:renderChat});
+
+/* ---------- Kho nhạc MP3 dùng chung ---------- */
+function renderMusic(el){
+ var me=safeUser(),rows=[],alive=true,uploading=false,sessionId='',sessionReady=false;
+ el.innerHTML='<div class="upg-tool upg-music"><header class="upg-music-intro"><div class="upg-kicker">Thư viện cộng đồng</div><h2>Kho nhạc chung</h2><div class="upg-muted">Đóng góp MP3 để mọi người có thể tìm và nghe. Bạn chủ động bấm phát; trình duyệt không tự phát nhạc.</div></header><div class="upg-music-grid"><section class="upg-card"><h3>Đóng góp một bài</h3><p class="upg-muted">Chỉ nhận MP3 tối đa 4,5 MB. Tệp và thông tin bài đăng được lưu trên máy chủ chung.</p><form class="upg-stack" data-music-form><label class="upg-label">Tên bài<input class="upg-input" name="title" maxlength="100" required placeholder="Ví dụ: Buổi sáng ở Đà Lạt"></label><label class="upg-label">Nghệ sĩ / người thể hiện<input class="upg-input" name="artist" maxlength="80" placeholder="Tên nghệ sĩ hoặc người tải lên"></label><label class="upg-label">Quyền sử dụng<select class="upg-select" name="rights"><option value="own">Tôi tự sáng tác / tự thu</option><option value="public">Miền công cộng / giấy phép mở</option><option value="licensed">Đã được chủ sở hữu cho phép</option><option value="copyright">Tác phẩm có bản quyền (tôi có quyền chia sẻ)</option></select></label><label class="upg-label">Nguồn / chủ sở hữu bản quyền<input class="upg-input" name="source" maxlength="240" placeholder="Bắt buộc nếu không phải bản tự sáng tác"></label><label class="upg-label">Tệp MP3<input class="upg-input" type="file" name="file" accept="audio/mpeg,.mp3" required></label><label class="upg-terms"><input type="checkbox" name="terms" required><span>Tôi có quyền sở hữu hoặc được chủ sở hữu cho phép chia sẻ tệp này; nếu có bản quyền, tôi ghi rõ tác giả/chủ sở hữu và nguồn. Tôi hiểu rằng ghi nguồn không thay thế việc xin phép. Tôi đồng ý điều khoản tải lên và chịu trách nhiệm về nội dung.</span></label><button class="upg-btn primary" type="submit" data-music-submit>Tải lên MP3</button><div class="upg-muted" data-music-status role="status" aria-live="polite"></div></form></section><section class="upg-card upg-stack"><div class="upg-row" style="justify-content:space-between"><div><h3 style="margin:0">Bài đã chia sẻ</h3><small class="upg-muted" data-music-count>Đang tải thư viện…</small></div><button class="upg-icon-btn" type="button" data-music-refresh aria-label="Làm mới thư viện">↻</button></div><label class="upg-label"><span class="upg-muted">Tìm bài / nghệ sĩ</span><input class="upg-input" type="search" data-music-search placeholder="Nhập tên bài hoặc nghệ sĩ…"></label><div class="upg-track-list" data-music-list><div class="upg-empty">Đang tải bài hát…</div></div></section></div></div>';
+ var form=q('[data-music-form]',el),status=q('[data-music-status]',el),list=q('[data-music-list]',el),search=q('[data-music-search]',el),count=q('[data-music-count]',el);
+ function draw(){if(!alive)return;var term=search.value.trim().toLocaleLowerCase('vi'),view=rows.filter(function(x){return !term||[x.title,x.artist,x.name,x.source].join(' ').toLocaleLowerCase('vi').indexOf(term)>-1});count.textContent=rows.length+' bài trong thư viện';if(!view.length){list.innerHTML='<div class="upg-empty">'+(rows.length?'Không tìm thấy bài phù hợp.':'Chưa có MP3 nào. Nếu có quyền chia sẻ, bạn có thể đóng góp bài đầu tiên.')+'</div>';return}list.innerHTML=view.map(function(t){var i=rows.indexOf(t),owner=!!sessionId&&t.by===sessionId;return '<article class="upg-track"><span class="upg-track-art" aria-hidden="true">♪</span><div class="upg-track-main"><strong>'+esc(t.title||'Bài nhạc')+'</strong><small>'+esc(t.artist||t.name||'Thành viên')+' · '+new Date(t.t||Date.now()).toLocaleDateString('vi-VN')+'</small></div><div class="upg-track-actions"><button class="upg-icon-btn" type="button" data-play-track="'+i+'" aria-label="Phát '+esc(t.title||'bài nhạc')+'">▶</button>'+(owner?'<button class="upg-icon-btn" type="button" data-delete-track="'+i+'" aria-label="Xóa bài của bạn">×</button>':'<button class="upg-icon-btn" type="button" data-report-track="'+i+'" aria-label="Báo cáo bài">!</button>')+'</div>'+(t.source?'<div class="upg-track-credit">Nguồn: '+esc(t.source)+'</div>':'')+'</article>'}).join('')}
+ function load(){count.textContent='Đang tải thư viện…';getJSON('/api/music').then(function(r){if(!alive)return;if(!r.ok){rows=[];list.innerHTML='<div class="upg-empty"><b>Chưa kết nối kho nhạc</b><br>Hãy triển khai backend /api/music để mọi thành viên dùng chung thư viện. Không có bản sao giả lập trên thiết bị.</div>';count.textContent='Máy chủ chưa sẵn sàng';return}rows=r.j.tracks||[];draw()}).catch(function(){if(alive){rows=[];list.innerHTML='<div class="upg-empty"><b>Không kết nối máy chủ</b><br>Thư viện chung cần internet và backend trực tuyến.</div>';count.textContent='Ngoại tuyến'}})}
+ form.addEventListener('submit',function(e){e.preventDefault();if(uploading)return;var f=form.elements.file.files[0],title=form.elements.title.value.trim(),artist=form.elements.artist.value.trim(),rights=form.elements.rights.value,source=form.elements.source.value.trim();if(!sessionReady){status.textContent='Đang mở phiên cộng đồng. Hãy thử lại sau giây lát.';return}if(!f){status.textContent='Chọn tệp MP3 trước.';return}if(!/\.mp3$/i.test(f.name)){status.textContent='Tệp cần có đuôi .mp3.';return}if(f.size>4500000){status.textContent='Tệp lớn hơn giới hạn 4,5 MB.';return}if(rights!=='own'&&rights!=='public'&&!source){status.textContent='Hãy ghi nguồn hoặc chủ sở hữu bản quyền.';form.elements.source.focus();return}if(!form.elements.terms.checked){status.textContent='Cần đồng ý điều khoản tải lên.';return}uploading=true;var submit=q('[data-music-submit]',form);submit.disabled=true;status.textContent='Đang tải lên…';var u=new URLSearchParams({title:title,artist:artist,rights:rights,source:source,name:me.name,av:me.av,filename:f.name,terms:'1'});fetch('/api/music?'+u.toString(),{method:'POST',headers:{'content-type':'audio/mpeg','x-device':me.id},body:f,cache:'no-store',credentials:'same-origin'}).then(function(r){return r.json().catch(function(){return {}}).then(function(j){if(!r.ok)throw new Error(j.error||('http_'+r.status));return j})}).then(function(j){status.textContent='Đã thêm vào thư viện chung. Cảm ơn bạn!';form.reset();load()}).catch(function(err){status.textContent=err.message==='too_large'?'Tệp vượt giới hạn máy chủ.':err.message==='bad_type'?'Máy chủ không nhận diện được MP3.':err.message==='terms_required'?'Cần xác nhận điều khoản.':err.message==='source_required'?'Thiếu nguồn/chủ sở hữu.':err.message==='session_config'?'Máy chủ cần cấu hình SESSION_SECRET.':err.message==='session_required'?'Hãy tải lại để tạo phiên cộng đồng.':err.message==='rate'?'Bạn vừa tải lên gần đây; hãy chờ một chút.':'Không tải lên được. Kiểm tra kết nối và cấu hình máy chủ.'}).finally(function(){uploading=false;if(submit)submit.disabled=false})});
+ search.addEventListener('input',draw);
+ el.addEventListener('click',function(e){if(e.target.closest('[data-music-refresh]'))load();var b=e.target.closest('[data-play-track]');if(b){var i=+b.getAttribute('data-play-track');AudioEngine.play(rows[i],rows,i);return}var del=e.target.closest('[data-delete-track]');if(del){var t=rows[+del.getAttribute('data-delete-track')];if(t)V3.confirm('Xóa bài này khỏi kho nhạc chung?','Xóa bài',true).then(function(ok){if(ok)fetch('/api/music',{method:'DELETE',headers:{'content-type':'application/json'},body:JSON.stringify({id:me.id,ref:t.ref}),cache:'no-store'}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||'error');return j})}).then(function(){V3.toast('Đã xóa bài.');load()}).catch(function(){V3.toast('Không xóa được bài này.')})});return}var rep=e.target.closest('[data-report-track]');if(rep){var t2=rows[+rep.getAttribute('data-report-track')];if(t2)V3.confirm('Báo cáo bài nhạc này để quản trị viên xem xét?','Báo cáo',true).then(function(ok){if(ok)postJSON('/api/music?act=report',{act:'report',ref:t2.ref,why:'rights_or_content'}).then(function(r){V3.toast(r.ok?'Đã gửi báo cáo.':'Không gửi được báo cáo.')})})}});
+ postJSON('/api/music/session',{name:me.name,av:me.av}).then(function(r){if(!alive)return;if(r.ok&&r.j.session){sessionId=r.j.session.id;sessionReady=true;draw()}else{status.textContent=r.j.error==='session_config'?'Máy chủ cần biến môi trường SESSION_SECRET (ít nhất 16 ký tự).':'Không mở được phiên cộng đồng.'}}).catch(function(){if(alive)status.textContent='Không kết nối máy chủ; tải lên cần backend trực tuyến.'});
+ load();var refreshTimer=setInterval(load,30000);return function(){alive=false;clearInterval(refreshTimer)}
+}
+V3.reg({id:'music',t:'Kho nhạc chung',d:'Chia sẻ và nghe MP3 đã được đóng góp bởi thành viên.',ic:'♫',g:'community',k:'nhac mp3 tai len upload thu vien chung',r:renderMusic});
+
+/* ---------- Bàn học: 20 tiện ích chạy ngay, lưu cục bộ khi phù hợp ---------- */
+var MINI=[
+ ['grades','Tính điểm có trọng số','Điểm thành phần','🧮'],['target','Điểm cần đạt','Mục tiêu cuối kỳ','🎯'],['countdown','Đếm ngày','Mốc thi / hạn nộp','⏳'],['counter','Đếm từ','Ký tự và thời gian đọc','¶'],['notes','Ghi nhanh','Sổ nháp tự lưu','📝'],['cornell','Ghi chú Cornell','Cues · notes · summary','▤'],['outline','Dàn ý bài viết','Luận điểm có cấu trúc','✍️'],['teams','Chia nhóm','Trộn tên ngẫu nhiên','👥'],['units','Đổi đơn vị','Khoa học và đời sống','↔'],['percent','Phần trăm','Tăng, giảm, chiết khấu','%'],['splitter','Chia chủ đề','Phân bổ theo buổi','🗓️'],['cloze','Tự kiểm tra','Tạo câu điền khuyết','❓'],['flash','Thẻ hỏi đáp','Xuất TSV để nhập lại','🗂️'],['reviews','Lịch ôn cách quãng','1 · 3 · 7 · 14 · 30 ngày','🔁'],['reading','Tiến độ đọc','Theo dõi số trang','📖'],['checklist','Checklist hôm nay','Tự lưu trên thiết bị','☑'],['priority','Ma trận ưu tiên','Khẩn cấp × quan trọng','▦'],['datediff','Tính ngày','Khoảng cách giữa hai mốc','📅'],['finance','Lãi kép','Mô phỏng tiết kiệm','₫'],['textclean','Làm sạch văn bản','Chuẩn hóa / lọc dòng','Aa']
+];
+function renderStudyDesk(el){
+ var active='',state=V3.ld('upg_desk_v1',{})||{};
+ el.innerHTML='<div class="upg-tool upg-kit"><header class="upg-card"><div class="upg-kicker">Bàn học</div><h2 style="margin:4px 0 6px">20 tiện ích gọn, dùng ngay</h2><div class="upg-muted">Một số công cụ lưu dữ liệu trên thiết bị này; không có nội dung nào gửi ra ngoài trừ khi bạn tự xuất tệp.</div></header><div class="upg-kit-grid" data-kit-grid>'+MINI.map(function(m){return '<button type="button" class="upg-kit-tile" data-mini="'+m[0]+'"><span class="upg-kit-ic">'+m[3]+'</span><span><b>'+m[1]+'</b><small>'+m[2]+'</small></span></button>'}).join('')+'</div><section class="upg-card upg-kit-panel" data-kit-panel><div class="upg-empty">Chọn một tiện ích phía trên để bắt đầu.</div></section></div>';
+ var grid=q('[data-kit-grid]',el),panel=q('[data-kit-panel]',el);
+ function field(label,id,type,val,placeholder,more){return '<label class="upg-label">'+label+'<input class="upg-input" type="'+(type||'text')+'" id="'+id+'" value="'+esc(val==null?'':val)+'" placeholder="'+esc(placeholder||'')+'" '+(more||'')+'></label>'}
+ function area(label,id,val,placeholder,rows){return '<label class="upg-label">'+label+'<textarea class="upg-area" id="'+id+'" placeholder="'+esc(placeholder||'')+'" rows="'+(rows||5)+'">'+esc(val||'')+'</textarea></label>'}
+ function button(text,act,cls){return '<button type="button" class="upg-btn '+(cls||'')+'" data-sk-act="'+act+'">'+text+'</button>'}
+ function panelHTML(id){var s=state;
+  if(id==='grades')return '<div class="upg-head"><div><div class="upg-kicker">01 / 20</div><h2>Điểm trung bình có trọng số</h2><div class="upg-muted">Nhập điểm thang 10 và tỉ trọng từng bài; tỉ trọng có thể tính theo tổng 100%.</div></div></div><div class="upg-stack" data-grade-rows><div class="upg-grade-row"><input class="upg-input" data-grade-score type="number" min="0" max="10" step=".1" value="8" aria-label="Điểm 1"><input class="upg-input" data-grade-weight type="number" min="0" max="100" step="1" value="30" aria-label="Tỉ trọng phần trăm 1"><button class="upg-icon-btn" data-remove-grade type="button" aria-label="Xóa dòng">×</button></div><div class="upg-grade-row"><input class="upg-input" data-grade-score type="number" min="0" max="10" step=".1" value="7.5" aria-label="Điểm 2"><input class="upg-input" data-grade-weight type="number" min="0" max="100" step="1" value="20" aria-label="Tỉ trọng phần trăm 2"><button class="upg-icon-btn" data-remove-grade type="button" aria-label="Xóa dòng">×</button></div></div><div class="upg-row">'+button('＋ Thêm cột điểm','grade-add')+button('Tính điểm','grade-calc','primary')+'</div><div class="upg-result" data-sk-result>Nhập điểm và tỉ trọng rồi bấm “Tính điểm”.</div><div class="upg-muted">Trung bình = tổng (điểm × tỉ trọng) / tổng tỉ trọng.</div>';
+  if(id==='target')return '<div class="upg-head"><div><div class="upg-kicker">02 / 20</div><h2>Điểm cần đạt ở phần còn lại</h2><div class="upg-muted">Ước tính điểm cuối kỳ dựa trên tỉ trọng đã hoàn thành.</div></div></div><div class="upg-grid3">'+field('Điểm trung bình hiện tại','sk-cur','number',8,'0–10','min="0" max="10" step=".1"')+field('Tỉ trọng đã hoàn thành (%)','sk-done','number',60,'0–100','min="0" max="100" step="1"')+field('Mục tiêu tổng kết','sk-target','number',8,'0–10','min="0" max="10" step=".1"')+'</div><div class="upg-row" style="margin-top:12px">'+button('Tính điểm cần đạt','target-calc','primary')+'</div><div class="upg-result" data-sk-result>Điểm cần đạt = (mục tiêu − điểm hiện tại × tỉ trọng đã xong) / tỉ trọng còn lại.</div>';
+  if(id==='countdown')return '<div class="upg-head"><div><div class="upg-kicker">03 / 20</div><h2>Đếm ngày tới một mốc</h2><div class="upg-muted">Thi, hạn nộp, chuyến đi hoặc mục tiêu cá nhân.</div></div></div><div class="upg-grid2">'+field('Tên mốc','sk-event-name','text',s.eventName||'Kỳ thi sắp tới','Ví dụ: Thi cuối kỳ')+field('Ngày','sk-event-date','date',s.eventDate||'','')+'</div><div class="upg-row" style="margin-top:12px">'+button('Tính và lưu','countdown','primary')+'</div><div class="upg-result" data-sk-result>Chọn ngày để xem còn bao lâu.</div>';
+  if(id==='counter')return '<div class="upg-head"><div><div class="upg-kicker">04 / 20</div><h2>Đếm từ và thời gian đọc</h2><div class="upg-muted">Ước tính với tốc độ đọc trung bình 220 từ mỗi phút.</div></div></div>'+area('Dán hoặc nhập văn bản','sk-counter','','Dán văn bản vào đây…',8)+'<div class="upg-pills" data-count-result><span class="upg-pill">0 từ</span><span class="upg-pill">0 ký tự</span><span class="upg-pill">0 phút đọc</span></div>';
+  if(id==='notes')return '<div class="upg-head"><div><div class="upg-kicker">05 / 20</div><h2>Ghi nhanh</h2><div class="upg-muted">Tự lưu vào hồ sơ trên thiết bị này.</div></div></div>'+area('Nội dung','sk-note',s.note||'','Ghi nhanh ý tưởng, câu hỏi hoặc việc cần nhớ…',10)+'<div class="upg-row">'+button('Tải xuống .txt','note-download')+'<span class="upg-muted" data-note-status>Đã lưu tự động</span></div>';
+  if(id==='cornell')return '<div class="upg-head"><div><div class="upg-kicker">06 / 20</div><h2>Ghi chú Cornell</h2><div class="upg-muted">Tách gợi ý, ghi chép chính và phần tóm tắt sau buổi học.</div></div></div><div class="upg-grid2">'+area('Câu hỏi / từ khóa','sk-cue',s.cue||'','Câu hỏi gợi nhớ…',6)+area('Ghi chép','sk-cornell-notes',s.cornell||'','Ý chính, ví dụ, dữ kiện…',6)+'</div>'+area('Tóm tắt bằng lời của bạn','sk-summary',s.summary||'','Sau buổi học, viết lại điều quan trọng nhất…',4)+'<div class="upg-row">'+button('Lưu ghi chú','cornell-save','primary')+button('Tải xuống','cornell-download')+'</div>';
+  if(id==='outline')return '<div class="upg-head"><div><div class="upg-kicker">07 / 20</div><h2>Lập dàn ý bài viết</h2><div class="upg-muted">Biến luận đề và các ý chính thành khung bài rõ ràng.</div></div></div>'+field('Đề tài / tiêu đề','sk-outline-title','text','','Tiêu đề bài viết')+field('Luận đề','sk-thesis','text','','Quan điểm chính trong một câu')+area('Các luận điểm (mỗi dòng một ý)','sk-points','','Ý 1\nÝ 2\nÝ 3',6)+'<div class="upg-row">'+button('Tạo dàn ý','outline-make','primary')+button('Tải .txt','outline-download')+'</div><div class="upg-result" data-sk-result>Khung bài viết sẽ hiện tại đây.</div>';
+  if(id==='teams')return '<div class="upg-head"><div><div class="upg-kicker">08 / 20</div><h2>Chia nhóm ngẫu nhiên</h2><div class="upg-muted">Trộn danh sách tên rồi chia đều theo số nhóm hoặc số người mỗi nhóm.</div></div></div><div class="upg-grid2">'+area('Danh sách (mỗi dòng một tên)','sk-names','','An\nBình\nChi\nDũng\nHà\nLinh',7)+field('Số nhóm','sk-team-count','number',3,'3','min="1" step="1"')+'</div><div class="upg-row">'+button('Trộn và chia nhóm','teams-make','primary')+'</div><div class="upg-result" data-sk-result>Danh sách nhóm sẽ hiện tại đây.</div>';
+  if(id==='units')return '<div class="upg-head"><div><div class="upg-kicker">09 / 20</div><h2>Đổi đơn vị</h2><div class="upg-muted">Chiều dài, khối lượng, thể tích, thời gian, tốc độ và nhiệt độ.</div></div></div><div class="upg-grid3"><label class="upg-label">Loại<select class="upg-select" id="sk-unit-kind"><option value="length">Chiều dài</option><option value="mass">Khối lượng</option><option value="volume">Thể tích</option><option value="time">Thời gian</option><option value="speed">Tốc độ</option><option value="temp">Nhiệt độ</option></select></label>'+field('Giá trị','sk-unit-value','number',1,'','step="any"')+'<div class="upg-row" style="align-items:end">'+button('Đổi','units-calc','primary')+'</div></div><div class="upg-grid2" style="margin-top:10px"><label class="upg-label">Từ<select class="upg-select" id="sk-unit-from"></select></label><label class="upg-label">Sang<select class="upg-select" id="sk-unit-to"></select></label></div><div class="upg-result" data-sk-result>Chọn đơn vị rồi bấm “Đổi”.</div>';
+  if(id==='percent')return '<div class="upg-head"><div><div class="upg-kicker">10 / 20</div><h2>Phần trăm và chiết khấu</h2><div class="upg-muted">Tính x% của một số, giá sau giảm và phần trăm thay đổi.</div></div></div><div class="upg-grid2">'+field('Giá trị ban đầu','sk-pct-base','number',100,'','step="any"')+field('Tỉ lệ (%)','sk-pct-rate','number',15,'','step="any"')+'</div><div class="upg-row" style="margin-top:12px">'+button('Tính','percent-calc','primary')+'</div><div class="upg-result" data-sk-result>Kết quả sẽ hiện tại đây.</div>';
+  if(id==='splitter')return '<div class="upg-head"><div><div class="upg-kicker">11 / 20</div><h2>Chia chủ đề thành buổi học</h2><div class="upg-muted">Phân bổ danh sách theo ngày, theo thứ tự; xuất kế hoạch để lưu.</div></div></div><div class="upg-grid2">'+area('Chủ đề (mỗi dòng một mục)','sk-topics','','Chương 1\nChương 2\nChương 3\nÔn tập',7)+field('Số buổi','sk-sessions','number',4,'4','min="1" step="1"')+'</div><div class="upg-row">'+button('Chia lịch','splitter-make','primary')+button('Tải kế hoạch','splitter-download')+'</div><div class="upg-result" data-sk-result>Kế hoạch sẽ hiện tại đây.</div>';
+  if(id==='cloze')return '<div class="upg-head"><div><div class="upg-kicker">12 / 20</div><h2>Tạo câu điền khuyết</h2><div class="upg-muted">Chọn một từ dài trong mỗi dòng để tự kiểm tra trí nhớ.</div></div></div>'+area('Ghi chú / câu cần ôn','sk-cloze-input','','Một câu kiến thức quan trọng.\nMỗi dòng tạo một câu hỏi.',8)+'<div class="upg-row">'+button('Tạo câu hỏi','cloze-make','primary')+'</div><div class="upg-result" data-sk-result>Kết quả sẽ hiện tại đây.</div>';
+  if(id==='flash')return '<div class="upg-head"><div><div class="upg-kicker">13 / 20</div><h2>Tạo nhanh thẻ hỏi đáp</h2><div class="upg-muted">Mỗi dòng theo mẫu: câu hỏi | câu trả lời. Có thể xuất thành TSV.</div></div></div>'+area('Nội dung','sk-flash-input','','Thủ đô Việt Nam? | Hà Nội\nCông thức diện tích hình tròn? | πr²',8)+'<div class="upg-row">'+button('Xem trước','flash-preview','primary')+button('Xuất TSV','flash-download')+'</div><div class="upg-result" data-sk-result>Thẻ xem trước hiện tại đây.</div>';
+  if(id==='reviews')return '<div class="upg-head"><div><div class="upg-kicker">14 / 20</div><h2>Lịch ôn cách quãng</h2><div class="upg-muted">Tạo các mốc nhắc lại sau 1, 3, 7, 14 và 30 ngày.</div></div></div><div class="upg-grid2">'+field('Tên chủ đề','sk-review-topic','text','','Ví dụ: Chương 2 — Di truyền')+field('Ngày học đầu tiên','sk-review-date','date',new Date().toISOString().slice(0,10),'')+'</div><div class="upg-row" style="margin-top:12px">'+button('Lập lịch','reviews-make','primary')+button('Tải lịch','reviews-download')+'</div><div class="upg-result" data-sk-result>Các ngày ôn sẽ hiện tại đây.</div>';
+  if(id==='reading')return '<div class="upg-head"><div><div class="upg-kicker">15 / 20</div><h2>Theo dõi tiến độ đọc</h2><div class="upg-muted">Lưu tên tài liệu và số trang đã đọc ngay trên thiết bị.</div></div></div><div class="upg-grid3">'+field('Tên sách / tài liệu','sk-book-name','text',s.bookName||'','Tên tài liệu')+field('Đã đọc (trang)','sk-pages-done','number',s.pagesDone||0,'0','min="0" step="1"')+field('Tổng số trang','sk-pages-total','number',s.pagesTotal||100,'100','min="1" step="1"')+'</div><div class="upg-row" style="margin-top:12px">'+button('Lưu tiến độ','reading-save','primary')+'</div><div class="upg-progress"><i data-read-progress style="width:0%"></i></div><div class="upg-result" data-sk-result>Chưa có tiến độ.</div>';
+  if(id==='checklist')return '<div class="upg-head"><div><div class="upg-kicker">16 / 20</div><h2>Checklist hôm nay</h2><div class="upg-muted">Đánh dấu các việc đã hoàn thành; danh sách tự lưu trên thiết bị.</div></div></div><div class="upg-row"><input class="upg-input" data-check-input placeholder="Thêm một việc cần làm…" maxlength="160"><button type="button" class="upg-btn primary" data-sk-act="check-add">Thêm</button></div><div class="upg-check-list" data-check-list style="margin-top:10px"></div><div class="upg-muted" data-check-count></div>';
+  if(id==='priority')return '<div class="upg-head"><div><div class="upg-kicker">17 / 20</div><h2>Ma trận ưu tiên</h2><div class="upg-muted">Mỗi dòng: việc cần làm | khẩn cấp 1–5 | quan trọng 1–5.</div></div></div>'+area('Danh sách','sk-priority-input','','Ôn chương 3 | 4 | 5\nGửi email | 3 | 2\nĐọc tài liệu | 2 | 4',7)+'<div class="upg-row">'+button('Xếp ưu tiên','priority-make','primary')+'</div><div class="upg-result" data-sk-result>Kết quả sẽ hiện tại đây.</div>';
+  if(id==='datediff')return '<div class="upg-head"><div><div class="upg-kicker">18 / 20</div><h2>Tính khoảng cách giữa hai ngày</h2><div class="upg-muted">Đếm số ngày, tuần và ngày làm việc (ước tính, không trừ ngày lễ).</div></div></div><div class="upg-grid2">'+field('Từ ngày','sk-date-a','date',new Date().toISOString().slice(0,10),'')+field('Đến ngày','sk-date-b','date',new Date(Date.now()+7*86400000).toISOString().slice(0,10),'')+'</div><div class="upg-row" style="margin-top:12px">'+button('Tính khoảng cách','datediff-calc','primary')+'</div><div class="upg-result" data-sk-result>Kết quả sẽ hiện tại đây.</div>';
+  if(id==='finance')return '<div class="upg-head"><div><div class="upg-kicker">19 / 20</div><h2>Mô phỏng lãi kép</h2><div class="upg-muted">Ước tính tiết kiệm theo lãi suất cố định, ghép lãi hàng tháng; không phải tư vấn tài chính.</div></div></div><div class="upg-grid2">'+field('Số tiền ban đầu (₫)','sk-principal','number',1000000,'','min="0" step="1000"')+field('Gửi thêm mỗi tháng (₫)','sk-monthly','number',500000,'','min="0" step="1000"')+field('Lãi suất năm (%)','sk-rate','number',5,'','min="0" step=".1"')+field('Số năm','sk-years','number',3,'','min="0" step=".5"')+'</div><div class="upg-row" style="margin-top:12px">'+button('Ước tính','finance-calc','primary')+'</div><div class="upg-result" data-sk-result>Kết quả sẽ hiện tại đây.</div>';
+  if(id==='textclean')return '<div class="upg-head"><div><div class="upg-kicker">20 / 20</div><h2>Làm sạch văn bản</h2><div class="upg-muted">Xóa khoảng trắng thừa, dòng trống hoặc dòng trùng; có thể sắp xếp A–Z.</div></div></div>'+area('Văn bản','sk-clean-in','','Dán văn bản cần xử lý…',8)+'<div class="upg-pills"><label class="upg-pill"><input type="checkbox" id="sk-remove-empty" checked> Bỏ dòng trống</label><label class="upg-pill"><input type="checkbox" id="sk-remove-dup"> Bỏ dòng trùng</label><label class="upg-pill"><input type="checkbox" id="sk-sort-lines"> Sắp xếp A–Z</label></div><div class="upg-row">'+button('Làm sạch','textclean-make','primary')+button('Sao chép kết quả','textclean-copy')+'</div>'+area('Kết quả','sk-clean-out','','',8);
+  return '<div class="upg-empty">Chọn một tiện ích phía trên.</div>'
+ }
+ function setResult(html){var r=q('[data-sk-result]',panel);if(r)r.innerHTML=html}
+ function initUnits(){var cat=q('#sk-unit-kind',panel),from=q('#sk-unit-from',panel),to=q('#sk-unit-to',panel);if(!cat||!from||!to)return;var opts={length:['m','km','cm','mm','mi','ft'],mass:['kg','g','mg','lb'],volume:['L','mL','m³','gal'],time:['s','min','h','day'],speed:['m/s','km/h','mph'],temp:['°C','°F','K']};function fill(){var a=opts[cat.value]||opts.length;from.innerHTML=a.map(function(x){return '<option>'+x+'</option>'}).join('');to.innerHTML=a.map(function(x){return '<option>'+x+'</option>'}).join('');if(a.length>1)to.selectedIndex=1}cat.addEventListener('change',fill);fill()}
+ function readCheckList(){try{return V3.ld('upg_checklist_'+new Date().toISOString().slice(0,10),[])||[]}catch(e){return []}}
+ function paintChecklist(){var list=q('[data-check-list]',panel),count=q('[data-check-count]',panel);if(!list)return;var a=readCheckList();list.innerHTML=a.length?a.map(function(x,i){return '<label class="upg-check-item'+(x.done?' done':'')+'"><input type="checkbox" data-check-i="'+i+'" '+(x.done?'checked':'')+'><span>'+esc(x.text)+'</span><button type="button" class="upg-icon-btn" data-check-del="'+i+'" aria-label="Xóa">×</button></label>'}).join(''):'<div class="upg-empty">Chưa có việc nào. Thêm một việc nhỏ để bắt đầu.</div>';count.textContent=a.filter(function(x){return x.done}).length+' / '+a.length+' hoàn thành';V3.sv('upg_checklist_'+new Date().toISOString().slice(0,10),a)}
+ function show(id){active=id;qa('[data-mini]',grid).forEach(function(b){b.classList.toggle('on',b.getAttribute('data-mini')===id)});panel.innerHTML=panelHTML(id);if(id==='units')initUnits();if(id==='checklist')paintChecklist();if(id==='counter'){var c=q('#sk-counter',panel);c.addEventListener('input',function(){var txt=c.value,words=(txt.trim().match(/\S+/g)||[]).length,mins=words?Math.max(1,Math.ceil(words/220)):0;q('[data-count-result]',panel).innerHTML='<span class="upg-pill">'+words+' từ</span> <span class="upg-pill">'+txt.length+' ký tự</span> <span class="upg-pill">~ '+mins+' phút đọc</span>'})}if(id==='notes'){var n=q('#sk-note',panel),tm=null;n.addEventListener('input',function(){state.note=n.value;V3.sv('upg_desk_v1',state);var st=q('[data-note-status]',panel);if(st)st.textContent='Đã lưu'});}
+  if(id==='reading'){var total=q('#sk-pages-total',panel),done=q('#sk-pages-done',panel),name=q('#sk-book-name',panel);function progress(){var a=Math.max(0,+done.value||0),b=Math.max(1,+total.value||1),p=Math.min(100,a/b*100),bar=q('[data-read-progress]',panel);if(bar)bar.style.width=p+'%';var r=q('[data-sk-result]',panel);if(r)r.textContent=(name.value||'Tài liệu')+': '+Math.min(a,b)+' / '+b+' trang ('+Math.round(p)+'%).'}total.addEventListener('input',progress);done.addEventListener('input',progress);progress()}
+ }
+ grid.addEventListener('click',function(e){var b=e.target.closest('[data-mini]');if(b)show(b.getAttribute('data-mini'))});
+ panel.addEventListener('click',function(e){var b=e.target.closest('[data-sk-act]');var act=b&&b.getAttribute('data-sk-act'),r=q('[data-sk-result]',panel),html='';
+  if(act==='grade-add'){q('[data-grade-rows]',panel).insertAdjacentHTML('beforeend','<div class="upg-grade-row"><input class="upg-input" data-grade-score type="number" min="0" max="10" step=".1" placeholder="Điểm" aria-label="Điểm"><input class="upg-input" data-grade-weight type="number" min="0" max="100" step="1" placeholder="Tỉ trọng %" aria-label="Tỉ trọng"><button class="upg-icon-btn" data-remove-grade type="button" aria-label="Xóa dòng">×</button></div>')}
+  else if(e.target.closest('[data-remove-grade]'))e.target.closest('.upg-grade-row').remove();
+  else if(act==='grade-calc'){var sr=qa('[data-grade-score]',panel),wr=qa('[data-grade-weight]',panel),sum=0,w=0;sr.forEach(function(x,i){var a=+x.value,b=+wr[i].value;if(x.value!==''&&wr[i].value!==''&&a>=0&&a<=10&&b>0){sum+=a*b;w+=b}});setResult(w?'<strong>Điểm trung bình: '+(sum/w).toFixed(2)+'/10</strong><br>Đã tính trên tổng tỉ trọng '+w+'%.':'Nhập ít nhất một điểm từ 0–10 cùng tỉ trọng dương.')}
+  else if(act==='target-calc'){var cur=+q('#sk-cur',panel).value,done=+q('#sk-done',panel).value,tar=+q('#sk-target',panel).value,remain=100-done;if(done<0||done>100||remain<=0||cur<0||cur>10||tar<0||tar>10)setResult('Kiểm tra lại điểm và tỉ trọng.');else{var need=(tar*100-cur*done)/remain;setResult(need>10?'<strong>Cần '+need.toFixed(2)+'/10 — vượt thang điểm.</strong><br>Mục tiêu này không thể đạt với phần trăm còn lại.':need<=0?'<strong>Đã đạt mục tiêu.</strong><br>Điểm còn lại không làm giảm điểm mục tiêu.':'<strong>Cần khoảng '+need.toFixed(2)+'/10</strong><br>ở phần còn lại ('+remain+'%).')}}
+  else if(act==='countdown'){var d=q('#sk-event-date',panel).value,name=q('#sk-event-name',panel).value.trim();state.eventName=name;state.eventDate=d;V3.sv('upg_desk_v1',state);if(!d){setResult('Chọn ngày trước.');return}var delta=Math.ceil((new Date(d+'T00:00:00')-new Date(new Date().toDateString()))/86400000);setResult('<strong>'+(name?esc(name)+': ':'')+(delta>0?'còn '+delta+' ngày':delta===0?'diễn ra hôm nay':'đã qua '+Math.abs(delta)+' ngày')+'</strong>')}
+  else if(act==='note-download')downloadText('ghi-nhanh.txt',state.note||q('#sk-note',panel).value);
+  else if(act==='cornell-save'){state.cue=q('#sk-cue',panel).value;state.cornell=q('#sk-cornell-notes',panel).value;state.summary=q('#sk-summary',panel).value;V3.sv('upg_desk_v1',state);V3.toast('Đã lưu ghi chú Cornell trên thiết bị.')}
+  else if(act==='cornell-download'){var txt='GHI CHÚ CORNELL\n\nCÂU HỎI / TỪ KHÓA\n'+q('#sk-cue',panel).value+'\n\nGHI CHÉP\n'+q('#sk-cornell-notes',panel).value+'\n\nTÓM TẮT\n'+q('#sk-summary',panel).value;downloadText('ghi-chu-cornell.txt',txt)}
+  else if(act==='outline-make'||act==='outline-download'){var title=q('#sk-outline-title',panel).value,th=q('#sk-thesis',panel).value,pts=q('#sk-points',panel).value.split(/\n+/).map(function(x){return x.trim()}).filter(Boolean),txt='DÀN Ý: '+title+'\n\nLuận đề: '+th+'\n\n'+pts.map(function(x,i){return (i+1)+'. '+x+'\n   - Luận cứ / dẫn chứng:\n   - Phân tích:\n'}).join('\n')+'\nKết luận: Khẳng định lại luận đề và nêu ý nghĩa.';state.outline=txt;V3.sv('upg_desk_v1',state);if(act==='outline-download')downloadText('dan-y.txt',txt);else setResult('<strong>'+esc(title||'Dàn ý bài viết')+'</strong><br><pre style="white-space:pre-wrap;font:inherit">'+esc(txt)+'</pre>')}
+  else if(act==='teams-make'){var names=q('#sk-names',panel).value.split(/\n+/).map(function(x){return x.trim()}).filter(Boolean),n=Math.max(1,Math.min(names.length,+q('#sk-team-count',panel).value||1));for(var i=names.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),tmp=names[i];names[i]=names[j];names[j]=tmp}var groups=Array.from({length:n},function(){return []});names.forEach(function(x,i){groups[i%n].push(x)});setResult(groups.map(function(g,i){return '<b>Nhóm '+(i+1)+'</b>: '+(g.length?g.map(esc).join(', '):'—')}).join('<br>'))}
+  else if(act==='units-calc'){var kind=q('#sk-unit-kind',panel).value,from=q('#sk-unit-from',panel).value,to=q('#sk-unit-to',panel).value,val=+q('#sk-unit-value',panel).value,res;if(kind==='temp'){var c=from==='°F'?(val-32)*5/9:from==='K'?val-273.15:val;res=to==='°F'?c*9/5+32:to==='K'?c+273.15:c}else{var maps={length:{m:1,km:1000,cm:.01,mm:.001,mi:1609.344,ft:.3048},mass:{kg:1,g:.001,mg:.000001,lb:.45359237},volume:{L:1,mL:.001,'m³':1000,gal:3.785411784},time:{s:1,min:60,h:3600,day:86400},speed:{'m/s':1,'km/h':1/3.6,mph:.44704}};res=val*maps[kind][from]/maps[kind][to]}setResult(isFinite(res)?'<strong>'+val+' '+esc(from)+' = '+res.toLocaleString('vi-VN',{maximumFractionDigits:6})+' '+esc(to)+'</strong>':'Nhập giá trị hợp lệ.')}
+  else if(act==='percent-calc'){var base=+q('#sk-pct-base',panel).value,rate=+q('#sk-pct-rate',panel).value,p=base*rate/100;setResult('<strong>'+rate+'% của '+base.toLocaleString('vi-VN')+' = '+p.toLocaleString('vi-VN')+'</strong><br>Giá sau giảm '+rate+'%: '+(base-p).toLocaleString('vi-VN')+' · Giá sau tăng '+rate+'%: '+(base+p).toLocaleString('vi-VN'))}
+  else if(act==='splitter-make'||act==='splitter-download'){var topics=q('#sk-topics',panel).value.split(/\n+/).map(function(x){return x.trim()}).filter(Boolean),n=Math.max(1,Math.min(60,+q('#sk-sessions',panel).value||1)),days=Array.from({length:n},function(){return []});topics.forEach(function(x,i){days[Math.floor(i*n/Math.max(1,topics.length))].push(x)});var txt=days.map(function(a,i){return 'Buổi '+(i+1)+'\n'+(a.length?a.map(function(x){return '• '+x}).join('\n'):'Ôn lại / nghỉ')}).join('\n\n');state.splitter=txt;V3.sv('upg_desk_v1',state);if(act==='splitter-download')downloadText('ke-hoach-on-tap.txt',txt);else setResult('<pre style="white-space:pre-wrap;font:inherit">'+esc(txt)+'</pre>')}
+  else if(act==='cloze-make'){var lines=q('#sk-cloze-input',panel).value.split(/\n+/).map(function(x){return x.trim()}).filter(Boolean),items=lines.map(function(line){var m=line.match(/[^\s.,;:!?()[\]{}]{5,}/);if(!m)return {q:line,a:''};return {q:line.replace(m[0],'________'),a:m[0]}});setResult(items.map(function(x,i){return '<div style="margin:6px 0"><b>'+ (i+1)+'.</b> '+esc(x.q)+(x.a?'<details><summary class="upg-btn" style="display:inline-flex;margin:5px 0 0">Xem đáp án</summary><div>'+esc(x.a)+'</div></details>':'<small> (Không tìm được từ dài để ẩn)</small>')+'</div>'}).join('')||'Nhập nội dung trước.')}
+  else if(act==='flash-preview'||act==='flash-download'){var rows=q('#sk-flash-input',panel).value.split(/\n+/).map(function(x){return x.split('|').map(function(y){return y.trim()})}).filter(function(x){return x[0]&&x[1]});if(act==='flash-download')downloadText('the-hoi-dap.tsv',rows.map(function(x){return x.join('\t')}).join('\n'),'text/tab-separated-values;charset=utf-8');else setResult(rows.length?rows.map(function(x,i){return '<details style="padding:7px 0;border-bottom:1px solid var(--line)"><summary><b>'+esc(x[0])+'</b></summary><div>'+esc(x[1])+'</div></details>'}).join(''):'Mỗi dòng cần có câu hỏi | câu trả lời.')}
+  else if(act==='reviews-make'||act==='reviews-download'){var topic=q('#sk-review-topic',panel).value||'Chủ đề ôn tập',date=q('#sk-review-date',panel).value;if(!date){setResult('Chọn ngày học đầu tiên.');return}var base=new Date(date+'T00:00:00'),days=[1,3,7,14,30],txt='LỊCH ÔN: '+topic+'\n';days.forEach(function(d,i){var x=new Date(base);x.setDate(x.getDate()+d);txt+='Lần '+(i+1)+' · sau '+d+' ngày: '+x.toLocaleDateString('vi-VN')+'\n'});state.review=txt;V3.sv('upg_desk_v1',state);if(act==='reviews-download')downloadText('lich-on-cach-quang.txt',txt);else setResult('<pre style="white-space:pre-wrap;font:inherit">'+esc(txt)+'</pre>')}
+  else if(act==='reading-save'){state.bookName=q('#sk-book-name',panel).value;state.pagesDone=Math.max(0,+q('#sk-pages-done',panel).value||0);state.pagesTotal=Math.max(1,+q('#sk-pages-total',panel).value||1);V3.sv('upg_desk_v1',state);var p=Math.min(100,state.pagesDone/state.pagesTotal*100);q('[data-read-progress]',panel).style.width=p+'%';setResult('<strong>'+esc(state.bookName||'Tài liệu')+': '+Math.min(state.pagesDone,state.pagesTotal)+' / '+state.pagesTotal+' trang ('+Math.round(p)+'%).</strong>')}
+  else if(act==='check-add'){var inp=q('[data-check-input]',panel),text=inp.value.trim();if(!text)return;var a=readCheckList();a.push({text:text,done:false});V3.sv('upg_checklist_'+new Date().toISOString().slice(0,10),a);inp.value='';paintChecklist()}
+  else if(act==='priority-make'){var a=q('#sk-priority-input',panel).value.split(/\n+/).map(function(x){var p=x.split('|');return {text:(p[0]||'').trim(),u:Math.max(1,Math.min(5,+p[1]||1)),i:Math.max(1,Math.min(5,+p[2]||1))}}).filter(function(x){return x.text}).map(function(x){x.score=x.u*x.i;x.label=x.u>=4&&x.i>=4?'Làm ngay':x.u<3&&x.i>=3?'Lên lịch':x.u>=3&&x.i<3?'Ủy quyền / rút gọn':'Để sau';return x}).sort(function(a,b){return b.score-a.score});setResult(a.map(function(x,i){return '<div style="padding:5px 0"><b>'+(i+1)+'. '+esc(x.text)+'</b> · '+x.score+'/25 · '+esc(x.label)+'</div>'}).join('')||'Nhập ít nhất một việc.')}
+  else if(act==='datediff-calc'){var a=new Date(q('#sk-date-a',panel).value+'T00:00:00'),b2=new Date(q('#sk-date-b',panel).value+'T00:00:00');if(!isFinite(a.getTime())||!isFinite(b2.getTime())){setResult('Chọn đủ hai ngày.');return}var days=Math.round(Math.abs(b2-a)/86400000),work=0,dir=b2>=a?1:-1,d=new Date(a);for(var j=0;j<days;j++){d.setDate(d.getDate()+dir);var wd=d.getDay();if(wd!==0&&wd!==6)work++}setResult('<strong>'+days+' ngày</strong> ('+(days/7).toFixed(1)+' tuần), khoảng '+work+' ngày làm việc. '+(b2>=a?'Từ ngày đầu đến ngày sau.':'Ngày kết thúc đang trước ngày bắt đầu.'))}
+  else if(act==='finance-calc'){var p=Math.max(0,+q('#sk-principal',panel).value||0),m=Math.max(0,+q('#sk-monthly',panel).value||0),rate=Math.max(0,+q('#sk-rate',panel).value||0)/1200,months=Math.max(0,Math.min(1200,Math.round((+q('#sk-years',panel).value||0)*12))),factor=Math.pow(1+rate,months),total=rate?(p*factor+m*(factor-1)/rate):p+m*months,contrib=p+m*months;setResult('<strong>Giá trị ước tính: '+Math.round(total).toLocaleString('vi-VN')+' ₫</strong><br>Tổng tiền tự góp: '+Math.round(contrib).toLocaleString('vi-VN')+' ₫ · Phần tăng ước tính: '+Math.round(total-contrib).toLocaleString('vi-VN')+' ₫.<br><small>Giả định lãi suất không đổi và gửi thêm vào cuối mỗi tháng.</small>')}
+  else if(act==='textclean-make'||act==='textclean-copy'){var text=q('#sk-clean-in',panel).value,lines=text.replace(/\r/g,'').split('\n').map(function(x){return x.replace(/[ \t]+/g,' ').trim()});if(q('#sk-remove-empty',panel).checked)lines=lines.filter(Boolean);if(q('#sk-remove-dup',panel).checked){var seen={};lines=lines.filter(function(x){var k=x.toLocaleLowerCase('vi');if(seen[k])return false;seen[k]=1;return true})}if(q('#sk-sort-lines',panel).checked)lines.sort(function(a,b){return a.localeCompare(b,'vi')});q('#sk-clean-out',panel).value=lines.join('\n');if(act==='textclean-copy')copyText(lines.join('\n')).then(function(){V3.toast('Đã sao chép kết quả.')});else V3.toast('Đã làm sạch văn bản.')}
+ });
+ panel.addEventListener('change',function(e){var cb=e.target.closest('[data-check-i]');if(cb){var a=readCheckList(),i=+cb.getAttribute('data-check-i');if(a[i]){a[i].done=cb.checked;V3.sv('upg_checklist_'+new Date().toISOString().slice(0,10),a);paintChecklist()}}var del=e.target.closest('[data-check-del]');if(del){var a=readCheckList();a.splice(+del.getAttribute('data-check-del'),1);V3.sv('upg_checklist_'+new Date().toISOString().slice(0,10),a);paintChecklist()}});
+ panel.addEventListener('click',function(e){var b=e.target.closest('[data-check-del]');if(b){var a=readCheckList();a.splice(+b.getAttribute('data-check-del'),1);V3.sv('upg_checklist_'+new Date().toISOString().slice(0,10),a);paintChecklist()}});
+ return function(){};
+}
+V3.reg({id:'studydesk',t:'Bàn học · 20 tiện ích',d:'Một bộ công cụ nhỏ cho điểm số, ghi chú, chia nhóm, ôn tập và quản lý văn bản.',ic:'▤',g:'skill',k:'20 tiện ích điểm số ghi chú chia nhóm đổi đơn vị ngày tháng',r:renderStudyDesk});
+
+/* ---------- Trò chơi mô phỏng quản lý tiệm trà sữa (ý tưởng gốc) ---------- */
+var RECIPES=[
+ {id:'classic',name:'Trà sữa trân châu',price:28,need:{tea:1,milk:1,pearl:1},cost:9,desc:'Hồng trà · sữa · trân châu'},
+ {id:'peach',name:'Trà đào',price:24,need:{tea:1,fruit:1},cost:7,desc:'Trà thơm · đào'},
+ {id:'lemon',name:'Trà chanh mật ong',price:25,need:{tea:1,lemon:1},cost:7,desc:'Trà · chanh'},
+ {id:'matcha',name:'Matcha sữa',price:34,need:{tea:1,milk:1,matcha:1},cost:12,desc:'Matcha · sữa tươi'},
+ {id:'mango',name:'Trà xoài kem sữa',price:36,need:{tea:1,fruit:1,milk:1},cost:12,desc:'Trà · xoài · sữa'}
+];
+var STOCK_LABEL={tea:'Trà',milk:'Sữa',pearl:'Trân châu',fruit:'Đào / xoài',lemon:'Chanh',matcha:'Matcha'};
+var STOCK_COST={tea:24,milk:28,pearl:26,fruit:24,lemon:18,matcha:45};
+function defaultTea(){return {name:'Tiệm Lá & Sữa',cash:180,rep:3.7,day:1,level:1,sales:0,happy:0,upgrades:{machine:false,sign:false},unlocked:['classic','peach'],stock:{tea:8,milk:6,pearl:6,fruit:5,lemon:3,matcha:0},shift:null,best:0}}
+function renderTeaShop(el){
+ var s=V3.ld('tea_shop_v1',null);if(!s||typeof s!=='object')s=defaultTea();
+ function save(){V3.sv('tea_shop_v1',s)}
+ var active='counter',leader=[],leaderStatus='',rankLoading=false,rankLoaded=false;
+ function recipe(id){return RECIPES.filter(function(x){return x.id===id})[0]||RECIPES[0]}
+ function makeShift(){var unlocked=RECIPES.filter(function(x){return s.unlocked.indexOf(x.id)>-1});s.shift={day:s.day,orders:Array.from({length:5},function(){return {recipe:unlocked[Math.floor(Math.random()*unlocked.length)].id,sugar:[30,50,70][Math.floor(Math.random()*3)]}}),index:0,correct:0,wrong:0,revenue:0,done:false};save()}
+ if(s.shift&&s.shift.day!==s.day)s.shift=null;
+ function score(){return Math.round(s.cash+s.sales*15+s.rep*100+s.day*40+s.level*100)}
+ function submit(){if(V3.consent&&V3.consent()!==true)return;var u=safeUser();postJSON('/api/tea',{act:'score',id:u.id,name:u.name,av:u.av,score:score(),day:s.day,sales:s.sales}).catch(function(){})}
+ function status(text){V3.toast(text)}
+ function draw(){var shift=s.shift,order=shift&&!shift.done?shift.orders[shift.index]:null,unlocked=RECIPES.filter(function(x){return s.unlocked.indexOf(x.id)>-1});
+ var tabs=[['counter','Quầy pha chế'],['research','Nghiên cứu'],['shop','Cửa tiệm'],['rank','Bảng xếp hạng']];
+ el.innerHTML='<div class="upg-tool tea-app"><header class="tea-hero"><div><div class="upg-kicker">Mô phỏng quản lý · bản chơi cá nhân</div><h2>'+esc(s.name||'Tiệm Lá & Sữa')+'</h2><div class="upg-muted">Phục vụ khách, nghiên cứu món mới, nhập hàng và nâng cấp quán.</div></div><span class="tea-logo" aria-hidden="true">🧋</span></header><div class="tea-stats"><div class="tea-stat"><small>Quỹ tiệm</small><b>'+Math.round(s.cash).toLocaleString('vi-VN')+' ₫</b></div><div class="tea-stat"><small>Uy tín</small><b>★ '+s.rep.toFixed(1)+'</b></div><div class="tea-stat"><small>Cấp cửa tiệm</small><b>'+s.level+'</b></div><div class="tea-stat"><small>Ngày / lượt bán</small><b>'+s.day+' / '+s.sales+'</b></div></div><div class="tea-tabs">'+tabs.map(function(x){return '<button type="button" class="upg-btn'+(active===x[0]?' primary':'')+'" data-tea-tab="'+x[0]+'">'+x[1]+'</button>'}).join('')+'</div><section class="tea-tab-panel" data-tea-panel></section><div class="upg-muted">Tiến độ lưu trên thiết bị này. Bảng xếp hạng là tùy chọn và chỉ gửi điểm cùng tên hiển thị.</div></div>';
+ var p=q('[data-tea-panel]',el);
+ if(active==='counter'){
+  if(!shift||(shift.done&&shift.nextReady))p.innerHTML='<div class="upg-card"><h3>Ca ngày '+s.day+'</h3><p class="upg-muted">Mở quầy, nhận 5 đơn. Hãy phục vụ đúng món và mức đường để tăng uy tín.</p>'+invHtml()+ '<button class="upg-btn primary" data-tea-act="start">Mở quầy hôm nay</button></div>';
+  else if(shift.done||!order)p.innerHTML='<div class="upg-card"><h3>Ca ngày '+shift.day+' đã hoàn tất</h3><p class="upg-muted">Đúng '+shift.correct+' / 5 đơn · doanh thu '+shift.revenue+' ₫.</p><button class="upg-btn primary" data-tea-act="finish">Kết ca và nhận thưởng</button></div>';
+  else p.innerHTML='<div class="tea-order"><section class="tea-ticket"><div class="upg-kicker">Đơn hàng '+(shift.index+1)+' / 5</div><h3>Khách gọi: '+esc(recipe(order.recipe).name)+'</h3><div class="upg-muted">Mức đường mong muốn: <b>'+order.sugar+'%</b>. Hãy chọn đúng món và độ ngọt.</div><div class="tea-inventory"><span>Khách vui: '+shift.correct+'</span><span>Uy tín: ★ '+s.rep.toFixed(1)+'</span></div>'+invHtml()+'</section><section class="upg-card upg-stack"><label class="upg-label">Món pha<select class="upg-select" data-tea-recipe><option value="">Chọn món…</option>'+unlocked.map(function(x){return '<option value="'+x.id+'">'+esc(x.name)+'</option>'}).join('')+'</select></label><label class="upg-label">Độ ngọt<select class="upg-select" data-tea-sugar><option value="">Chọn độ ngọt…</option><option value="30">30%</option><option value="50">50%</option><option value="70">70%</option></select></label><button class="upg-btn primary" data-tea-act="serve">Pha và giao món</button><div class="upg-muted">Đơn đúng mang lại doanh thu và tiền tip. Đơn sai làm giảm nhẹ uy tín.</div></section></div>';
+ }else if(active==='research')p.innerHTML='<div class="upg-card"><h3>Nghiên cứu công thức</h3><p class="upg-muted">Đầu tư một lần để thêm món mới vào bảng thực đơn.</p><div class="tea-recipe-list">'+RECIPES.map(function(x){var unlocked=s.unlocked.indexOf(x.id)>-1,cost=x.id==='lemon'?90:x.id==='matcha'?135:165;return '<div class="tea-recipe"><div><b>'+esc(x.name)+'</b><small>'+esc(x.desc)+' · bán '+x.price+' ₫</small></div>'+(unlocked?'<span class="upg-pill">Đã mở</span>':'<button type="button" class="upg-btn" data-tea-research="'+x.id+'">Nghiên cứu · '+cost+' ₫</button>')+'</div>'}).join('')+'</div></div>';
+ else if(active==='shop')p.innerHTML='<div class="upg-grid2"><section class="upg-card upg-stack"><h3>Thông tin cửa tiệm</h3><label class="upg-label">Tên quán<input class="upg-input" data-tea-name maxlength="30" value="'+esc(s.name)+'"></label><button class="upg-btn" data-tea-act="rename">Lưu tên quán</button><hr class="upg-hr"><h3>Đầu tư</h3><div class="tea-recipe"><span><b>Máy dập nắp</b><small>Thưởng thêm 2 ₫ cho mỗi đơn đúng</small></span>'+(s.upgrades.machine?'<span class="upg-pill">Đã có</span>':'<button class="upg-btn" data-tea-upgrade="machine">180 ₫</button>')+'</div><div class="tea-recipe"><span><b>Bảng hiệu gỗ</b><small>Tăng uy tín cửa tiệm</small></span>'+(s.upgrades.sign?'<span class="upg-pill">Đã có</span>':'<button class="upg-btn" data-tea-upgrade="sign">120 ₫</button>')+'</div></section><section class="upg-card"><h3>Nhập hàng</h3><p class="upg-muted">Mỗi lần nhập thêm 8 phần nguyên liệu.</p><div class="tea-recipe-list">'+Object.keys(STOCK_LABEL).map(function(k){return '<div class="tea-recipe"><span><b>'+STOCK_LABEL[k]+'</b><small>Đang có: '+(s.stock[k]||0)+'</small></span><button class="upg-btn" data-tea-stock="'+k+'">+8 · '+STOCK_COST[k]+' ₫</button></div>'}).join('')+'</div></section></div>';
+ else{var rankContent=leader.length?leader.map(function(x,i){return '<div class="tea-rank-row"><b>'+(i+1)+'.</b><span>'+esc(x.name||'Thành viên')+'<small class="upg-muted" style="display:block">Ngày '+x.day+' · '+x.sales+' lượt bán</small></span><b>'+Math.round(x.score).toLocaleString('vi-VN')+'</b></div>'}).join(''):'<div class="upg-empty">'+esc(leaderStatus||'Đang tải bảng xếp hạng…')+'</div>';p.innerHTML='<div class="upg-card"><div class="upg-row" style="justify-content:space-between"><div><h3>Bảng xếp hạng cộng đồng</h3><p class="upg-muted">Điểm cao nhất gửi từ thiết bị của người chơi.</p></div><button class="upg-btn" data-tea-act="rank-refresh">↻ Làm mới</button></div><div data-tea-ranks>'+rankContent+'</div></div>';if(!rankLoaded&&!rankLoading)loadRanks()}
+ }
+ function invHtml(){return '<div class="tea-inventory">'+Object.keys(STOCK_LABEL).map(function(k){return '<span>'+STOCK_LABEL[k]+': '+(s.stock[k]||0)+'</span>'}).join('')+'</div>'}
+ function loadRanks(){if(rankLoading)return;rankLoading=true;leaderStatus='Đang tải…';getJSON('/api/tea').then(function(r){rankLoading=false;rankLoaded=true;if(!r.ok){leaderStatus='Máy chủ bảng xếp hạng chưa sẵn sàng.';leader=[]}else{leader=r.j.rows||[];leaderStatus=leader.length?'':'Chưa có điểm nào.'}if(active==='rank')draw()}).catch(function(){rankLoading=false;rankLoaded=true;leaderStatus='Không kết nối được máy chủ.';if(active==='rank')draw()})}
+ function act(name,b){var shift=s.shift;
+  if(name==='start'){makeShift();draw();return}
+  if(name==='serve'){var ord=shift&&shift.orders[shift.index],chosen=q('[data-tea-recipe]',el).value,sugar=+q('[data-tea-sugar]',el).value;if(!ord||!chosen||!sugar){status('Chọn món và độ ngọt trước.');return}if(chosen===ord.recipe&&sugar===ord.sugar){var r=recipe(chosen),missing=Object.keys(r.need).filter(function(k){return (s.stock[k]||0)<r.need[k]});if(missing.length){status('Thiếu nguyên liệu: '+missing.map(function(k){return STOCK_LABEL[k]}).join(', ')+'. Hãy nhập hàng.');return}Object.keys(r.need).forEach(function(k){s.stock[k]-=r.need[k]});var earn=r.price+(s.upgrades.machine?2:0)+2+Math.floor(Math.random()*4);s.cash+=earn;s.rep=Math.min(5,s.rep+.06+(s.upgrades.sign ? .015 : 0));s.sales++;s.happy++;shift.correct++;shift.revenue+=earn;status('Đúng đơn! +'+earn+' ₫, khách hài lòng.') }else{s.rep=Math.max(1,s.rep-.05);shift.wrong++;status('Chưa đúng món hoặc độ ngọt. Khách đổi đơn khác.')};shift.index++;if(shift.index>=shift.orders.length)shift.done=true;s.level=Math.max(1,Math.floor(s.sales/10)+1);save();draw();return}
+  if(name==='finish'){var bonus=shift.correct===5?45:shift.correct>=3?20:0;s.cash+=bonus;s.cash=Math.max(0,s.cash-5);s.day++;s.shift=null;save();submit();status('Kết ca: thưởng '+bonus+' ₫, phí vận hành 5 ₫.');draw();return}
+  if(name==='rename'){var nm=q('[data-tea-name]',el).value.trim();if(nm){s.name=nm;save();draw();status('Đã lưu tên cửa tiệm.')}return}
+  if(name==='rank-refresh'){leader=[];rankLoaded=false;leaderStatus='Đang tải…';draw();loadRanks();return}
+ }
+ el.innerHTML='';draw();
+ el.addEventListener('click',function(e){var tab=e.target.closest('[data-tea-tab]');if(tab){active=tab.getAttribute('data-tea-tab');draw();return}var actb=e.target.closest('[data-tea-act]');if(actb){act(actb.getAttribute('data-tea-act'),actb);return}var research=e.target.closest('[data-tea-research]');if(research){var id=research.getAttribute('data-tea-research'),cost=id==='lemon'?90:id==='matcha'?135:165;if(s.cash<cost){status('Chưa đủ quỹ để nghiên cứu.');return}s.cash-=cost;s.unlocked.push(id);save();draw();status('Đã mở công thức '+recipe(id).name+'.');return}var stock=e.target.closest('[data-tea-stock]');if(stock){var k=stock.getAttribute('data-tea-stock'),cost=STOCK_COST[k];if(s.cash<cost){status('Quỹ tiệm chưa đủ.');return}s.cash-=cost;s.stock[k]=(s.stock[k]||0)+8;save();draw();return}var up=e.target.closest('[data-tea-upgrade]');if(up){var key=up.getAttribute('data-tea-upgrade'),cost=key==='machine'?180:120;if(s.cash<cost){status('Quỹ tiệm chưa đủ.');return}s.cash-=cost;s.upgrades[key]=true;if(key==='sign')s.rep=Math.min(5,s.rep+.2);save();draw();return}var rank=e.target.closest('[data-tea-rank-refresh]');if(rank)loadRanks()});
+ return function(){};
+}
+V3.reg({id:'teashop',t:'Tiệm trà nhỏ',d:'Trò chơi mô phỏng quản lý quán trà sữa: pha đơn, mở công thức, nhập hàng và nâng cấp.',ic:'🧋',g:'well',k:'game tiệm trà sữa quản lý research recipe leaderboard',r:renderTeaShop});
+
+})();
+
 </script>
 </body>
 </html>
