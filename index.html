@@ -8857,7 +8857,7 @@ TOOLS.thect={t:'Thẻ ghi nhớ · Tùy chỉnh',r:function(b){
  $$('[data-r]',b).forEach(function(x){x.onclick=function(){FC.deck='d:'+x.getAttribute('data-r');FC.mode='all';openT('thesm')}})}};
 var DK='d1';
 TOOLS.thetao={t:'Tạo thẻ ghi nhớ',r:function(b){
- var key=ld('gkey','AQ.Ab8RN6KkRMl4gSsBaECT-bp2XWdiTJ8XYgx6SJ1YBB0yZe1y2g');
+ var key=ld('gkey','AQ.Ab8RN6LXwy2V1OvEi9MvuIlqVF7xEu6v-fsmYijdEKL32HjvUg');
  b.innerHTML='<div class="xin"><p class="mut">Bạn muốn tạo thẻ bằng cách nào?</p>'+
  '<button class="xopt xo1" id="t-ai" type="button"><span class="xoi">📷</span><span><b>Nhập tự động từ ảnh</b><small>Chụp hoặc tải ảnh sách, vở, slide. Gemini tìm từ khóa, thuật ngữ và định nghĩa rồi lập thẻ cho bạn.</small><em>'+(key?'Đã cài khóa Gemini':'Cần khóa Gemini (miễn phí)')+'</em></span><i>›</i></button>'+
  '<button class="xopt xo3" id="t-hd" type="button"><span class="xoi">✍️</span><span><b>Nhập thủ công</b><small>Tự viết thẻ với bản xem trước lật 3D, chọn bộ thẻ và từ khóa.</small></span><i>›</i></button>'+
@@ -8936,7 +8936,7 @@ async function gGenerate(key,parts,max,signal,onStep){var pref=ld('gmodel','auto
  throw lastErr||{kind:'empty'}}
 /* ---------- Cài đặt AI ---------- */
 TOOLS.thekey={t:'Cài đặt AI Gemini',r:function(b){
- var key=ld('gkey','AQ.Ab8RN6KkRMl4gSsBaECT-bp2XWdiTJ8XYgx6SJ1YBB0yZe1y2g'),mod=ld('gmodel','auto');
+ var key=ld('gkey','AQ.Ab8RN6LXwy2V1OvEi9MvuIlqVF7xEu6v-fsmYijdEKL32HjvUg'),mod=ld('gmodel','auto');
  b.innerHTML='<div class="xin"><p class="mut">Tính năng nhập thẻ từ ảnh dùng <b>Google Gemini</b>. Bạn cần một khóa API (miễn phí, có hạn mức) tạo tại <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">aistudio.google.com/apikey</a>.</p><label>Khóa Gemini API<input id="k-v" type="password" autocomplete="off" spellcheck="false" placeholder="AIza…" value="'+esc(key)+'"></label><div class="seg"><button class="btn" id="k-sh" type="button">Hiện khóa</button><button class="btn on" id="k-sv" type="button">Lưu và kiểm tra</button><button class="btn bad" id="k-rm" type="button">Xóa khóa</button></div><div id="k-o" class="xr"></div><label>Mô hình<select id="k-m"><option value="auto">Tự động (khuyên dùng: chọn mô hình Flash mới nhất)</option></select></label>'+
  '<p class="mut"><b>Quyền riêng tư:</b> khóa chỉ lưu trên thiết bị này. Ảnh hoặc văn bản bạn chọn được gửi trực tiếp tới Google Gemini để phân tích; không qua máy chủ nào khác. Đừng dùng ảnh chứa thông tin cá nhân nhạy cảm. Tính năng cần mạng và chỉ chạy khi bạn mở tệp bằng trình duyệt thông thường (không chạy trong khung xem trước của Claude).</p><div class="seg"><button class="btn" id="k-bk" type="button">‹ Quay lại</button></div></div>';
  var sel=$('#k-m',b);if(mod!=='auto'){sel.innerHTML+='<option value="'+esc(mod)+'" selected>'+esc(mod)+'</option>'}
@@ -8950,7 +8950,7 @@ TOOLS.thekey={t:'Cài đặt AI Gemini',r:function(b){
 var AIS={imgs:[],text:'',hint:'',max:20,ab:null};
 TOOLS.theai={t:'Nhập thẻ từ ảnh (AI)',r:function(b){
  var res=ld('airesult',null);
- function input(){var key=ld('gkey','AQ.Ab8RN6KkRMl4gSsBaECT-bp2XWdiTJ8XYgx6SJ1YBB0yZe1y2g');
+ function input(){var key=ld('gkey','AQ.Ab8RN6LXwy2V1OvEi9MvuIlqVF7xEu6v-fsmYijdEKL32HjvUg');
   b.innerHTML='<div class="xin">'+(key?'':'<div class="xwarn">Bạn chưa cài khóa Gemini. <button class="btn on" id="a-key" type="button">Cài khóa</button></div>')+
   (res&&res.cards&&res.cards.length?'<button class="btn on xwide" id="a-last" type="button">↺ Xem lại kết quả AI chưa lưu ('+res.cards.length+' thẻ)</button>':'')+
   '<div class="xdrop" id="a-drop"><div class="xdi">📷</div><b>Thêm ảnh (tối đa 6)</b><small>Sách, vở, slide, bảng. Ảnh được tự xoay và nén trước khi gửi.</small><div class="seg"><label class="btn on xfile">Chụp ảnh<input id="a-cam" type="file" accept="image/*" capture="environment" hidden></label><label class="btn xfile">Chọn từ thư viện<input id="a-pick" type="file" accept="image/*" multiple hidden></label></div></div>'+
@@ -8966,7 +8966,7 @@ TOOLS.theai={t:'Nhập thẻ từ ảnh (AI)',r:function(b){
   var dr=$('#a-drop',b);dr.ondragover=function(e){e.preventDefault();dr.classList.add('over')};dr.ondragleave=function(){dr.classList.remove('over')};dr.ondrop=function(e){e.preventDefault();dr.classList.remove('over');add(e.dataTransfer.files)};
   $$('[data-x]',b).forEach(function(x){x.onclick=function(){keep();AIS.imgs.splice(+x.getAttribute('data-x'),1);input()}});
   $('#a-go',b).onclick=function(){keep();run()}}
- async function run(){var key=ld('gkey','AQ.Ab8RN6KkRMl4gSsBaECT-bp2XWdiTJ8XYgx6SJ1YBB0yZe1y2g');if(!key){toast('Hãy cài khóa Gemini trước.');openT('thekey');return}
+ async function run(){var key=ld('gkey','AQ.Ab8RN6LXwy2V1OvEi9MvuIlqVF7xEu6v-fsmYijdEKL32HjvUg');if(!key){toast('Hãy cài khóa Gemini trước.');openT('thekey');return}
   if(!AIS.imgs.length&&AIS.text.trim().length<20){toast('Hãy thêm ảnh hoặc dán ít nhất vài dòng văn bản.');return}
   var steps=['Đang chuẩn bị dữ liệu…'],ab=new AbortController();AIS.ab=ab;
   b.innerHTML='<div class="xin xload"><div class="xspin"></div><b id="l-s">Đang chuẩn bị dữ liệu…</b><div class="xsk"><i></i><i></i><i></i></div><small>Thường mất 5 đến 20 giây.</small><div class="seg"><button class="btn" id="l-x" type="button">Hủy</button></div></div>';
@@ -16208,7 +16208,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
   if (!V) return;
   const $ = (s, r = document) => r.querySelector(s), E = V.esc;
   const BASE = 'https://generativelanguage.googleapis.com/v1beta/';
-  const BUILTIN_GEMINI_KEY = 'AQ.Ab8RN6KkRMl4gSsBaECT-bp2XWdiTJ8XYgx6SJ1YBB0yZe1y2g';
+  const BUILTIN_GEMINI_KEY = 'AQ.Ab8RN6LXwy2V1OvEi9MvuIlqVF7xEu6v-fsmYijdEKL32HjvUg';
   const FALLBACK_MODELS = [
     'gemini-3.5-flash',
     'gemini-3-flash-preview',
@@ -18898,7 +18898,7 @@ window.__deepExpandHTML=function(tp,model){
 /* PART 9: Trợ lý AI Gemini — popup hỏi đáp nổi */
 (function(){
 'use strict';
-var BUILTIN='AQ.Ab8RN6KkRMl4gSsBaECT-bp2XWdiTJ8XYgx6SJ1YBB0yZe1y2g';
+var BUILTIN='AQ.Ab8RN6LXwy2V1OvEi9MvuIlqVF7xEu6v-fsmYijdEKL32HjvUg';
 var MODELS=['gemini-3-flash-preview','gemini-3.5-flash','gemini-3.8-flash','gemini-flash-latest','gemini-3.1-flash-lite'];
 var AI_INLINE_LIMIT=48*1024*1024, AI_MAX_FILES=3, AI_MAX_TOTAL=48*1024*1024;
 var AI_ADV_KEY='tl_ai_advanced',AI_MEM_KEY='tl_ai_memory',AI_ACK_KEY='tl_ai_advanced_ack_v4';
@@ -19284,5 +19284,5 @@ setInterval(proactiveCheck,15000);
 
 </script>
 <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4ef62fee9ea0f2c',t:'MTc5Mjc0NDI5OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4efa97a7f2202be',t:'MTc5Mjc0NzE4Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5077f461cd9f9ad',t:'MTc5Mjk5NzExNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
