@@ -25,7 +25,7 @@ function tokenFor(payload, secret) {
 }
 
 function validAdmin(req) {
-  const secret = process.env.PRESENCE_SIGNING_SECRET;
+  const secret = process.env.SESSION_SECRET;
   if (!secret || secret.length < 32) return false;
   const cookie = (req.headers.get("cookie") || "")
     .split(";")
@@ -75,10 +75,10 @@ export default async (req) => {
   }
 
   if (req.method === "POST" && body.op === "admin-login") {
-    const password = process.env.PRESENCE_ADMIN_PASSWORD;
-    const signingSecret = process.env.PRESENCE_SIGNING_SECRET;
-    if (!password || !signingSecret || signingSecret.length < 32) {
-      return reply({ error: "Chưa cấu hình PRESENCE_ADMIN_PASSWORD và PRESENCE_SIGNING_SECRET trong Netlify." }, 503);
+    const password = process.env.ADMIN_KEY;
+    const signingSecret = process.env.SESSION_SECRET;
+    if (!password || password.length < 8 || !signingSecret || signingSecret.length < 32) {
+      return reply({ error: "Chưa cấu hình ADMIN_KEY và SESSION_SECRET trong Netlify." }, 503);
     }
     const submitted = Buffer.from(String(body.password || ""));
     const configured = Buffer.from(password);
