@@ -1,10 +1,20 @@
 import { getStore } from "@netlify/blobs";
-import { createHmac, timingSafeEqual } from "node:crypto";
+import { createHash, createHmac, timingSafeEqual } from "node:crypto";
 
 const getPresenceStore = () => getStore("so-tay-user-presence");
 const ACTIVE_MS = 90_000;
 const COOKIE = "presence_admin";
 const COOKIE_PATH = "/.netlify/functions/presence";
+
+
+// Khóa ký cookie: dùng SESSION_SECRET nếu có (>= 16 ký tự), nếu không thì suy ra từ ADMIN_KEY.
+function signingSecret() {
+  const own = process.env.SESSION_SECRET;
+  if (own && own.length >= 16) return own;
+  const key = process.env.ADMIN_KEY;
+  if (!key || key.length < 8) return "";
+  return createHash("sha256").update(`so-tay-presence:${key}`).digest("hex");
+}
 
 function reply(data, status = 200, headers = {}) {
   return new Response(JSON.stringify(data), {
@@ -25,8 +35,8 @@ function tokenFor(payload, secret) {
 }
 
 function validAdmin(req) {
-  const secret = process.env.SESSION_SECRET;
-  if (!secret || secret.length < 32) return false;
+  const secret = signingSecret();
+  if (!secret) return false;
   const cookie = (req.headers.get("cookie") || "")
     .split(";")
     .map((part) => part.trim())
@@ -76,16 +86,16 @@ export default async (req) => {
 
   if (req.method === "POST" && body.op === "admin-login") {
     const password = process.env.ADMIN_KEY;
-    const signingSecret = process.env.SESSION_SECRET;
-    if (!password || password.length < 8 || !signingSecret || signingSecret.length < 32) {
-      return reply({ error: "Chưa cấu hình ADMIN_KEY và SESSION_SECRET trong Netlify." }, 503);
+    const secret = signingSecret();
+    if (!password || password.length < 8 || !secret) {
+      return reply({ error: "Chưa cấu hình ADMIN_KEY (ít nhất 8 ký tự) trong Netlify." }, 503);
     }
     const submitted = Buffer.from(String(body.password || ""));
     const configured = Buffer.from(password);
     if (submitted.length !== configured.length || !timingSafeEqual(submitted, configured)) {
       return reply({ error: "Mật khẩu bảng trạng thái không đúng." }, 401);
     }
-    const value = tokenFor({ role: "admin", exp: Date.now() + 12 * 60 * 60 * 1000 }, signingSecret);
+    const value = tokenFor({ role: "admin", exp: Date.now() + 12 * 60 * 60 * 1000 }, secret);
     return reply({ ok: true }, 200, {
       "Set-Cookie": `${COOKIE}=${value}; HttpOnly; Secure; SameSite=Strict; Path=${COOKIE_PATH}; Max-Age=43200`,
     });
