@@ -755,6 +755,45 @@ table.tt td.t{color:var(--c2);font-weight:700}table.tt td.f{color:var(--bad);fon
 .pt-tbl th{background:color-mix(in srgb,var(--ac) 16%,transparent);color:#fff;font-weight:800}
 .pt-tbl td{color:#dbe4f7}
 @media(prefers-reduced-motion:reduce){.pt-f.cur .pt-nb,.pt-f.cur .pt-m,.pt-f.cur::before{animation:none}.pt-fig .blk,.pt-fig .blk .stg,.pt-fig svg g.pop{transition:none}}
+
+/* ===== Sửa lỗi bố cục + tối ưu animation (mobile & PC) ===== */
+/* 1) .pt-grid của Bảng tuần hoàn (18 cột, width:max-content) đang đè lên lưới môn học của #pt -> khóa phạm vi */
+#pt .pt-grid{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:auto;gap:10px;width:auto;max-width:100%;margin:0}
+#pt .pt-card{min-width:0}
+#pt .pt-card.big{grid-column:1/-1}
+/* 2) animation vào bằng backwards: không giữ transform sau khi chạy xong (hover/active mới có tác dụng) */
+#pt .pt-card{animation:ptIn .45s cubic-bezier(.2,.7,.2,1) backwards;contain:layout style}
+#pt .pt-card:nth-child(2){animation-delay:.04s}#pt .pt-card:nth-child(3){animation-delay:.08s}#pt .pt-card:nth-child(4){animation-delay:.12s}
+#pt .pt-card:nth-child(5){animation-delay:.16s}#pt .pt-card:nth-child(6){animation-delay:.2s}#pt .pt-card:nth-child(n+7){animation-delay:.24s}
+/* 3) ẩn #pt thì tạm dừng mọi animation, đỡ tốn CPU/GPU nền */
+#pt:not(.open) *,#pt:not(.open) *::before,#pt:not(.open) *::after{animation-play-state:paused!important}
+/* 4) chỉ animate transform/opacity, báo trước cho trình duyệt đúng chỗ cần */
+.pt-fig svg [data-st],.pt-fig svg g.pop,.pt-fig .blk .stg{will-change:opacity,transform}
+.pt-fig svg [data-st].show,.pt-fig svg g.pop.show,.pt-fig .blk.show .stg{will-change:auto}
+.pt-f{will-change:opacity,transform}.pt-f.on{will-change:auto}
+/* 5) PC (chuột): bỏ hiệu ứng lặp vô hạn trên mọi thẻ, chỉ chạy khi rê chuột; thêm hover */
+@media (hover:hover) and (pointer:fine){
+ #pt .pt-card .ic{animation:none}
+ #pt .pt-card:hover .ic{animation:ptFloat 1.6s ease-in-out infinite}
+ #pt .pt-card{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+ #pt .pt-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px color-mix(in srgb,var(--c) 28%,transparent);border-color:var(--c)}
+ #pt .pt-card:active{transform:scale(.98)}
+ #pt .pt-card.feat::after{animation-duration:5s}
+ .pt-btn:hover,.pt-bt button:hover,.pt-toggle button:hover,.pt-more:hover,.pt-nav button:hover{filter:brightness(1.18)}
+ .pt-ib:hover{background:rgba(255,255,255,.14)}
+ .pt-body{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.22) transparent}
+ .pt-fig svg .hd{cursor:grab}
+}
+/* 6) PC / màn rộng: khung rộng hơn, lưới 3 cột, hình minh họa to hơn */
+@media (min-width:900px){
+ #pt .pt-in{max-width:880px}
+ #pt .pt-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+ .pt-h1{font-size:28px}.pt-sub{font-size:15px}
+ .pt-fig svg{max-width:560px}
+ .pt-sg{grid-template-columns:1fr 1fr 1fr}
+ .pt-nav{margin:0 0 12px;border-radius:14px}
+}
+@media (prefers-reduced-motion:reduce){#pt .pt-card{animation:none}#pt .pt-card:hover{transform:none}}
 </style>
 <style id="pt-css-more">
 /* ===== Môn học mới: hiệu ứng bổ sung ===== */
@@ -19815,7 +19854,20 @@ style2.textContent=[
 '.ai-tr-row{display:flex;gap:6px}.ai-tr-row select{flex:1;min-width:0;border:1px solid var(--line);border-radius:9px;padding:7px;background:var(--bg);color:var(--ink);font:inherit;font-size:12.5px}',
 '.ai-tr-out{min-height:40px;padding:8px;border:1px dashed var(--line);border-radius:9px}',
 '.ai-seltip{position:fixed;z-index:99992;border:0;border-radius:999px;padding:7px 12px;background:var(--c1);color:var(--on,#fff);font:inherit;font-size:12px;font-weight:800;box-shadow:0 8px 22px rgba(0,0,0,.28);cursor:pointer}.ai-seltip[hidden]{display:none}',
-'.ai-adv-row .ai-adv-btn[data-ai-engine]{max-width:100%}'
+'.ai-adv-row .ai-adv-btn[data-ai-engine]{max-width:100%}',
+'.ai-msgs{min-height:120px}',
+'@media(max-width:640px){',
+'#ai-pop{left:8px;right:8px;width:auto;height:auto;top:calc(env(safe-area-inset-top,0px) + 8px);bottom:calc(76px + env(safe-area-inset-bottom,0px))}',
+'.ai-hd{padding:8px 10px;gap:8px}.ai-hd>span{font-size:18px!important}.ai-hd small{display:none}.ai-hd button{padding:5px 8px}',
+'.ai-tabs button{padding:6px 6px;font-size:12.5px}',
+'.ai-ctx{margin:6px 10px 0;padding:4px 8px;font-size:11px}',
+'.ai-adv-row{flex-wrap:nowrap;overflow-x:auto;padding:6px 10px 0;scrollbar-width:none}.ai-adv-row::-webkit-scrollbar{display:none}.ai-adv-row>*{flex:none;white-space:nowrap}.ai-adv-hint{display:none}',
+'.ai-feats{display:flex;overflow-x:auto;gap:5px;padding:6px 10px 0;scrollbar-width:none}.ai-feats::-webkit-scrollbar{display:none}',
+'.ai-feats button{flex:none;flex-direction:row;gap:4px;padding:5px 10px;font-size:11px;white-space:nowrap;border-radius:999px}.ai-feats button span{font-size:14px}',
+'.ai-chips{flex-wrap:nowrap;overflow-x:auto;padding:6px 10px 0;scrollbar-width:none}.ai-chips::-webkit-scrollbar{display:none}.ai-chip{flex:none;white-space:nowrap;font-size:11.5px;padding:4px 9px}',
+'.ai-msgs{flex:1 1 auto;min-height:140px}',
+'.ai-attach-hint{display:none}.ai-in{padding:7px 8px 8px;gap:5px}.ai-compose textarea{max-height:64px}',
+'}'
 ].join('\n');
 document.head.appendChild(style2);
 
